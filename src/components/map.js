@@ -9,6 +9,7 @@ function Map() {
       <iframe
         src={url}
         className="google-map"
+        title="Business Location"
         allowFullScreen
       />
     </>
