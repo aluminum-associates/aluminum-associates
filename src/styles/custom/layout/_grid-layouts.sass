@@ -54,7 +54,11 @@
     grid-template-columns: repeat(2, 1fr)
     grid-gap: $gap * 2
 
-    @media screen and ( max-width: $tablet )
+    @media screen and ( max-width: $desktop )
         grid-template-columns: 1fr
-        grid-gap: $gap
+
+        .contact-form
+            order: 2
+        .contact-info
+            order: 1
         

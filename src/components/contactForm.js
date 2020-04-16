@@ -13,6 +13,7 @@ const initState = {
   phone: "",
   message: "",
   errs: {
+    isErr: false,
     name: "",
     address: "",
     email: "",
@@ -32,23 +33,37 @@ export class ContactForm extends Component {
     let message = ""
 
     if (!this.state.name) {
-      name = "Name cannot be left blank."
+      name = "Name is required."
     }
+
     if (!this.state.address) {
-      address = "Address cannot be left blank."
+      address = "Address is required."
     }
+
     if (!this.state.email.includes("@")) {
       email = "Please enter a valid email address."
     }
+
     if (!this.state.email) {
-      email = "Email cannot be left blank."
+      email = "Email is required."
     }
+
+    if (!this.state.phone) {
+      phone = "Phone number is required."
+    }
+
+    if (!this.state.message) {
+      message = "Message field cannot be left blank."
+    }
+
     if (name || address || email || phone || message) {
       this.setState({
         errs: { name, address, email, phone, message },
       })
+
       return false
     }
+
     return true
   }
 
@@ -83,13 +98,17 @@ export class ContactForm extends Component {
 
   render() {
     const formStyle = {
-      maxWidth: "400px",
+      maxWidth: "600px",
     }
     const { name, address, email, phone, message } = this.state
 
     return (
       <>
-        <form onSubmit={this.handleSubmit} style={formStyle}>
+        <form
+          onSubmit={this.handleSubmit}
+          style={formStyle}
+          className="contact-form"
+        >
           {this.props.title ? (
             <h1 className="title">{this.props.title}</h1>
           ) : null}
@@ -98,52 +117,72 @@ export class ContactForm extends Component {
               type="text"
               name="name"
               value={name}
-              className="input"
+              className={`input ${this.state.errs.name ? "is-danger" : null}`}
               onChange={this.handleChange}
               placeholder="Name"
             />
           </div>
+          {this.state.errs.name ? (
+            <p className="field has-text-danger">{this.state.errs.name}</p>
+          ) : null}
+
           <div className="field">
             <input
               type="text"
               name="address"
               value={address}
-              className="input"
+              className={`input ${this.state.errs.address ? "is-danger" : null}`}
               onChange={this.handleChange}
               placeholder="Address"
             />
           </div>
+          {this.state.errs.address ? (
+            <p className="field has-text-danger">{this.state.errs.address}</p>
+          ) : null}
+
           <div className="field">
             <input
               type="text"
               name="email"
               value={email}
-              className="input"
+              className={`input ${this.state.errs.email ? "is-danger" : null}`}
               onChange={this.handleChange}
               placeholder="Email"
             />
           </div>
+          {this.state.errs.email ? (
+            <p className="field has-text-danger">{this.state.errs.email}</p>
+          ) : null}
+
           <div className="field">
             <input
               type="text"
               name="phone"
               value={phone}
-              className="input"
+              className={`input ${this.state.errs.phone ? "is-danger" : null}`}
               onChange={this.handleChange}
               placeholder="Phone"
             />
           </div>
+          {this.state.errs.phone ? (
+            <p className="field has-text-danger">{this.state.errs.phone}</p>
+          ) : null}
+
           <div className="field">
             <textarea
               name="message"
               value={message}
               cols="30"
               rows="10"
-              className="textarea"
+              className={`textarea ${this.state.errs.message ? "is-danger" : null}`}
               onChange={this.handleChange}
               placeholder="Message"
             ></textarea>
           </div>
+          {this.state.errs.message ? (
+            <p className="field has-text-danger">{this.state.errs.message}</p>
+          ) : null}
+
           <button
             type="submit"
             onClick={this.handleSubmit}
