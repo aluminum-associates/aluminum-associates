@@ -1,6 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import Header from "./navbar"
+import Navbar from "./navbar"
 import Footer from "./footer"
 
 const Layout = props => {
@@ -13,7 +13,7 @@ const Layout = props => {
       />
       <div className="site">
         <main className="page-content">
-            <Header />
+            <Navbar />
             {props.children}
         </main>
         <Footer />
