@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import ContactForm from "../components/contactForm"
+import ContactForm from "../components/ContactForm"
 import Map from "../components/map"
 
 function Contact() {

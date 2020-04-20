@@ -12,10 +12,8 @@ const Layout = props => {
         }}
       />
       <div className="site">
-        <main className="page-content">
-            <Navbar />
-            {props.children}
-        </main>
+        <Navbar />
+        <main className="page-content">{props.children}</main>
         <Footer />
       </div>
     </>

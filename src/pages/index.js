@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ContactForm from "../components/contactForm"
+import ContactForm from "../components/ContactForm"
 
 const IndexPage = () => {
   // Image graphql queries
@@ -105,9 +105,7 @@ const IndexPage = () => {
             ratione vero quibusdam omnis tenetur? Asperiores voluptatibus
             dolores aliquid sed nam cupiditate nesciunt voluptates sit magnam
             eaque saepe aspernatur quod tempora nemo molestiae rem reiciendis
-            facere reprehenderit veritatis corrupti laudantium, quae inventore.
-            Temporibus iure libero repellendus quisquam magni quia asperiores
-            consequatur est!"
+            facere reprehenderit veritatis corrupti laudantium, quae inventore."
           </p>
           <p className="author">- Joan Johnson</p>
         </div>
