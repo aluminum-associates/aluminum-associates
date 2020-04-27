@@ -18,6 +18,19 @@ export default {
       }
     },
     {
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    },
+    {
+      name: 'alt',
+      title: 'Alternative Text',
+      type: 'string'
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'text'
