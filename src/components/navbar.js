@@ -1,9 +1,12 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import Logo from "../images/logo.png"
 
-const Navbar = () => {
-  const [menu, menuToggle] = useState(false)
+export default function Navbar() {
+  const [menu, setMenu] = useState(false)
+  const [dropdown, setDropdown] = useState(false)
+  const query = useStaticQuery(data)
+  const categories = query.allSanityCategory
 
   return (
     <nav className="navbar is-fixed-top">
@@ -18,8 +21,20 @@ const Navbar = () => {
           </Link>
           <div
             id="burger"
+            role="button"
+            tabIndex={-1}
             className={"navbar-burger" + (menu ? " is-active" : "")}
-            onClick={() => menuToggle(!menu)}
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+              "&:active": {
+                border: "none",
+                outline: "none",
+              },
+            }}
+            onClick={() => setMenu(!menu)}
+            onKeyDown={() => setMenu(!menu)}
           >
             <span></span>
             <span></span>
@@ -41,13 +56,39 @@ const Navbar = () => {
             >
               About
             </Link>
-            <Link
-              to="/products"
-              className="navbar-item"
-              activeClassName="is-active"
+            <div
+              role="button"
+              tabIndex={-1}
+              className={
+                "navbar-item has-dropdown is-hoverable" +
+                (dropdown ? " is-active" : null)
+              }
+              style={{
+                border: "none",
+                outline: "none",
+                background: "transparent",
+                "&:active": {
+                  border: "none",
+                  outline: "none",
+                },
+              }}
+              onClick={() => setDropdown(!dropdown)}
+              onKeyDown={() => setDropdown(!dropdown)}
             >
-              Products
-            </Link>
+              <a className="navbar-link">Products</a>
+              <div className="navbar-dropdown">
+                {categories.edges.map(({ node: category }) => (
+                  <Link
+                    key={category.id}
+                    to={"/products/" + category.slug.current}
+                    className="navbar-item"
+                    activeClassName="is-active"
+                  >
+                    {category.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link
               to="/services"
               className="navbar-item"
@@ -72,4 +113,21 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export const data = graphql`
+  query {
+    allSanityCategory(
+      filter: { products: { elemMatch: { id: { ne: "null" } } } }
+      sort: { fields: title }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`
