@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useLocation } from "@reach/router"
 
-export default function FooterTabs(props) {
-  const url = window.location.pathname
+export default function FooterTabs(props, context) {
+  const url = useLocation().pathname
 
-  console.log(props.tabs)
+  console.log(context)
   return (
     <div className="hero-footer">
       <div className="tabs is-boxed is-fullwidth">
