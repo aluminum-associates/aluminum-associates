@@ -18,13 +18,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `products`,
-        path: `${__dirname}/src/products`,
-      },
-    },
-    {
       resolve: `gatsby-source-sanity`,
       options: {
         projectId: process.env.GATSBY_SANITY_ID,
