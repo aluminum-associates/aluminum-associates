@@ -20,8 +20,7 @@ export default function Category({ data }) {
     >
       <BackgroundImage
         className="hero is-large is-primary"
-        fluid={category.heroImage.image.asset.fluid}
-        alt={category.heroImage.alternativeText}
+        fluid={category.heroImage ? category.heroImage.image.asset.fluid : null}
       >
         <HeroOverlay>
           <div className="hero-body">
@@ -43,7 +42,7 @@ export default function Category({ data }) {
                   product.slug.current
                 }
                 key={product.title}
-                heroImage={product.heroImage.image.asset.fluid}
+                heroImage={product.heroImage ? product.heroImage.image.asset.fluid : null}
                 title={product.title}
                 description={product.description}
               />

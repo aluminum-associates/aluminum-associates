@@ -37,7 +37,7 @@ export default function Product({ data }) {
       }
     >
       <BackgroundImage
-        fluid={product.heroImage.image.asset.fluid}
+        fluid={product.heroImage ? product.heroImage.image.asset.fluid : null}
         className="hero is-large is-primary"
       >
         <HeroOverlay>
