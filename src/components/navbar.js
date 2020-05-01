@@ -75,7 +75,7 @@ export default function Navbar() {
               onClick={() => setDropdown(!dropdown)}
               onKeyDown={() => setDropdown(!dropdown)}
             >
-              <a className="navbar-link">Products</a>
+              <span className="navbar-link">Products</span>
               <div className="navbar-dropdown">
                 {categories.edges.map(({ node: category }) => (
                   <Link
