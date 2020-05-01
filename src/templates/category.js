@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Card from "../components/Card"
 import HeroOverlay from "../components/HeroOverlay"
 

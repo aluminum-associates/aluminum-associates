@@ -29,14 +29,6 @@ const Footer = () => {
             </p>
             <a href="mailto:info@aluminumassociates.com">Email Us</a>
           </div>
-          {/* <div className="section">
-            <h3 className="is-size-5"></h3>
-            <ul>
-              <li>
-                <Link to="/"></Link>
-              </li>
-            </ul>
-          </div> */}
         </div>
         <p className="has-text-centered">
           &copy; Copyright 2020 by Aluminum Associates.

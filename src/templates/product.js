@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import ImageGallery from "../components/ImageGallery"
 import HeroOverlay from "../components/HeroOverlay"
 

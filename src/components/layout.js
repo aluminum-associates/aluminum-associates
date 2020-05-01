@@ -1,10 +1,10 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-import SEO from "./seo"
-import Navbar from "./navbar"
-import Footer from "./footer"
+import SEO from "./SEO"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 
-const Layout = props => {
+export default function Layout(props) {
   return (
     <>
       <SEO title={props.title} description={props.description}></SEO>
@@ -21,5 +21,3 @@ const Layout = props => {
     </>
   )
 }
-
-export default Layout

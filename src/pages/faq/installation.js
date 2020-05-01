@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../../components/layout"
+import Layout from "../../components/Layout"
 import FooterTabs from "../../components/FooterTabs"
 
 export default function Installation() {
