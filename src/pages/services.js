@@ -1,12 +1,9 @@
 import React from "react"
-
-import SEO from "../components/seo"
 import Layout from "../components/layout"
 
 export default function Services() {
   return (
-    <Layout>
-      <SEO title="Services" />
+    <Layout title="Services">
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">

@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import ContactForm from "../components/ContactForm"
 
 export default function Home({ data }) {
@@ -12,8 +10,7 @@ export default function Home({ data }) {
   const jobImage = data.job.childImageSharp.fluid
 
   return (
-    <Layout>
-      <SEO title="Home" />
+    <Layout title="Home">
       <section className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">

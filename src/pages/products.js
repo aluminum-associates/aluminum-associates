@@ -1,14 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-
-import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Card from "../components/Card"
 
 export default function Products({ data }) {
   return (
-    <Layout>
-      <SEO title="Products"/>
+    <Layout title="Products">
       <div className="hero-product is-large is-primary">
         <div className="hero-body">
           <div className="container">
