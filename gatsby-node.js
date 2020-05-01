@@ -1,28 +1,31 @@
-const path = require("path")
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require(`path`)
 
-module.exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === "MarkdownRemark") {
-    const slug = path.basename(node.fileAbsolutePath, ".md")
-    createNodeField({
-      name: "slug",
-      node,
-      value: slug,
-    })
-  }
-}
-module.exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const productTemplate = path.resolve("./src/templates/product.js")
-  const response = await graphql(`
+
+  const res = await graphql(`
     query {
-      allMarkdownRemark {
+      products: allSanityProduct(filter: { slug: { current: { ne: null } } }) {
         edges {
           node {
-            fields {
-              slug
+            slug {
+              current
+            }
+            categories {
+              slug {
+                current
+              }
+            }
+          }
+        }
+      }
+      categories: allSanityCategory(
+        filter: { slug: { current: { ne: null } } }
+      ) {
+        edges {
+          node {
+            slug {
+              current
             }
           }
         }
@@ -30,17 +33,29 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  if (response.errors) {
-    throw response.errors
+  if (res.errors) {
+    throw res.errors
   }
 
-  response.data.allMarkdownRemark.edges.map(edge => {
+  const products = res.data.products.edges
+  const categories = res.data.categories.edges
+
+  products.forEach(edge => {
+    const path = `/products/${edge.node.categories[0].slug.current}/${edge.node.slug.current}`
+
     createPage({
-      path: `/products/${edge.node.fields.slug}`,
-      component: productTemplate,
-      context: {
-        slug: edge.node.fields.slug,
-      },
+      path,
+      component: require.resolve("./src/templates/product.js"),
+      context: { slug: edge.node.slug.current },
+    })
+  })
+
+  categories.forEach(edge => {
+    const path = `/products/${edge.node.slug.current}`
+    createPage({
+      path,
+      component: require.resolve("./src/templates/category.js"),
+      context: { slug: edge.node.slug.current },
     })
   })
 }

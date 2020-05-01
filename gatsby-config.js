@@ -1,8 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Aluminum Associates`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `Aluminum Associates`,
+    description: `Aluminum Associates is a home renovation company specializing in Vinyl Windows, Doors, Siding, Soffit, Fascia, Eavestrough and Railing in London, Ontario`,
+    author: `Alex Low`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +24,21 @@ module.exports = {
         path: `${__dirname}/src/products`,
       },
     },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: process.env.GATSBY_SANITY_ID,
+        dataset: `production`,
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: true,
+        defaultQuality: 75,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -35,7 +52,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-yaml`,
   ],
 }
