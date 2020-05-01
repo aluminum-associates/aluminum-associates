@@ -1,8 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-
-import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Card from "../components/Card"
 import HeroOverlay from "../components/HeroOverlay"
@@ -12,15 +10,14 @@ export default function Category({ data }) {
   const products = data.products
 
   return (
-    <Layout>
-      <SEO
-        title={category.title}
-        description={
-          category.description
-            ? category.description.substring(0, 154) + "..."
-            : null
-        }
-      />
+    <Layout
+      title={category.title}
+      description={
+        category.description
+          ? category.description.substring(0, 154) + "..."
+          : null
+      }
+    >
       <BackgroundImage
         className="hero is-large is-primary"
         fluid={category.heroImage.image.asset.fluid}

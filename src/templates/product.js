@@ -2,8 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
-
-import SEO from "../components/seo"
 import Layout from "../components/layout"
 import ImageGallery from "../components/ImageGallery"
 import HeroOverlay from "../components/HeroOverlay"
@@ -30,15 +28,14 @@ export default function Product({ data }) {
   }
 
   return (
-    <Layout>
-      <SEO
-        title={product.title}
-        description={
-          product._rawDescription
-            ? toPlainText(product._rawDescription).substring(0, 154) + "..."
-            : null
-        }
-      />
+    <Layout
+      title={product.title}
+      description={
+        product._rawDescription
+          ? toPlainText(product._rawDescription).substring(0, 154) + "..."
+          : null
+      }
+    >
       <BackgroundImage
         fluid={product.heroImage.image.asset.fluid}
         className="hero is-large is-primary"
