@@ -20,8 +20,14 @@ export default function Products({ data }) {
               <Card
                 key={category.id}
                 to={"/products/" + category.slug.current}
-                heroImage={category.heroImage.image.asset.fluid}
-                alt={category.heroImage.alternativeText}
+                heroImage={
+                  category.heroImage
+                    ? category.heroImage.image.asset.fluid
+                    : null
+                }
+                alt={
+                  category.heroImage ? category.heroImage.alternativeText : null
+                }
                 title={category.title}
                 description={category.description}
               />
