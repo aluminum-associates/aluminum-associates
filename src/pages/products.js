@@ -1,58 +1,34 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
+
+import SEO from "../components/seo"
 import Layout from "../components/layout"
+import Card from "../components/Card"
 
-const Products = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
+export default function Products({ data }) {
   return (
     <Layout>
+      <SEO title="Products"/>
       <div className="hero-product is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-1">Title</h1>
-          </div>
-        </div>
-        <div className="hero-foot">
-          <div className="tabs is-boxed is-fullwidth">
-            <div className="container">
-              <ul>
-                <li className="is-active">
-                  <a href="{{ product|url }}">Product Name</a>
-                </li>
-              </ul>
-            </div>
+            <h1 className="title is-1">Products</h1>
           </div>
         </div>
       </div>
       <section className="section">
         <div className="container">
           <div className="card-wrapper">
-            <a href="">
-              <div className="card">
-                <div className="card-image">
-                  <figure className="image is-4by3">
-                    <img src="" alt="" />
-                  </figure>
-                </div>
-                <div className="card-content">
-                  <h2 className="title is-size-4">Product Name</h2>
-                  <p className="subtitle is-size-5">Product Description</p>
-                </div>
-              </div>
-            </a>
+            {data.allSanityCategory.edges.map(({ node: category }) => (
+              <Card
+                key={category.id}
+                to={"/products/" + category.slug.current}
+                heroImage={category.heroImage.image.asset.fluid}
+                alt={category.heroImage.alternativeText}
+                title={category.title}
+                description={category.description}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -60,4 +36,30 @@ const Products = () => {
   )
 }
 
-export default Products
+export const data = graphql`
+  query {
+    allSanityCategory(
+      filter: { products: { elemMatch: { id: { ne: "null" } } } }
+    ) {
+      edges {
+        node {
+          id
+          slug {
+            current
+          }
+          title
+          heroImage {
+            image {
+              asset {
+                fluid(maxWidth: 1900) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            alternativeText
+          }
+        }
+      }
+    }
+  }
+`

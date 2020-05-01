@@ -1,25 +1,102 @@
 import React from "react"
-import Layout from "../components/layout"
+import { graphql } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
+import PortableText from "@sanity/block-content-to-react"
 
-const Product = () => {
+import SEO from "../components/seo"
+import Layout from "../components/layout"
+import ImageGallery from "../components/ImageGallery"
+import HeroOverlay from "../components/HeroOverlay"
+
+export default function Product({ data }) {
+  const product = data.sanityProduct
+  const images = product.imageGallery
+
+  const imageGalleryStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+    gridGap: "5px",
+  }
+
+  const toPlainText = (blocks = []) => {
+    return blocks
+      .map(block => {
+        if (block._type !== "block" || !block.children) {
+          return ""
+        }
+        return block.children.map(child => child.text).join("")
+      })
+      .join("\n\n")
+  }
+
   return (
     <Layout>
-      <section class="section">
-        <div class="container">
-          <h1 class="title is-1">Product Name</h1>
-          <div class="product-grid-wrapper">
-            <div class="product-specs">
-              <div class="overview"></div>
-              <div class="key-features">
-                <h2 class="title">Key Features</h2>
-              </div>
-              <div class="product-options">
-                <h2 class="title">Options</h2>
-              </div>
-              <div class="documentation">
-                <h2 class="title">Learn More</h2>
-              </div>
-              <p class="disclaimer">
+      <SEO
+        title={product.title}
+        description={
+          product._rawDescription
+            ? toPlainText(product._rawDescription).substring(0, 154) + "..."
+            : null
+        }
+      />
+      <BackgroundImage
+        fluid={product.heroImage.image.asset.fluid}
+        className="hero is-large is-primary"
+      >
+        <HeroOverlay>
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title is-1">{product.title}</h1>
+            </div>
+          </div>
+        </HeroOverlay>
+      </BackgroundImage>
+      <section className="section">
+        <div className="container">
+          <div className="product-grid-wrapper">
+            <div className="product-specs">
+              {product._rawDescription ? (
+                <div className="overview">
+                  <h1 className="title">Overview</h1>
+                  <PortableText blocks={product._rawDescription} />
+                </div>
+              ) : null}
+              {product.standardFeatures !== 0 ? (
+                <div className="key-features">
+                  <h2 className="title">Standard Features</h2>
+                  <ul>
+                    {product.standardFeatures.map(feature => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {product.optionalFeatures !== 0 ? (
+                <div className="product-options">
+                  <h2 className="title">Options</h2>
+                  <ul>
+                    {product.optionalFeatures.map(feature => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {product.documentation !== 0 ? (
+                <div className="documentation">
+                  <h2 className="title">Learn More</h2>
+                  {product.documentation.map(document => (
+                    <a
+                      href={document.file.asset.url}
+                      key={document.file.asset.id}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {document.title}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+              <p className="disclaimer">
                 * If you have a question about any of the products that we sell,
                 if you'd like to receive a free estimate for professional
                 installation, or have questions about a product you're going to
@@ -33,14 +110,14 @@ const Product = () => {
                 .
               </p>
             </div>
-            <div class="product-gallery">
-              <h2 class="title">Gallery</h2>
-              <div class="gallery-wrapper">
-                <a href="{{ img|url }}">
-                  <img src="{{ img|url }}" alt="" />
-                </a>
+            {images !== 0 ? (
+              <div className="product-gallery">
+                <h2 className="title">Gallery</h2>
+                <div style={imageGalleryStyle}>
+                  <ImageGallery images={images} />
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -48,4 +125,60 @@ const Product = () => {
   )
 }
 
-export default Product
+export const data = graphql`
+  query($slug: String) {
+    sanityProduct(slug: { current: { eq: $slug } }) {
+      slug {
+        current
+      }
+      title
+      tags
+      categories {
+        slug {
+          current
+        }
+      }
+      vendor {
+        title
+        slug {
+          current
+        }
+      }
+      heroImage {
+        image {
+          asset {
+            id
+            fluid(maxWidth: 1920) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        alternativeText
+      }
+      documentation {
+        title
+        file {
+          asset {
+            id
+            url
+            title
+          }
+        }
+      }
+      _rawDescription
+      standardFeatures
+      optionalFeatures
+      imageGallery {
+        image {
+          asset {
+            id
+            fluid(maxWidth: 1400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        alternativeText
+      }
+    }
+  }
+`

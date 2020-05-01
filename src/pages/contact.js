@@ -1,13 +1,22 @@
 import React from "react"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import ContactForm from "../components/ContactForm"
 import Map from "../components/map"
 
-function Contact() {
+export default function Contact() {
   return (
     <>
       <Layout>
+        <SEO title="Contact" />
+        <div className="hero is-large is-primary">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title is-size-1">Let's Get In Touch</h1>
+            </div>
+          </div>
+        </div>
         <section className="section-contact-page">
           <div className="container">
             <div className="contact-wrapper">
@@ -39,5 +48,3 @@ function Contact() {
     </>
   )
 }
-
-export default Contact

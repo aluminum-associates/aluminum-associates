@@ -1,43 +1,12 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/ContactForm"
 
-const IndexPage = () => {
-  // Image graphql queries
-  const data = useStaticQuery(graphql`
-    {
-      map: file(relativePath: { eq: "index/map.jpeg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-            presentationWidth
-          }
-        }
-      }
-      service: file(relativePath: { eq: "index/customer-service.jpeg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-            presentationWidth
-          }
-        }
-      }
-      job: file(relativePath: { eq: "index/job-serviced.jpeg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-            presentationWidth
-          }
-        }
-      }
-    }
-  `)
-
-  // Store images in variables
+export default function Home({ data }) {
   const mapImage = data.map.childImageSharp.fluid
   const serviceImage = data.service.childImageSharp.fluid
   const jobImage = data.job.childImageSharp.fluid
@@ -48,7 +17,7 @@ const IndexPage = () => {
       <section className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title">Aluminum Associates</h1>
+            <h1 className="title is-size-1">Aluminum Associates</h1>
           </div>
         </div>
       </section>
@@ -112,11 +81,38 @@ const IndexPage = () => {
       </section>
       <section className="section-quote-form">
         <div className="container">
-          <ContactForm title="Request a Quote"/>
+          <ContactForm title="Request a Quote" />
         </div>
       </section>
     </Layout>
   )
 }
 
-export default IndexPage
+export const data = graphql`
+  {
+    map: file(relativePath: { eq: "index/map.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+          presentationWidth
+        }
+      }
+    }
+    service: file(relativePath: { eq: "index/customer-service.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+          presentationWidth
+        }
+      }
+    }
+    job: file(relativePath: { eq: "index/job-serviced.jpeg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+          presentationWidth
+        }
+      }
+    }
+  }
+`
