@@ -5,7 +5,6 @@ import { useLocation } from "@reach/router"
 export default function FooterTabs(props, context) {
   const url = useLocation().pathname
 
-  console.log(context)
   return (
     <div className="hero-footer">
       <div className="tabs is-boxed is-fullwidth">
