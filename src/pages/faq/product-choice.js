@@ -23,9 +23,9 @@ export default function Maintenance() {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h2 className="title is-size-2">
+            <h1 className="title is-size-1">
               Frequently Asked Product Choice Questions
-            </h2>
+            </h1>
           </div>
         </div>
         <FooterTabs tabs={tabs} />
