@@ -111,4 +111,10 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'heroImage.image'
+    }
+  }
 };

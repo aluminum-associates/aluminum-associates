@@ -1,50 +1,75 @@
 export default {
-  name: 'category',
-  title: 'Category',
-  type: 'document',
+  name: "category",
+  title: "Category",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
-        maxLength: 96
-      }
+        source: "title",
+        maxLength: 96,
+      },
     },
     {
-      name: 'heroImage',
-      title: 'Hero Image',
-      type: 'image',
-      options: {
-        hotspot: true
-      }
-    },
-    {
-      name: 'alt',
-      title: 'Alternative Text',
-      type: 'string'
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text'
-    },
-    {
-      name: 'parents',
-      title: 'Parent categories',
-      type: 'array',
+      title: "Tags",
+      name: "tags",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{type: 'category'}]
-        }
-      ]
+          type: "string",
+        },
+      ],
+      options: {
+        layout: "tags",
+      },
+    },
+    {
+      name: "heroImage",
+      title: "Hero Image",
+      type: "heroImage",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "text",
+    },
+    {
+      name: "parents",
+      title: "Parent categories",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "category" }],
+        },
+      ],
+    },
+    {
+      name: "products",
+      title: "Related Products",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "product" }],
+        },
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'heroImage.image'
     }
-  ]
-}
+  }
+};
