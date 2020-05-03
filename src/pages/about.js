@@ -12,7 +12,7 @@ export default function About() {
         <section className="hero is-large is-primary">
           <div className="hero-body">
             <div className="container">
-              <div className="text-wrapper" style={copyStyle}>
+              <div className="content" style={copyStyle}>
                 <h1 className="title is-size-1">Since 1963</h1>
                 <p>
                   Aluminum Associates, founded in 1963, is a leading provider of
@@ -37,7 +37,7 @@ export default function About() {
         </section>
         <section className="section">
           <div className="container">
-            <div className="copy-wrapper" style={copyStyle}>
+            <div className="content" style={copyStyle}>
               <h2 className="title is-size-2">President's Message</h2>
               <p>
                 "Aluminum Associates started with a simple business philosophy –
@@ -53,7 +53,7 @@ export default function About() {
         </section>
         <section className="section">
           <div className="container">
-            <div className="copy-wrapper" style={copyStyle}>
+            <div className="content" style={copyStyle}>
               <h2 className="title is-size-2">What Sets Us Apart</h2>
               <p>
                 Our business continues to thrive because we demonstrate, on a
@@ -66,7 +66,7 @@ export default function About() {
         </section>
         <section className="section">
           <div className="container">
-            <div className="copy-wrapper" style={copyStyle}>
+            <div className="content" style={copyStyle}>
               <h2 className="title is-size-2">Our Values</h2>
               <p>
                 Honesty - We offer fair pricing and no-pressure sales;
@@ -114,7 +114,7 @@ export default function About() {
         </section>
         <section className="section">
           <div className="container">
-            <div className="copy-wrapper" style={copyStyle}>
+            <div className="content" style={copyStyle}>
               <h2 className="title is-size-2">Our Community</h2>
               <p>
                 The work that we do beautifies the homes and neighbourhoods in our
