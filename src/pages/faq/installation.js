@@ -32,52 +32,54 @@ export default function Installation() {
       </div>
       <section className="section">
         <div className="container">
-          <h2 className="title is-size-2">
-            How Do I Calculate The Amount Of Vinyl Siding I Will Need?
-          </h2>
-          <p>
-            For horizontal siding you must adjust the height of the area to be
-            covered to make it divisible by the height of the siding panel (e.g.
-            9" high panel for Double 4.5" profile). For example, if your wall is
-            114" high you must add 3" to the height to make it divisible by 9",
-            to ensure that you have enough vinyl siding.
-          </p>
-          <p>
-            Similarly, for vertical siding you must increase the width to make
-            it divisible by the width of the vertical siding panel being used.
-          </p>
-          <ul>
-            <li>
-              Measure each wall you want to cover. Multiply width x height =
-              _____ sq. ft.
-            </li>
-            <li>
-              Use the following formula to calculate siding required for each
-              gable end:
-            </li>
-            <li>
-              Gable width x gable height, multiplied by .67 (or 2/3) = _____ sq.
-              ft.
-            </li>
-            <li>Total the square footage for all walls and gable ends.</li>
-            <li>
-              Measure all openings for doors and windows. Multiply width x
-              height = _____ sq. ft.
-            </li>
-            <li>Total the square footage for all openings.</li>
-            <li>
-              Subtract half of the total square footage of openings from the
-              total wall area.
-            </li>
-            <li>
-              The remaining number represents the total square footage of vinyl
-              siding required.
-            </li>
+          <div className="content">
+            <h2 className="title is-size-2">
+              How Do I Calculate The Amount Of Vinyl Siding I Will Need?
+            </h2>
+            <p>
+              For horizontal siding you must adjust the height of the area to be
+              covered to make it divisible by the height of the siding panel
+              (e.g. 9" high panel for Double 4.5" profile). For example, if your
+              wall is 114" high you must add 3" to the height to make it
+              divisible by 9", to ensure that you have enough vinyl siding.
+            </p>
+            <p>
+              Similarly, for vertical siding you must increase the width to make
+              it divisible by the width of the vertical siding panel being used.
+            </p>
+            <ul>
+              <li>
+                Measure each wall you want to cover. Multiply width x height =
+                _____ sq. ft.
+              </li>
+              <li>
+                Use the following formula to calculate siding required for each
+                gable end:
+              </li>
+              <li>
+                Gable width x gable height, multiplied by .67 (or 2/3) = _____
+                sq. ft.
+              </li>
+              <li>Total the square footage for all walls and gable ends.</li>
+              <li>
+                Measure all openings for doors and windows. Multiply width x
+                height = _____ sq. ft.
+              </li>
+              <li>Total the square footage for all openings.</li>
+              <li>
+                Subtract half of the total square footage of openings from the
+                total wall area.
+              </li>
+              <li>
+                The remaining number represents the total square footage of
+                vinyl siding required.
+              </li>
+            </ul>
             <p>
               Complete installation instructions are available at Aluminum
               Associates. See the Siding page of this website for specific
               information about the quality siding that is available from
-              Aluminum Associates.ƒ
+              Aluminum Associates.
             </p>
             <h2 className="title is-size-2">
               What Can I Expect When My New Door Or Windows Are Installed?
@@ -152,7 +154,7 @@ export default function Installation() {
               Trafalgar St. East, call us at 519-453-6400, or click here to
               e-mail us.
             </p>
-          </ul>
+          </div>
         </div>
       </section>
     </Layout>
