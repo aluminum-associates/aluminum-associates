@@ -13,7 +13,7 @@ export default {
         title: "Deploy Changes",
         sites: [
           {
-            title: "Sanity Studio",
+            title: "Aluminum Associates",
             apiId: apiId,
             buildHookId: buildHookId,
             name: name,
