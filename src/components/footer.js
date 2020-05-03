@@ -1,13 +1,16 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 const Footer = () => {
+  const data = useStaticQuery(query)
   return (
     <footer className="footer">
       <div className="container">
-        <div className="sections">
-          <div className="section">
-            <h3 className="is-size-5">Contact</h3>
+        <div className="footer-wrapper">
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/contact">Contact</Link>
+            </h3>
             <p>
               Aluminum Associates <br />A Divison of Homeway Company Ltd.
             </p>
@@ -29,6 +32,34 @@ const Footer = () => {
             </p>
             <a href="mailto:info@aluminumassociates.com">Email Us</a>
           </div>
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/about">About</Link>
+            </h3>
+          </div>
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/products">Products </Link>
+            </h3>
+
+            {data.categories.edges.map(({ node: product }) => (
+              <p key={product.id}>
+                <Link to={`/products/${product.slug.current}`}>
+                  {product.title}
+                </Link>
+              </p>
+            ))}
+          </div>
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/services">Services</Link>
+            </h3>
+          </div>
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/faq">FAQ</Link>
+            </h3>
+          </div>
         </div>
         <p className="has-text-centered">
           &copy; Copyright 2020 by Aluminum Associates.
@@ -37,5 +68,24 @@ const Footer = () => {
     </footer>
   )
 }
+
+export const query = graphql`
+  query {
+    categories: allSanityCategory(
+      filter: { products: { elemMatch: { id: { ne: "null" } } } }
+      sort: { fields: title }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Footer
