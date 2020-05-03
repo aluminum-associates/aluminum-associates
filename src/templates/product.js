@@ -53,13 +53,13 @@ export default function Product({ data }) {
           <div className="product-grid-wrapper">
             <div className="product-specs">
               {product._rawDescription ? (
-                <div className="overview">
+                <div className="overview content">
                   <h1 className="title">Overview</h1>
                   <PortableText blocks={product._rawDescription} />
                 </div>
               ) : null}
               {product.standardFeatures !== 0 ? (
-                <div className="key-features">
+                <div className="key-features content">
                   <h2 className="title">Standard Features</h2>
                   <ul>
                     {product.standardFeatures.map(feature => (
@@ -69,7 +69,7 @@ export default function Product({ data }) {
                 </div>
               ) : null}
               {product.optionalFeatures !== 0 ? (
-                <div className="product-options">
+                <div className="product-options content">
                   <h2 className="title">Options</h2>
                   <ul>
                     {product.optionalFeatures.map(feature => (
