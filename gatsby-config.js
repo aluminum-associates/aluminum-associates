@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify-cache`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,7 +24,7 @@ module.exports = {
         projectId: process.env.GATSBY_SANITY_ID,
         dataset: `production`,
         watchMode: true,
-        token: process.env.GATSBY_SANITY_TOKEN
+        token: process.env.GATSBY_SANITY_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,
