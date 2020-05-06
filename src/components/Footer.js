@@ -71,10 +71,7 @@ const Footer = () => {
 
 export const query = graphql`
   query {
-    categories: allSanityCategory(
-      filter: { products: { elemMatch: { id: { ne: "null" } } } }
-      sort: { fields: title }
-    ) {
+    categories: allSanityCategory(sort: { fields: title }) {
       edges {
         node {
           id

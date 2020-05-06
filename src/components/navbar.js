@@ -1,12 +1,14 @@
 import React, { useState } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import Logo from "../images/logo.png"
+import Logo from "../images/aa-logo.png"
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
   const query = useStaticQuery(data)
-  const categories = query.allSanityCategory
+  const products = query.products.edges
+
+  let categories = Array.from(new Set(products.map(p => p.node.category)))
 
   return (
     <nav className="navbar is-fixed-top">
@@ -17,6 +19,10 @@ export default function Navbar() {
               className="logo-img"
               src={Logo}
               alt="Aluminum Associates logo"
+              style={{
+                minWidth: "auto",
+                minHeight: "5rem"
+              }}
             />
           </Link>
           <div
@@ -77,7 +83,7 @@ export default function Navbar() {
             >
               <span className="navbar-link">Products</span>
               <div className="navbar-dropdown">
-                {categories.edges.map(({ node: category }) => (
+                {categories.map(category => (
                   <Link
                     key={category.id}
                     to={"/products/" + category.slug.current}
@@ -114,17 +120,19 @@ export default function Navbar() {
 }
 
 export const data = graphql`
-  query {
-    allSanityCategory(
-      filter: { products: { elemMatch: { id: { ne: "null" } } } }
-      sort: { fields: title }
+  {
+    products: allSanityProduct(
+      filter: { category: { slug: { current: { ne: null } } } }
     ) {
       edges {
         node {
           id
-          title
-          slug {
-            current
+          category {
+            id
+            title
+            slug {
+              current
+            }
           }
         }
       }

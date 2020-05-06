@@ -130,7 +130,7 @@ export const data = graphql`
       }
       title
       tags
-      categories {
+      category {
         slug {
           current
         }

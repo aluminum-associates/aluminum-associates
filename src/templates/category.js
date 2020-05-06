@@ -37,12 +37,14 @@ export default function Category({ data }) {
               <Card
                 to={
                   "/products/" +
-                  product.categories[0].slug.current +
+                  product.category.slug.current +
                   "/" +
                   product.slug.current
                 }
                 key={product.title}
-                heroImage={product.heroImage ? product.heroImage.image.asset.fluid : null}
+                heroImage={
+                  product.heroImage ? product.heroImage.image.asset.fluid : null
+                }
                 title={product.title}
                 description={product.description}
               />
@@ -73,15 +75,13 @@ export const data = graphql`
       }
     }
     products: allSanityProduct(
-      filter: {
-        categories: { elemMatch: { slug: { current: { eq: $slug } } } }
-      }
+      filter: { category: { slug: { current: { eq: $slug } } } }
     ) {
       edges {
         node {
           id
           title
-          categories {
+          category {
             slug {
               current
             }
