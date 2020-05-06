@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-advanced-sitemap`,
     `gatsby-plugin-netlify-cache`,
     {
       resolve: `gatsby-source-filesystem`,
