@@ -1,6 +1,8 @@
+import client from "part:@sanity/base/client"
+
 export default {
   name: "category",
-  title: "Category",
+  title: "Categories",
   type: "document",
   fields: [
     {
@@ -55,8 +57,8 @@ export default {
       ],
     },
     {
-      name: "products",
-      title: "Related Products",
+      name: "relatedProducts",
+      title: "Products",
       type: "array",
       of: [
         {
@@ -68,8 +70,8 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'heroImage.image'
-    }
-  }
+      title: "title",
+      media: "heroImage.image",
+    },
+  },
 };

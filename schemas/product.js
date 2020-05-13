@@ -1,6 +1,6 @@
 export default {
   name: "product",
-  title: "Product",
+  title: "Products",
   type: "document",
   fields: [
     {
@@ -31,15 +31,10 @@ export default {
       },
     },
     {
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: { type: "category" },
-        },
-      ],
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
     },
     {
       name: "vendor",
@@ -110,11 +105,18 @@ export default {
         },
       ],
     },
+    {
+      name: "additionalInfo",
+      title: "Additional Info",
+      description:
+        "Any product-specific information that doesn't fit into the standard template can be written up here. You're able to add photos, embed videos and links as if you were writing a blog post.",
+      type: "blockContent",
+    },
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'heroImage.image'
-    }
-  }
+      title: "title",
+      media: "heroImage.image",
+    },
+  },
 };

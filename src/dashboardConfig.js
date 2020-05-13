@@ -1,6 +1,6 @@
-const apiId = process.env.SANITY_STUDIO_NETLIFY_SITE_ID
-const buildHookId = process.env.SANITY_STUDIO_NETLIFY_HOOK_ID
-const name = process.env.SANITY_STUDIO_NETLIFY_SITE_NAME
+const apiId = process.env.SANITY_STUDIO_NETLIFY_SITE_ID;
+const buildHookId = process.env.SANITY_STUDIO_NETLIFY_HOOK_ID;
+const name = process.env.SANITY_STUDIO_NETLIFY_SITE_NAME;
 
 export default {
   widgets: [
