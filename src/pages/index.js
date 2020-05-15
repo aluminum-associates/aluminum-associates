@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
 import Carousel from "../components/Carousel"
-import Quote from "../components/Quote"
+import Testimonial from "../components/Testimonial"
 import Notification from "../components/Notification"
 
 export default function Home({ data }) {
@@ -117,34 +117,13 @@ export default function Home({ data }) {
       <section className="section-testimonial">
         <div className="container">
           <Carousel>
-            <Quote
-              quote={`"Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Facilis dicta sunt numquam adipisci perspiciatis, accusamus
-              praesentium, tempore beatae quibusdam et, assumenda repellendus.
-              Tenetur dolore maxime ducimus in perferendis placeat ab dolores
-              recusandae explicabo autem repellendus libero natus voluptas
-              perspiciatis, unde laborum quos neque sunt laudantium provident
-              tempore molestias sit nemo eum. Aliquam sint fugiat ducimus
-              dolorem similique architecto ratione vero quibusdam omnis
-              tenetur? Asperiores voluptatibus dolores aliquid sed nam
-              cupiditate nesciunt voluptates sit magnam eaque saepe aspernatur
-              quod tempora nemo molestiae rem reiciendis facere reprehenderit
-              veritatis corrupti laudantium, quae inventore."`}
-              author="Joan Johnson"
-            />
-            <Quote
-              quote={`"Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Facilis dicta sunt numquam adipisci perspiciatis, accusamus
-              praesentium,lores recusandae explicabo autem repellendus libero natus
-              perspiciatis, unde laborum quos neque sunt laudantium provident
-              tempore molestias sit nemo eum. Aliquam sint fugiat ducimus
-              dolorem similique architecto ratione vero quibusdam omnis
-              tenetur? Asperiores voluptatibus dolores aliquid sed nam
-              cupiditate nesciunt voluptates sit magnam eaque saepe aspernatur
-              quod tempora nemo molestiae rem reiciendis facere reprehenderit
-              veritatis corrupti laudantium, quae inventore."`}
-              author="Jane Austin"
-            />
+            {data.testimonials.edges.map(({ node: testimonial }) => (
+              <Testimonial
+                quote={testimonial._rawQuote}
+                client={testimonial.client}
+                clientTitle={testimonial.clientTitle}
+              />
+            ))}
           </Carousel>
         </div>
       </section>
@@ -180,6 +159,15 @@ export const data = graphql`
         fluid {
           ...GatsbyImageSharpFluid
           presentationWidth
+        }
+      }
+    }
+    testimonials: allSanityTestimonial(limit: 5) {
+      edges {
+        node {
+          _rawQuote
+          client
+          clientTitle
         }
       }
     }
