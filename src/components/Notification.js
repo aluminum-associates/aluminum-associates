@@ -1,12 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 
 const Notification = ({ children }) => {
   const [closed, setClosed] = useState(false)
+  const notificationRef = useRef()
+  useEffect(() => {
+    notificationRef.current.focus()
+  })
 
   return (
     <div
       className={"notification is-warning " + (closed ? "is-hidden" : null)}
+      ref={notificationRef}
+      tabIndex={-1}
+      onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
     >
       <button className="delete" onClick={() => setClosed(!closed)}></button>
       <div className="container">
