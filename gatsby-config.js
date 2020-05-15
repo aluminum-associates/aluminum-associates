@@ -10,12 +10,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        siteUrl: `https://www.aluminumassociates.com`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-sitemap`,
+    //   options: {
+    //     siteUrl: `https://www.aluminumassociates.com`,
+    //   },
+    // },
     `gatsby-plugin-netlify-cache`,
     {
       resolve: `gatsby-source-filesystem`,
