@@ -21,6 +21,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-sanity": "^5.0.6",
     "gatsby-transformer-sharp": "^2.3.13",
+    "get-youtube-id": "^1.0.1",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -29,6 +30,7 @@
     "react-icons": "^3.10.0",
     "react-image-lightbox": "^5.1.1",
     "react-slick": "^0.25.2",
+    "react-youtube": "^7.11.2",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

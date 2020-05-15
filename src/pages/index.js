@@ -20,9 +20,9 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
-      <section className="section-services">
+      <section className="section-services has-background-white-bis">
         <div className="container">
-          <div className="card-wrapper">
+          <div className="card-wrapper-landing">
             <div className="card">
               <div className="card-image">
                 <Img fluid={mapImage} alt="Image of a map" loading="eager" />

@@ -40,7 +40,7 @@ export default function Products({ data }) {
 }
 
 export const data = graphql`
-  query($slug: String!) {
+  query {
     allSanityCategory(sort: { fields: title }) {
       edges {
         node {
@@ -48,24 +48,6 @@ export const data = graphql`
           title
           slug {
             current
-          }
-        }
-      }
-    }
-    allSanityProduct(
-      filter: { category: { slug: { current: { eq: $slug } } } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug {
-            current
-          }
-          category {
-            slug {
-              current
-            }
           }
         }
       }

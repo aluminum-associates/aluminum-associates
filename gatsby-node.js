@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = res.data.products.edges
   const categories = res.data.categories.edges
-  const pages = res.data.pages.edges)
+  const pages = res.data.pages.edges
 
   products.forEach(edge => {
     const path = `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
