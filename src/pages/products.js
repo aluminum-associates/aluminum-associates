@@ -41,25 +41,13 @@ export default function Products({ data }) {
 
 export const data = graphql`
   query {
-    allSanityCategory(
-      filter: { products: { elemMatch: { id: { ne: "null" } } } }
-    ) {
+    allSanityCategory(sort: { fields: title }) {
       edges {
         node {
           id
+          title
           slug {
             current
-          }
-          title
-          heroImage {
-            image {
-              asset {
-                fluid(maxWidth: 1900) {
-                  ...GatsbySanityImageFluid
-                }
-              }
-            }
-            alternativeText
           }
         }
       }

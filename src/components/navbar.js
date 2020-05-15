@@ -1,22 +1,26 @@
 import React, { useState } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
-import Logo from "../images/logo.png"
+import Logo from "../images/aa-logo.png"
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
   const query = useStaticQuery(data)
-  const categories = query.allSanityCategory
+  const categories = query.categories.edges
 
   return (
     <nav className="navbar is-fixed-top">
       <div className="container">
         <div className="navbar-brand">
-          <Link className="navbar-item" to="/">
+          <Link className="navbar-item is-size-5" to="/">
             <img
               className="logo-img"
               src={Logo}
               alt="Aluminum Associates logo"
+              style={{
+                minWidth: "auto",
+                minHeight: "5rem",
+              }}
             />
           </Link>
           <div
@@ -46,12 +50,16 @@ export default function Navbar() {
           className={"navbar-menu" + (menu ? " is-active" : "")}
         >
           <div className="navbar-end">
-            <Link to="/" className="navbar-item" activeClassName="is-active">
+            <Link
+              to="/"
+              className="navbar-item is-size-5"
+              activeClassName="is-active"
+            >
               Home
             </Link>
             <Link
               to="/about"
-              className="navbar-item"
+              className="navbar-item is-size-5"
               activeClassName="is-active"
             >
               About
@@ -60,7 +68,7 @@ export default function Navbar() {
               role="button"
               tabIndex={-1}
               className={
-                "navbar-item has-dropdown is-hoverable" +
+                "navbar-item is-size-5 has-dropdown is-hoverable" +
                 (dropdown ? " is-active" : null)
               }
               style={{
@@ -77,31 +85,37 @@ export default function Navbar() {
             >
               <span className="navbar-link">Products</span>
               <div className="navbar-dropdown">
-                {categories.edges.map(({ node: category }) => (
-                  <Link
-                    key={category.id}
-                    to={"/products/" + category.slug.current}
-                    className="navbar-item"
-                    activeClassName="is-active"
-                  >
-                    {category.title}
-                  </Link>
-                ))}
+                {categories.map(({ node: category }) =>
+                  category.parents.length === 0 ? (
+                    <Link
+                      key={category.id}
+                      to={"/products/" + category.slug.current}
+                      className="navbar-item"
+                      activeClassName="is-active"
+                    >
+                      {category.title}
+                    </Link>
+                  ) : null
+                )}
               </div>
             </div>
             <Link
               to="/services"
-              className="navbar-item"
+              className="navbar-item is-size-5"
               activeClassName="is-active"
             >
               Services
             </Link>
-            <Link to="/faq" className="navbar-item" activeClassName="is-active">
+            <Link
+              to="/faq/installation"
+              className="navbar-item is-size-5"
+              activeClassName="is-active"
+            >
               FAQ
             </Link>
             <Link
               to="/contact"
-              className="navbar-item"
+              className="navbar-item is-size-5"
               activeClassName="is-active"
             >
               Contact
@@ -114,9 +128,9 @@ export default function Navbar() {
 }
 
 export const data = graphql`
-  query {
-    allSanityCategory(
-      filter: { products: { elemMatch: { id: { ne: "null" } } } }
+  {
+    categories: allSanityCategory(
+      filter: { slug: { current: { ne: null } } }
       sort: { fields: title }
     ) {
       edges {
@@ -125,6 +139,12 @@ export const data = graphql`
           title
           slug {
             current
+          }
+          parents {
+            id
+            slug {
+              current
+            }
           }
         }
       }

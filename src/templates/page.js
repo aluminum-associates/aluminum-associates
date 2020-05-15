@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
+import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
-import Card from "../components/Card"
 import HeroOverlay from "../components/HeroOverlay"
 
 const Page = ({ data }) => {
   return (
-    <Layout title="" description="">
-      <div className="hero is-large is-primary">
+    <Layout title={data.page.title} description="">
+      <BackgroundImage className="hero is-large is-primary">
         <HeroOverlay>
           <div className="hero-body">
             <div className="container">
@@ -16,18 +16,37 @@ const Page = ({ data }) => {
             </div>
           </div>
         </HeroOverlay>
-      </div>
+      </BackgroundImage>
       <section className="section">
-        <div className="container"></div>
+        <div className="container">
+          <PortableText blocks={data.page._rawPageContent} />
+        </div>
       </section>
     </Layout>
   )
 }
 
 // export const data = graphql`
-// query{
-
-// }
+//   query($slug: String!) {
+//     page: sanityPages(slug: { current: { eq: "$slug" } }) {
+//       slug {
+//         current
+//       }
+//       title
+//       heroImage {
+//         image {
+//           asset {
+//             fluid {
+//               ...GatsbySanityImageFluid
+//             }
+//           }
+//         }
+//         alternativeText
+//       }
+//       _rawHeroContent
+//       _rawPageContent
+//     }
+//   }
 // `
 
 export default Page

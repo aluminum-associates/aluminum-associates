@@ -2,13 +2,34 @@ import React from "react"
 import { graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
+import YouTube from "react-youtube"
+import getYoutTubeID from "get-youtube-id"
 import Layout from "../components/Layout"
 import ImageGallery from "../components/ImageGallery"
 import HeroOverlay from "../components/HeroOverlay"
+import getYouTubeID from "get-youtube-id"
 
 export default function Product({ data }) {
   const product = data.sanityProduct
   const images = product.imageGallery
+
+  const opts = {
+    width: "640",
+    height: "360",
+  }
+
+  const serializers = {
+    types: {
+      youtube: ({ node }) => (
+        <YouTube
+          videoId={getYouTubeID(node.url)}
+          opts={opts}
+          className="has-ratio"
+          containerClassName="image is-16by9"
+        />
+      ),
+    },
+  }
 
   const imageGalleryStyle = {
     display: "grid",
@@ -27,61 +48,81 @@ export default function Product({ data }) {
       .join("\n\n")
   }
 
+  const {
+    _rawDescription,
+    _rawAdditionalInfo,
+    heroImage,
+    title,
+    standardFeatures,
+    optionalFeatures,
+    documentation,
+  } = product
+
   return (
     <Layout
-      title={product.title}
+      title={title}
       description={
-        product._rawDescription
-          ? toPlainText(product._rawDescription).substring(0, 154) + "..."
+        _rawDescription
+          ? toPlainText(_rawDescription).substring(0, 154) + "..."
           : null
       }
     >
-      <BackgroundImage
-        fluid={product.heroImage ? product.heroImage.image.asset.fluid : null}
-        className="hero is-large is-primary"
-      >
-        <HeroOverlay>
+      {heroImage.image ? (
+        <BackgroundImage
+          fluid={heroImage.image.asset.fluid}
+          className="hero is-large is-primary"
+        >
+          <HeroOverlay>
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title is-size-1">{title}</h1>
+              </div>
+            </div>
+          </HeroOverlay>
+        </BackgroundImage>
+      ) : (
+        <div className="hero is-large is-primary">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title is-1">{product.title}</h1>
+              <h1 className="title is-size-1">{title}</h1>
             </div>
           </div>
-        </HeroOverlay>
-      </BackgroundImage>
+        </div>
+      )}
       <section className="section">
         <div className="container">
           <div className="product-grid-wrapper">
             <div className="product-specs">
-              {product._rawDescription ? (
+              {_rawDescription ? (
                 <div className="overview content">
                   <h1 className="title">Overview</h1>
-                  <PortableText blocks={product._rawDescription} />
+                  <PortableText blocks={_rawDescription} />
                 </div>
               ) : null}
-              {product.standardFeatures !== 0 ? (
+              {standardFeatures.length !== 0 ? (
                 <div className="key-features content">
                   <h2 className="title">Standard Features</h2>
                   <ul>
-                    {product.standardFeatures.map(feature => (
+                    {standardFeatures.map(feature => (
                       <li key={feature}>{feature}</li>
                     ))}
                   </ul>
                 </div>
               ) : null}
-              {product.optionalFeatures !== 0 ? (
+              {optionalFeatures.length !== 0 ? (
                 <div className="product-options content">
                   <h2 className="title">Options</h2>
                   <ul>
-                    {product.optionalFeatures.map(feature => (
+                    {optionalFeatures.map(feature => (
                       <li key={feature}>{feature}</li>
                     ))}
                   </ul>
                 </div>
               ) : null}
-              {product.documentation !== 0 ? (
+              {documentation.length !== 0 ? (
                 <div className="documentation">
                   <h2 className="title">Learn More</h2>
-                  {product.documentation.map(document => (
+                  {documentation.map(document => (
                     <a
                       href={document.file.asset.url}
                       key={document.file.asset.id}
@@ -107,10 +148,10 @@ export default function Product({ data }) {
                 .
               </p>
             </div>
-            {images !== 0 ? (
+            {images.length !== 0 ? (
               <div className="product-gallery">
                 <h2 className="title">Gallery</h2>
-                <div style={imageGalleryStyle}>
+                <div className="card" style={imageGalleryStyle}>
                   <ImageGallery images={images} />
                 </div>
               </div>
@@ -118,24 +159,29 @@ export default function Product({ data }) {
           </div>
         </div>
       </section>
+      <section className="section">
+        <div className="container">
+          <PortableText
+            className="content"
+            blocks={_rawAdditionalInfo}
+            serializers={serializers}
+          />
+        </div>
+      </section>
     </Layout>
   )
 }
 
 export const data = graphql`
-  query($slug: String) {
+  query($slug: String!) {
     sanityProduct(slug: { current: { eq: $slug } }) {
+      id
+      title
       slug {
         current
       }
-      title
-      tags
-      categories {
-        slug {
-          current
-        }
-      }
-      vendor {
+      category {
+        id
         title
         slug {
           current
@@ -144,7 +190,6 @@ export const data = graphql`
       heroImage {
         image {
           asset {
-            id
             fluid(maxWidth: 1920) {
               ...GatsbySanityImageFluid
             }
@@ -152,19 +197,14 @@ export const data = graphql`
         }
         alternativeText
       }
-      documentation {
+      vendor {
+        id
         title
-        file {
-          asset {
-            id
-            url
-            title
-          }
+        slug {
+          current
         }
       }
       _rawDescription
-      standardFeatures
-      optionalFeatures
       imageGallery {
         image {
           asset {
@@ -176,6 +216,18 @@ export const data = graphql`
         }
         alternativeText
       }
+      standardFeatures
+      optionalFeatures
+      documentation {
+        file {
+          asset {
+            id
+            title
+            url
+          }
+        }
+      }
+      _rawAdditionalInfo
     }
   }
 `

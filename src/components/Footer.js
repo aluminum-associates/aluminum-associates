@@ -3,8 +3,9 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 
 const Footer = () => {
   const data = useStaticQuery(query)
+
   return (
-    <footer className="footer">
+    <footer className="footer has-background-white-ter">
       <div className="container">
         <div className="footer-wrapper">
           <div className="footer-section">
@@ -42,13 +43,15 @@ const Footer = () => {
               <Link to="/products">Products </Link>
             </h3>
 
-            {data.categories.edges.map(({ node: product }) => (
-              <p key={product.id}>
-                <Link to={`/products/${product.slug.current}`}>
-                  {product.title}
-                </Link>
-              </p>
-            ))}
+            {data.categories.edges.map(({ node: product }) =>
+              product.parents.length === 0 ? (
+                <p key={product.id}>
+                  <Link to={`/products/${product.slug.current}`}>
+                    {product.title}
+                  </Link>
+                </p>
+              ) : null
+            )}
           </div>
           <div className="footer-section">
             <h3 className="title is-size-5">
@@ -57,7 +60,7 @@ const Footer = () => {
           </div>
           <div className="footer-section">
             <h3 className="title is-size-5">
-              <Link to="/faq">FAQ</Link>
+              <Link to="/faq/installation">FAQ</Link>
             </h3>
           </div>
         </div>
@@ -71,16 +74,19 @@ const Footer = () => {
 
 export const query = graphql`
   query {
-    categories: allSanityCategory(
-      filter: { products: { elemMatch: { id: { ne: "null" } } } }
-      sort: { fields: title }
-    ) {
+    categories: allSanityCategory(sort: { fields: title }) {
       edges {
         node {
           id
           title
           slug {
             current
+          }
+          parents {
+            id
+            slug {
+              current
+            }
           }
         }
       }

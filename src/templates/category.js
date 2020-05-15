@@ -7,42 +7,69 @@ import HeroOverlay from "../components/HeroOverlay"
 
 export default function Category({ data }) {
   const category = data.category
-  const products = data.products
+  const childCategories = data.childCategories.edges
+  const products = data.products.edges
+  console.log(childCategories)
+
+  const { title, description, heroImage } = category
 
   return (
     <Layout
-      title={category.title}
-      description={
-        category.description
-          ? category.description.substring(0, 154) + "..."
-          : null
-      }
+      title={title}
+      description={description ? description.substring(0, 154) + "..." : null}
     >
-      <BackgroundImage
-        className="hero is-large is-primary"
-        fluid={category.heroImage ? category.heroImage.image.asset.fluid : null}
-      >
-        <HeroOverlay>
+      {heroImage !== null ? (
+        <BackgroundImage
+          className="hero is-large is-primary"
+          fluid={heroImage.image.asset.fluid}
+        >
+          <HeroOverlay>
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title is-size-1">{title}</h1>
+              </div>
+            </div>
+          </HeroOverlay>
+        </BackgroundImage>
+      ) : (
+        <div className="hero is-large is-primary">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title is-size-1">{category.title}</h1>
+              <h1 className="title is-size-1">{title}</h1>
             </div>
           </div>
-        </HeroOverlay>
-      </BackgroundImage>
-      <section className="section">
+        </div>
+      )}
+      <section className="section has-background-white-bis">
         <div className="container">
           <div className="card-wrapper">
-            {products.edges.map(({ node: product }) => (
+            {childCategories.map(({ node: category }) => (
+              <Card
+                to={"/products/" + category.slug.current}
+                key={category.id}
+                heroImage={
+                  !category.heroImage === null
+                    ? category.heroImage.image.asset.fluid
+                    : null
+                }
+                title={category.title}
+                description={category.description}
+              />
+            ))}
+            {products.map(({ node: product }) => (
               <Card
                 to={
                   "/products/" +
-                  product.categories[0].slug.current +
+                  product.category.slug.current +
                   "/" +
                   product.slug.current
                 }
-                key={product.title}
-                heroImage={product.heroImage ? product.heroImage.image.asset.fluid : null}
+                key={product.id}
+                heroImage={
+                  product.heroImage.image
+                    ? product.heroImage.image.asset.fluid
+                    : null
+                }
                 title={product.title}
                 description={product.description}
               />
@@ -64,7 +91,7 @@ export const data = graphql`
       heroImage {
         image {
           asset {
-            fluid(maxWidth: 1900) {
+            fluid(maxWidth: 1920) {
               ...GatsbySanityImageFluid
             }
           }
@@ -72,16 +99,38 @@ export const data = graphql`
         alternativeText
       }
     }
-    products: allSanityProduct(
-      filter: {
-        categories: { elemMatch: { slug: { current: { eq: $slug } } } }
-      }
+    childCategories: allSanityCategory(
+      filter: { parents: { elemMatch: { slug: { current: { eq: $slug } } } } }
     ) {
       edges {
         node {
           id
           title
-          categories {
+          slug {
+            current
+          }
+          heroImage {
+            image {
+              asset {
+                fluid(maxWidth: 400, maxHeight: 300) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            alternativeText
+          }
+        }
+      }
+    }
+    products: allSanityProduct(
+      filter: { category: { slug: { current: { eq: $slug } } } }
+      sort: { fields: title }
+    ) {
+      edges {
+        node {
+          id
+          title
+          category {
             slug {
               current
             }
@@ -93,7 +142,7 @@ export const data = graphql`
             alternativeText
             image {
               asset {
-                fluid(maxWidth: 1900) {
+                fluid(maxWidth: 400, maxHeight: 300) {
                   ...GatsbySanityImageFluid
                 }
               }
