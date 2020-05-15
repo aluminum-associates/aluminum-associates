@@ -18,7 +18,7 @@ export default function Category({ data }) {
       title={title}
       description={description ? description.substring(0, 154) + "..." : null}
     >
-      {heroImage !== null ? (
+      {heroImage && heroImage.image ? (
         <BackgroundImage
           className="hero is-large is-primary"
           fluid={heroImage.image.asset.fluid}
@@ -96,7 +96,6 @@ export const data = graphql`
             }
           }
         }
-        alternativeText
       }
     }
     childCategories: allSanityCategory(
