@@ -5,15 +5,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const res = await graphql(`
     query {
-      pages: allSanityPage(filter: { slug: { current: { ne: null } } }) {
-        edges {
-          node {
-            slug {
-              current
-            }
-          }
-        }
-      }
       products: allSanityProduct(filter: { slug: { current: { ne: null } } }) {
         edges {
           node {
@@ -64,15 +55,6 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve("./src/templates/category.js"),
-      context: { slug: edge.node.slug.current },
-    })
-  })
-
-  pages.forEach(edge => {
-    const path = `/${edge.node.slug.current}`
-    createPage({
-      path,
-      component: require.resolve("./src/templates/page.js"),
       context: { slug: edge.node.slug.current },
     })
   })
