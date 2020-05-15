@@ -1,0 +1,16 @@
+.notification
+  margin-bottom: 0 !important
+  overflow: auto
+
+  &.is-hidden
+    display: none
+
+  @media screen and ( min-width: $desktop )
+    position: fixed
+    max-width: 500px
+    max-height: 80vh
+    z-index: 1
+    top: $navbar-height + 2rem
+    bottom: 30px
+    right: 30px
+    
