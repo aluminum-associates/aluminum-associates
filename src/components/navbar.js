@@ -17,10 +17,6 @@ export default function Navbar() {
               className="logo-img"
               src={Logo}
               alt="Aluminum Associates logo"
-              style={{
-                minWidth: "auto",
-                minHeight: "5rem",
-              }}
             />
           </Link>
           <div

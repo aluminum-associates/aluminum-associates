@@ -2,6 +2,9 @@ import React from "react"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
 import Map from "../components/Map"
+import { MdEmail } from "react-icons/md"
+import { AiFillPhone } from "react-icons/ai"
+import { FaFax } from "react-icons/fa"
 
 export default function Contact() {
   return (
@@ -27,15 +30,19 @@ export default function Contact() {
                     1801 Trafalgar Street East London, Ontario N5W 1X7 Canada
                   </p>
                   <p>
-                    Phone: <a href="tel:519-453-6400">519-453-6400</a>
+                    <AiFillPhone /> Phone:{" "}
+                    <a href="tel:519-453-6400">519-453-6400</a>
                   </p>
                   <p>
-                    Toll Free: <a href="tel:1-800-465-1791">1-800-465-1791</a>
+                    <AiFillPhone /> Toll Free:{" "}
+                    <a href="tel:1-800-465-1791">1-800-465-1791</a>
                   </p>
                   <p>
-                    Fax: <a href="fax:519-453-6438">519-453-6438</a>
+                    <FaFax /> Fax: <a href="fax:519-453-6438">519-453-6438</a>
                   </p>
-                  <a href="mailto:webpage@aluminumassociates.com">Email Us</a>
+                  <a href="mailto:webpage@aluminumassociates.com">
+                    <MdEmail /> Email Us
+                  </a>
                 </div>
               </div>
             </div>

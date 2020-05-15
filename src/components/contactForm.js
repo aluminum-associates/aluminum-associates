@@ -131,7 +131,9 @@ export class ContactForm extends Component {
               type="text"
               name="address"
               value={address}
-              className={`input ${this.state.errs.address ? "is-danger" : null}`}
+              className={`input ${
+                this.state.errs.address ? "is-danger" : null
+              }`}
               onChange={this.handleChange}
               placeholder="Address"
             />
@@ -174,7 +176,9 @@ export class ContactForm extends Component {
               value={message}
               cols="30"
               rows="10"
-              className={`textarea ${this.state.errs.message ? "is-danger" : null}`}
+              className={`textarea ${
+                this.state.errs.message ? "is-danger" : null
+              }`}
               onChange={this.handleChange}
               placeholder="Message"
             ></textarea>

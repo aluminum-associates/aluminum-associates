@@ -1,5 +1,8 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import { MdEmail } from "react-icons/md"
+import { AiFillPhone } from "react-icons/ai"
+import { FaFax } from "react-icons/fa"
 
 const Footer = () => {
   const data = useStaticQuery(query)
@@ -23,15 +26,19 @@ const Footer = () => {
               Canada
             </p>
             <p>
-              Phone: <a href="tel:+1(519)453-6400">(519) 453-6400</a>
+              <AiFillPhone /> Phone:{" "}
+              <a href="tel:+1(519)453-6400">(519) 453-6400</a>
             </p>
             <p>
-              Toll Free: <a href="tel:1-800-465-1791">1-800-465-1791</a>
+              <AiFillPhone /> Toll Free:{" "}
+              <a href="tel:1-800-465-1791">1-800-465-1791</a>
             </p>
             <p>
-              Fax: <a href="tel:+1(519)453-6438">(519) 453-6438</a>
+              <FaFax /> Fax: <a href="tel:+1(519)453-6438">(519) 453-6438</a>
             </p>
-            <a href="mailto:info@aluminumassociates.com">Email Us</a>
+            <a href="mailto:info@aluminumassociates.com">
+              <MdEmail /> Email Us
+            </a>
           </div>
           <div className="footer-section">
             <h3 className="title is-size-5">
