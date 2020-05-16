@@ -70,6 +70,11 @@ const Footer = () => {
               <Link to="/faq/installation">FAQ</Link>
             </h3>
           </div>
+          <div className="footer-section">
+            <h3 className="title is-size-5">
+              <Link to="/sitemap.xml">Site Map</Link>
+            </h3>
+          </div>
         </div>
         <p className="has-text-centered">
           &copy; Copyright 2020 by Aluminum Associates.
