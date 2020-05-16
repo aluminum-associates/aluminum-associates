@@ -9,13 +9,14 @@ const Notification = ({ children }) => {
   })
 
   return (
-    <div
-      className={"notification is-warning " + (closed ? "is-hidden" : null)}
-      ref={notificationRef}
-      tabIndex={-1}
-      onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
-    >
-      <button className="delete" onClick={() => setClosed(!closed)}></button>
+    <div className={"notification is-warning " + (closed ? "is-hidden" : null)}>
+      <button
+        className="delete"
+        onClick={() => setClosed(!closed)}
+        ref={notificationRef}
+        tabIndex={-1}
+        onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
+      ></button>
       <div className="container">
         <div className="content">{children}</div>
       </div>
