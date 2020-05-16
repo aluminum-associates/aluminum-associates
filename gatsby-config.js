@@ -7,15 +7,11 @@ module.exports = {
     title: `Aluminum Associates`,
     description: `Aluminum Associates is a home renovation company specializing in Vinyl Windows, Doors, Siding, Soffit, Fascia, Eavestrough and Railing in London, Ontario`,
     author: `Alex Low`,
+    siteUrl: `https://www.aluminumassociates.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        siteUrl: `https://www.aluminumassociates.com`,
-      },
-    },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify-cache`,
     {
       resolve: `gatsby-source-filesystem`,
