@@ -119,6 +119,7 @@ export default function Home({ data }) {
           <Carousel>
             {data.testimonials.edges.map(({ node: testimonial }) => (
               <Testimonial
+              key={testimonial.id}
                 quote={testimonial._rawQuote}
                 client={testimonial.client}
                 clientTitle={testimonial.clientTitle}
@@ -165,6 +166,7 @@ export const data = graphql`
     testimonials: allSanityTestimonial(limit: 5) {
       edges {
         node {
+          id
           _rawQuote
           client
           clientTitle
