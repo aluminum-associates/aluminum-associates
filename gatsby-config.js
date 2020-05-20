@@ -25,7 +25,7 @@ module.exports = {
       options: {
         projectId: process.env.GATSBY_SANITY_ID,
         dataset: `production`,
-        watchMode: true,
+        watchMode: process.env.GATSBY_SANITY_WATCHMODE,
         token: process.env.GATSBY_SANITY_TOKEN,
       },
     },
@@ -40,8 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `aluminum-associates`,
+        short_name: `aluminum`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
