@@ -25,7 +25,7 @@ export default function Category({ data }) {
           <HeroOverlay>
             <div className="hero-body">
               <div className="container">
-                <h1 className="title is-size-1">{title}</h1>
+                <h1 className="title is-size-2">{title}</h1>
               </div>
             </div>
           </HeroOverlay>
@@ -34,7 +34,7 @@ export default function Category({ data }) {
         <div className="hero is-large is-primary">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title is-size-1">{title}</h1>
+              <h1 className="title is-size-2">{title}</h1>
             </div>
           </div>
         </div>

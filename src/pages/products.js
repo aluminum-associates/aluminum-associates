@@ -9,7 +9,7 @@ export default function Products({ data }) {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-1">Products</h1>
+            <h1 className="title is-size-2">Products</h1>
           </div>
         </div>
       </div>
