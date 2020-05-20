@@ -4,6 +4,7 @@ import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
 import YouTube from "react-youtube"
 import getYoutTubeID from "get-youtube-id"
+import { FaFile } from "react-icons/fa"
 import Layout from "../components/Layout"
 import ImageGallery from "../components/ImageGallery"
 import HeroOverlay from "../components/HeroOverlay"
@@ -31,12 +32,6 @@ export default function Product({ data }) {
     },
   }
 
-  const imageGalleryStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-    gridGap: "5px",
-  }
-
   const toPlainText = (blocks = []) => {
     return blocks
       .map(block => {
@@ -57,6 +52,8 @@ export default function Product({ data }) {
     optionalFeatures,
     documentation,
   } = product
+
+  console.log(documentation)
 
   return (
     <Layout
@@ -89,7 +86,7 @@ export default function Product({ data }) {
           </div>
         </div>
       )}
-      <section className="section">
+      <section className="section has-background-white-bis">
         <div className="container">
           <div className="product-grid-wrapper">
             <div className="product-specs">
@@ -129,7 +126,7 @@ export default function Product({ data }) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {document.title}
+                      <FaFile /> {document.file.asset.title}
                     </a>
                   ))}
                 </div>
@@ -159,15 +156,17 @@ export default function Product({ data }) {
           </div>
         </div>
       </section>
-      <section className="section">
-        <div className="container">
-          <PortableText
-            className="content"
-            blocks={_rawAdditionalInfo}
-            serializers={serializers}
-          />
-        </div>
-      </section>
+      {_rawAdditionalInfo ? (
+        <section className="section has-background-white-bis">
+          <div className="container">
+            <PortableText
+              className="content"
+              blocks={_rawAdditionalInfo}
+              serializers={serializers}
+            />
+          </div>
+        </section>
+      ) : null}
     </Layout>
   )
 }

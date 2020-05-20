@@ -13,7 +13,7 @@ export default function About() {
           <div className="hero-body">
             <div className="container">
               <div className="content" style={copyStyle}>
-                <h1 className="title is-size-1">Since 1963</h1>
+                <h1 className="title is-size-2">Since 1963</h1>
                 <p>
                   Aluminum Associates, founded in 1963, is a leading provider of
                   exterior home improvement products and services in the London
@@ -38,7 +38,7 @@ export default function About() {
         <section className="section">
           <div className="container">
             <div className="content" style={copyStyle}>
-              <h2 className="title is-size-2">President's Message</h2>
+              <h2 className="title is-size-3 is-size-4-mobile">President's Message</h2>
               <p>
                 "Aluminum Associates started with a simple business philosophy –
                 provide quality products at reasonable prices with customer
@@ -54,7 +54,7 @@ export default function About() {
         <section className="section">
           <div className="container">
             <div className="content" style={copyStyle}>
-              <h2 className="title is-size-2">What Sets Us Apart</h2>
+              <h2 className="title is-size-3 is-size-4-mobile">What Sets Us Apart</h2>
               <p>
                 Our business continues to thrive because we demonstrate, on a
                 daily basis, that we value the same things our customers do.
@@ -67,7 +67,7 @@ export default function About() {
         <section className="section">
           <div className="container">
             <div className="content" style={copyStyle}>
-              <h2 className="title is-size-2">Our Values</h2>
+              <h2 className="title is-size-3 is-size-4-mobile">Our Values</h2>
               <p>
                 Honesty - We offer fair pricing and no-pressure sales;
                 everything is as straightforward as possible, and we put it in
@@ -115,7 +115,7 @@ export default function About() {
         <section className="section">
           <div className="container">
             <div className="content" style={copyStyle}>
-              <h2 className="title is-size-2">Our Community</h2>
+              <h2 className="title is-size-3 is-size-4-mobile">Our Community</h2>
               <p>
                 The work that we do beautifies the homes and neighbourhoods in our
                 community. We take pride in knowing that we also take the steps

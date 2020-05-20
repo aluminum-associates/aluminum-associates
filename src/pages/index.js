@@ -17,7 +17,7 @@ export default function Home({ data }) {
       <section className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-size-1">Windows, Doors and More</h1>
+            <h1 className="title is-size-2">Windows, Doors and More</h1>
           </div>
         </div>
       </section>

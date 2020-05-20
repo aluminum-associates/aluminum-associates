@@ -23,7 +23,7 @@ export default function Installation() {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-size-1">
+            <h1 className="title is-size-2">
               Frequently Asked Installation Questions
             </h1>
           </div>
@@ -33,7 +33,7 @@ export default function Installation() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               How Do I Calculate The Amount Of Vinyl Siding I Will Need?
             </h2>
             <p>
@@ -81,7 +81,7 @@ export default function Installation() {
               information about the quality siding that is available from
               Aluminum Associates.
             </p>
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               What Can I Expect When My New Door Or Windows Are Installed?
             </h2>
             <p>

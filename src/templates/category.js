@@ -9,7 +9,6 @@ export default function Category({ data }) {
   const category = data.category
   const childCategories = data.childCategories.edges
   const products = data.products.edges
-  console.log(childCategories)
 
   const { title, description, heroImage } = category
 

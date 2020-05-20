@@ -23,7 +23,7 @@ export default function Maintenance() {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-size-1">
+            <h1 className="title is-size-2">
               Frequently Asked Maintenance Questions
             </h1>
           </div>
@@ -33,7 +33,7 @@ export default function Maintenance() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               How Should I Clean My Vinyl Siding?
             </h2>
             <p>
@@ -182,7 +182,7 @@ export default function Maintenance() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               What Causes Condensation And How Can I Control It?
             </h2>
             <p>
@@ -352,7 +352,7 @@ export default function Maintenance() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               What Do I Need To Know About Maintaining Caulking And
               Weatherstripping?
             </h2>

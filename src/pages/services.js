@@ -7,14 +7,14 @@ export default function Services() {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-size-1">Services</h1>
+            <h1 className="title is-size-2">Services</h1>
           </div>
         </div>
       </div>
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">Free, No Obligation Estimates</h2>
+            <h2 className="title is-size-3 is-size-4-mobile">Free, No Obligation Estimates</h2>
             <p>
               Our Outside Sales Representatives will be happy to provide a free,
               in-home consultation for homeowners, while builders and property
@@ -30,7 +30,7 @@ export default function Services() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">Professional Installation</h2>
+            <h2 className="title is-size-3 is-size-4-mobile">Professional Installation</h2>
             <p>
               Aluminum Associates provides professional installation services
               for those customers who want the security of knowing that their
@@ -57,7 +57,7 @@ export default function Services() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               For The Contractor / Do-It-Yourselfer
             </h2>
             <p>
@@ -76,7 +76,7 @@ export default function Services() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">Accessible Customer Service</h2>
+            <h2 className="title is-size-3 is-size-4-mobile">Accessible Customer Service</h2>
             <p>
               At Aluminum Associates we want to ensure that our services are
               readily available to customers who may have a disability.
@@ -114,7 +114,7 @@ export default function Services() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h3 className="title is-size-3">
+            <h3 className="title is-size-3 is-size-4-mobile">
               Aluminum Associates Accessible Service Policy.
             </h3>
             <p>

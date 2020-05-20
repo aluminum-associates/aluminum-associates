@@ -4,16 +4,18 @@ import PortableText from "@sanity/block-content-to-react"
 
 const Testimonial = ({ quote, client, clientTitle }) => {
   return (
-    <div className="content">
-      <PortableText blocks={quote} />
-      <p>&mdash; {client}</p>
-      <p>
-        {clientTitle ? (
-          <>
-            <br /> <span>{clientTitle}</span>
-          </>
-        ) : null}
-      </p>
+    <div className="testimonial">
+      <div className="content">
+        <PortableText blocks={quote} className="quote" />
+        <p className="client">&mdash; {client}</p>
+        <p className="client-title">
+          {clientTitle ? (
+            <>
+              <br /> <span>{clientTitle}</span>
+            </>
+          ) : null}
+        </p>
+      </div>
     </div>
   )
 }

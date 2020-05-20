@@ -9,6 +9,7 @@ const Carousel = props => {
     dots: false,
     autoplay: true,
     autoplaySpeed: 10000,
+    slidesToShow: 1,
   }
 
   return <Slider {...settings}>{props.children}</Slider>

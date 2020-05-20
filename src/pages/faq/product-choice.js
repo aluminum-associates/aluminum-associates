@@ -23,7 +23,7 @@ export default function Maintenance() {
       <div className="hero is-large is-primary">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title is-size-1">
+            <h1 className="title is-size-2">
               Frequently Asked Product Choice Questions
             </h1>
           </div>
@@ -33,7 +33,7 @@ export default function Maintenance() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               What Should I Look For When Buying A New Entry Door?
             </h2>
             <p>
@@ -93,7 +93,7 @@ export default function Maintenance() {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h2 className="title is-size-2">
+            <h2 className="title is-size-3 is-size-4-mobile">
               What Is The Difference Between Replacement And Retrofit Windows?
             </h2>
             <p>
