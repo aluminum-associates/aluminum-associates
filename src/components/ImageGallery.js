@@ -12,24 +12,20 @@ export default function ImageGallery(props) {
   return (
     <>
       {props.images.map(prop => (
-        <button
-        style={{
-          border: "none",
-          outline: "none",
-          background: "transparent",
-          "&:active": {
-            border: "none",
-            outline: "none"
-          }
-        }}
+        <a
+          role="button"
           onClick={() => {
             setLightbox(!isOpen)
             setIndex(props.images.indexOf(prop))
           }}
           key={prop.image.asset.id}
         >
-          <Img fluid={prop.image.asset.fluid} alt={prop.alternativeText} />
-        </button>
+          <Img
+            fluid={prop.image.asset.fluid}
+            alt={prop.alternativeText}
+            className="gallery-thumbnail card"
+          />
+        </a>
       ))}
       {isOpen ? (
         <Lightbox

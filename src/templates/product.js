@@ -151,7 +151,7 @@ export default function Product({ data }) {
             {images.length !== 0 ? (
               <div className="product-gallery">
                 <h2 className="title">Gallery</h2>
-                <div className="card" style={imageGalleryStyle}>
+                <div className="image-gallery-wrapper">
                   <ImageGallery images={images} />
                 </div>
               </div>
@@ -209,7 +209,7 @@ export const data = graphql`
         image {
           asset {
             id
-            fluid(maxWidth: 1400) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
           }
