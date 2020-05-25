@@ -5,8 +5,6 @@ import Logo from "../images/aa-logo.png"
 export default function Navbar() {
   const [menu, setMenu] = useState(false)
   const [dropdown, setDropdown] = useState(false)
-  const query = useStaticQuery(data)
-  const categories = query.categories.edges
 
   return (
     <nav className="navbar is-fixed-top">
@@ -114,7 +112,7 @@ export default function Navbar() {
   )
 }
 
-export const ProductLinks = () => {
+const ProductLinks = () => {
   const query = useStaticQuery(data)
   const categories = query.categories.edges
   const products = query.products.edges
