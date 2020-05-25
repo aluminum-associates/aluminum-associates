@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import Logo from "../images/aa-logo.png"
+import { AiFillPhone } from "react-icons/ai"
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false)
@@ -105,6 +106,9 @@ export default function Navbar() {
             >
               Contact
             </Link>
+            <a href="tel:519-453-6400" className="navbar-item is-size-5">
+              <AiFillPhone />519-453-6400
+            </a>
           </div>
         </div>
       </div>
