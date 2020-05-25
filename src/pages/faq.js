@@ -20,7 +20,7 @@ export default function FAQ() {
 
   return (
     <Layout title="Frequently Asked Questions">
-      <section className="hero is-large is-primary">
+      <section className="hero is-fullheight-with-navbar is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-1">Frequently Asked Questions</h1>

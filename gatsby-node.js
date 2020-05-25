@@ -41,7 +41,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = res.data.categories.edges
 
   products.forEach(edge => {
-    const path = `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
+    const path = edge.node.category
+      ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
+      : `/products/${edge.node.slug.current}`
+      
     createPage({
       path,
       component: require.resolve("./src/templates/product.js"),

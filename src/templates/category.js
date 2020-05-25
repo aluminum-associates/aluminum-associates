@@ -19,7 +19,7 @@ export default function Category({ data }) {
     >
       {heroImage && heroImage.image ? (
         <BackgroundImage
-          className="hero is-large is-primary"
+          className="hero is-fullheight-with-navbar is-primary"
           fluid={heroImage.image.asset.fluid}
         >
           <HeroOverlay>

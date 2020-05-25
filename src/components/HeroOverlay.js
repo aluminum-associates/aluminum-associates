@@ -5,9 +5,12 @@ export default function HeroOverlay(props) {
     <div
       className="overlay"
       style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0,0,0,0.25)",
+        minWidth: "100%",
+        minHeight: "100%",
+        backgroundColor: "rgba(0,0,0,0.35)",
+        flex: "1 0 auto",
+        display: "flex",
+        alignItems: "center",
       }}
     >
       {props.children}

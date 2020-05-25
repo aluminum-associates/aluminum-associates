@@ -6,7 +6,7 @@ import Card from "../components/Card"
 export default function Products({ data }) {
   return (
     <Layout title="Products">
-      <div className="hero is-large is-primary">
+      <div className="hero is-fullheight-with-navbar is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2">Products</h1>

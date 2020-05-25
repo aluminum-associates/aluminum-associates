@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 export default function Services() {
   return (
     <Layout title="Services">
-      <div className="hero is-large is-primary">
+      <div className="hero is-fullheight-with-navbar is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2">Services</h1>

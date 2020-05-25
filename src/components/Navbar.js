@@ -77,22 +77,13 @@ export default function Navbar() {
                 },
               }}
               onClick={() => setDropdown(!dropdown)}
-              onKeyDown={() => setDropdown(!dropdown)}
+              onKeyDown={e =>
+                e.key === "Escape" ? setDropdown(!dropdown) : null
+              }
             >
               <span className="navbar-link">Products</span>
               <div className="navbar-dropdown">
-                {categories.map(({ node: category }) =>
-                  category.parents.length === 0 ? (
-                    <Link
-                      key={category.id}
-                      to={"/products/" + category.slug.current}
-                      className="navbar-item"
-                      activeClassName="is-active"
-                    >
-                      {category.title}
-                    </Link>
-                  ) : null
-                )}
+                <ProductLinks />
               </div>
             </div>
             <Link
@@ -123,6 +114,35 @@ export default function Navbar() {
   )
 }
 
+export const ProductLinks = () => {
+  const query = useStaticQuery(data)
+  const categories = query.categories.edges
+  const products = query.products.edges
+  const links = [...categories, ...products]
+
+  return links.map(({ node: link }) =>
+    link.parents && link.parents.length === 0 ? (
+      <Link
+        key={link.id}
+        to={"/products/" + link.slug.current}
+        className="navbar-item"
+        activeClassName="is-active"
+      >
+        {link.title}
+      </Link>
+    ) : link.category === null ? (
+      <Link
+        key={link.id}
+        to={"/products/" + link.slug.current}
+        className="navbar-item"
+        activeClassName="is-active"
+      >
+        {link.title}
+      </Link>
+    ) : null
+  )
+}
+
 export const data = graphql`
   {
     categories: allSanityCategory(
@@ -138,6 +158,28 @@ export const data = graphql`
           }
           parents {
             id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+    products: allSanityProduct(
+      filter: {
+        slug: { current: { ne: null } }
+        category: { slug: { current: { eq: null } } }
+      }
+      sort: { fields: title }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+          category {
             slug {
               current
             }

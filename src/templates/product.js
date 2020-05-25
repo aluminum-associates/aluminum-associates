@@ -53,8 +53,6 @@ export default function Product({ data }) {
     documentation,
   } = product
 
-  console.log(documentation)
-
   return (
     <Layout
       title={title}
@@ -67,7 +65,7 @@ export default function Product({ data }) {
       {heroImage.image ? (
         <BackgroundImage
           fluid={heroImage.image.asset.fluid}
-          className="hero is-large is-primary"
+          className="hero is-fullheight-with-navbar is-primary"
         >
           <HeroOverlay>
             <div className="hero-body">

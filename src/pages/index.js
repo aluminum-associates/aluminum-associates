@@ -15,7 +15,7 @@ export default function Home({ data }) {
 
   return (
     <Layout title="Home">
-      <section className="hero is-large is-primary">
+      <section className="hero is-fullheight-with-navbar is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2">Windows, Doors and More</h1>

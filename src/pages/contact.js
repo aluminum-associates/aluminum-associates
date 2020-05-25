@@ -10,7 +10,7 @@ export default function Contact() {
   return (
     <>
       <Layout title="Contact">
-        <div className="hero is-large is-primary">
+        <div className="hero is-fullheight-with-navbar is-primary">
           <div className="hero-body">
             <div className="container">
               <h1 className="title is-size-1">Let's Get In Touch</h1>
