@@ -5,7 +5,7 @@ import blockContent from "./blockContent";
 import category from "./category";
 import product from "./product";
 import vendor from "./vendor";
-import page from "./page";
+import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import productDocument from "./productDocument";
 import heroImage from "./heroImage";
@@ -18,7 +18,7 @@ export default createSchema({
     product,
     vendor,
     category,
-    page,
+    testimonial,
     blockContent,
     galleryImage,
     productDocument,
