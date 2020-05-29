@@ -4,6 +4,9 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import blockContent from "./blockContent";
 import blockImage from "./blockImage";
 import category from "./category";
+import product from "./product";
+import vendor from "./vendor";
+import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import heroImage from "./heroImage";
 import page from "./page";
@@ -15,6 +18,10 @@ import youtube from "./youtube";
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    product,
+    vendor,
+    category,
+    testimonial,
     blockContent,
     blockImage,
     category,
