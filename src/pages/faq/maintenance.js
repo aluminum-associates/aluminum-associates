@@ -20,7 +20,7 @@ export default function Maintenance() {
 
   return (
     <Layout title="Maintenance">
-      <div className="hero is-large is-primary">
+      <div className="hero is-medium is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2">
