@@ -19,6 +19,11 @@ export default function ImageGallery(props) {
             setIndex(props.images.indexOf(prop))
           }}
           key={prop.image.asset.id}
+          style={{
+            border: "0",
+            background: "none",
+            outline: "none"
+          }}
         >
           <Img
             fluid={prop.image.asset.fluid}
