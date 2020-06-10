@@ -12,8 +12,8 @@ export default function ImageGallery(props) {
   return (
     <>
       {props.images.map(prop => (
-        <a
-          role="button"
+        <button
+          aria-label="Image thumbnail"
           onClick={() => {
             setLightbox(!isOpen)
             setIndex(props.images.indexOf(prop))
@@ -25,7 +25,7 @@ export default function ImageGallery(props) {
             alt={prop.alternativeText}
             className="gallery-thumbnail card"
           />
-        </a>
+        </button>
       ))}
       {isOpen ? (
         <Lightbox

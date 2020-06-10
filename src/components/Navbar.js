@@ -1,12 +1,11 @@
 import React, { useState } from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import ProductDropdown from "../components/ProductDropdown"
 import Logo from "../images/aa-logo.png"
 import { AiFillPhone } from "react-icons/ai"
 
 export default function Navbar() {
   const [menu, setMenu] = useState(false)
-
 
   return (
     <nav className="navbar is-fixed-top">
@@ -22,6 +21,7 @@ export default function Navbar() {
           <div
             id="burger"
             role="button"
+            aria-label="Burger button"
             tabIndex={-1}
             className={"navbar-burger" + (menu ? " is-active" : "")}
             style={{
@@ -83,7 +83,8 @@ export default function Navbar() {
               Contact
             </Link>
             <a href="tel:519-453-6400" className="navbar-item is-size-5">
-              <AiFillPhone />519-453-6400
+              <AiFillPhone />
+              519-453-6400
             </a>
           </div>
         </div>

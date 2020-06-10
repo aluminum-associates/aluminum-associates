@@ -6,7 +6,6 @@ import ContactForm from "../components/ContactForm"
 import Carousel from "../components/Carousel"
 import Testimonial from "../components/Testimonial"
 import Notification from "../components/Notification"
-import { CSSTransition } from "react-transition-group"
 
 export default function Home({ data }) {
   const mapImage = data.map.childImageSharp.fluid

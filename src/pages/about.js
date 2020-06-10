@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div>
       <Layout title="About">
-        <section className="hero is-fullheight-with-navbar is-primary">
+        <section className="hero is-medium is-primary">
           <div className="hero-body">
             <div className="container">
               <div className="content" style={copyStyle}>

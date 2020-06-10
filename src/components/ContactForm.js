@@ -115,6 +115,7 @@ export class ContactForm extends Component {
           <div className="field">
             <input
               type="text"
+              aria-label="Name field"
               name="name"
               value={name}
               className={`input ${this.state.errs.name ? "is-danger" : null}`}
@@ -129,6 +130,7 @@ export class ContactForm extends Component {
           <div className="field">
             <input
               type="text"
+              aria-label="Street address field"
               name="address"
               value={address}
               className={`input ${
@@ -145,6 +147,7 @@ export class ContactForm extends Component {
           <div className="field">
             <input
               type="text"
+              aria-label="Email address field"
               name="email"
               value={email}
               className={`input ${this.state.errs.email ? "is-danger" : null}`}
@@ -159,6 +162,7 @@ export class ContactForm extends Component {
           <div className="field">
             <input
               type="text"
+              aria-label="Phone number field"
               name="phone"
               value={phone}
               className={`input ${this.state.errs.phone ? "is-danger" : null}`}
@@ -173,6 +177,7 @@ export class ContactForm extends Component {
           <div className="field">
             <textarea
               name="message"
+              aria-label="Message field"
               value={message}
               cols="30"
               rows="10"

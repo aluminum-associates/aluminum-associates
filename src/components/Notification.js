@@ -22,6 +22,7 @@ const Notification = ({ children }) => {
     >
       <div className="notification is-warning">
         <button
+          aria-label="Close notification"
           className="delete"
           onClick={() => setClosed(!closed)}
           ref={notificationRef}
