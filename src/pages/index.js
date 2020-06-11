@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
@@ -114,6 +114,28 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
+      <section className="section">
+        <div className="container">
+          <h2 className="title">Vendors We Work With</h2>
+          <div className="flex-wrap">
+            {data.vendors.edges.map(({ node: vendor }) => (
+              <Img
+                key={vendor.id}
+                className="mr-4"
+                fixed={vendor.logo.asset.fixed}
+                alt={vendor.title}
+                style={{
+                  minWidth: "100px",
+                  flex: 1,
+                  justifySelf: "center",
+                  alignSelf: "center",
+                }}
+                imgStyle={{ objectFit: "contain" }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="section-testimonial">
         <div className="container">
           <Carousel>
@@ -160,6 +182,21 @@ export const data = graphql`
         fluid {
           ...GatsbyImageSharpFluid
           presentationWidth
+        }
+      }
+    }
+    vendors: allSanityVendor {
+      edges {
+        node {
+          id
+          title
+          logo {
+            asset {
+              fixed(width: 125) {
+                ...GatsbySanityImageFixed
+              }
+            }
+          }
         }
       }
     }
