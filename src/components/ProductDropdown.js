@@ -62,6 +62,7 @@ const ProductLinks = () => {
           {childCategories.map(child =>
             child.parents[0].title === parent.title ? (
               <Link
+                key={child.id}
                 to={"/products/" + child.slug.current}
                 className="navbar-item"
                 activeClassName="is-active"
@@ -73,6 +74,7 @@ const ProductLinks = () => {
           {products.map(({ node: product }) =>
             product.category && product.category.title === parent.title ? (
               <Link
+                key={product.id}
                 to={
                   "/products/" +
                   product.category.slug.current +
