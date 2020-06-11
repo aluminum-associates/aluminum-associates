@@ -10,7 +10,7 @@ export default function Card(props) {
           {props.heroImage ? (
             <Img fluid={props.heroImage} alt={props.alt} />
           ) : (
-            <div className="image is-4by3"></div>
+            <div className="image is-4by3 has-background-grey-lighter"></div>
           )}
         </div>
         <div className="card-body">
