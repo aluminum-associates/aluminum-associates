@@ -4,7 +4,7 @@ import PortableText from "@sanity/block-content-to-react"
 
 const Testimonial = ({ quote, client, clientTitle }) => {
   return (
-    <div className="testimonial">
+    <div className="testimonial" style={{ margin: "auto" }}>
       <div className="content">
         <PortableText blocks={quote} className="quote" />
         <p className="client">&mdash; {client}</p>
