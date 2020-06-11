@@ -65,7 +65,7 @@ export default function Category({ data }) {
                 }
                 key={product.id}
                 heroImage={
-                  product.heroImage.image
+                  product.heroImage && product.heroImage.image
                     ? product.heroImage.image.asset.fluid
                     : null
                 }

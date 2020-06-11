@@ -61,7 +61,7 @@ export default function Product({ data }) {
           : null
       }
     >
-      {heroImage.image ? (
+      {heroImage && heroImage.image ? (
         <BackgroundImage
           fluid={heroImage.image.asset.fluid}
           className="hero is-fullheight-with-navbar is-primary"
