@@ -9,8 +9,8 @@ const ProductDropdown = () => {
       role="button"
       tabIndex={-1}
       className={
-        "navbar-item is-size-5 has-dropdown is-hoverable" +
-        (dropdown ? " is-active" : null)
+        "navbar-item is-size-5 has-dropdown is-mega" +
+        (dropdown ? " is-active" : "")
       }
       style={{
         border: "none",
@@ -39,36 +39,55 @@ const ProductLinks = () => {
   const categories = query.categories.edges
   const products = query.products.edges
   const links = [...categories, ...products]
+  let parentCategories = []
+  let childCategories = []
+
+  // 1. map over array and find "parent" categories and push to new array*/}
+  // 2. find "child" categories and have them be sub-menu items of parent (in a new array)
+  // 3. for every nth index, return a new block of items
+  // 4. each grouping needs to have a class of "navbar-item" with a child div of "navbar-content"
+
+  links.map(({ node: link }) => {
+    if (link.parents && link.parents.length === 0) parentCategories.push(link)
+    else if (link.parents && link.parents.length > 0) childCategories.push(link)
+  })
 
   return (
-    <div class="container is-fluid">
-      <div class="columns">
-        {links.map(({ node: link }) =>
-          link.parents && link.parents.length === 0 ? (
-            <div class="column">
+    <div className="container is-fluid">
+      {parentCategories.map(parent => (
+        <div key={parent.id} className="navbar-content">
+          <div className="title is-mega-menu-title is-size-6">
+            {parent.title}
+          </div>
+          {childCategories.map(child =>
+            child.parents[0].title === parent.title ? (
               <Link
-                key={link.id}
-                to={"/products/" + link.slug.current}
+                to={"/products/" + child.slug.current}
                 className="navbar-item"
                 activeClassName="is-active"
               >
-                {link.title}
+                {child.title}
               </Link>
-            </div>
-          ) : link.category === null ? (
-            <div class="column">
+            ) : null
+          )}
+          {products.map(({ node: product }) =>
+            product.category && product.category.title === parent.title ? (
               <Link
-                key={link.id}
-                to={"/products/" + link.slug.current}
+                to={
+                  "/products/" +
+                  product.category.slug.current +
+                  "/" +
+                  product.slug.current
+                }
                 className="navbar-item"
                 activeClassName="is-active"
               >
-                {link.title}
+                {product.title}
               </Link>
-            </div>
-          ) : null
-        )}
-      </div>
+            ) : null
+          )}
+        </div>
+      ))}
     </div>
   )
 }
@@ -88,6 +107,7 @@ export const data = graphql`
           }
           parents {
             id
+            title
             slug {
               current
             }
@@ -95,13 +115,7 @@ export const data = graphql`
         }
       }
     }
-    products: allSanityProduct(
-      filter: {
-        slug: { current: { ne: null } }
-        category: { slug: { current: { eq: null } } }
-      }
-      sort: { fields: title }
-    ) {
+    products: allSanityProduct {
       edges {
         node {
           id
@@ -110,6 +124,7 @@ export const data = graphql`
             current
           }
           category {
+            title
             slug {
               current
             }
