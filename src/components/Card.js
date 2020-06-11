@@ -14,12 +14,10 @@ export default function Card(props) {
           )}
         </div>
         <div className="card-body">
-          <div className="card-content">
-            <h2 className="title is-size-4">{props.title}</h2>
-            {props.description ? (
-              <p className="subtitle is-size-5">{props.description}</p>
-            ) : null}
-          </div>
+          <h2 className="title is-size-4">{props.title}</h2>
+          {props.description ? (
+            <p className="subtitle is-size-5">{props.description}</p>
+          ) : null}
         </div>
       </div>
     </Link>

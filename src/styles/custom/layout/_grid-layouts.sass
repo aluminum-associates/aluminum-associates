@@ -49,8 +49,12 @@
     flex: 1
     display: grid
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
-    grid-auto-rows: 1fr
+    grid-auto-rows: auto
     grid-gap: $gap
+
+    .card
+        width: 100%
+        height: 100%
 
     &-landing
         @extend .card-wrapper
