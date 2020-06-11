@@ -121,11 +121,12 @@ export default function Home({ data }) {
             {data.vendors.edges.map(({ node: vendor }) => (
               <Img
                 key={vendor.id}
-                className="mr-4"
                 fixed={vendor.logo.asset.fixed}
                 alt={vendor.title}
                 style={{
                   minWidth: "100px",
+                  maxHeight: "80px",
+                  marginRight: "1rem",
                   flex: 1,
                   justifySelf: "center",
                   alignSelf: "center",
