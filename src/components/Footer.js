@@ -77,7 +77,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="has-text-centered">
-          &copy; Copyright 2020 by Aluminum Associates.
+          &copy; Aluminum Associates 2020
         </p>
       </div>
     </footer>
