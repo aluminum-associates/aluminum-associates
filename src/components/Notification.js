@@ -18,7 +18,6 @@ const Notification = ({ children }) => {
       unmountOnExit
       classNames="notification"
       onEnter={() => setClosed(!closed)}
-      onexited={() => setClosed(closed)}
     >
       <div className="notification is-warning">
         <button
