@@ -1,12 +1,16 @@
 .navbar-item.is-mega
   position: static
 
-  // .container
-  //   @media screen and ( min-width: $desktop )
-  //     display: flex
-  //     flex-wrap: wrap
-  //     justify-content: flex-start
+  .container
+    @media screen and ( min-width: $desktop )
+      display: grid
+      padding: 1rem
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+      grid-gap: $gap
 
-  .is-mega-menu-title
-    margin-bottom: 0
-    padding: .375rem 1rem
+      .navbar-content
+        flex: 1
+
+.is-mega-menu-title
+  margin-bottom: 0 !important
+  padding: .375rem 1rem !important
