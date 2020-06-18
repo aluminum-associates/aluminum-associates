@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+:root {
+  /* Brand colours */
+  --brand-primary: #2856a1;
+  --brand-primary--inverted: #ffffff;
+  --brand-secondary: #5697ff;
+  --brand-secondary--inverted: #10213d;
+  /* Typography */
+  --font-family-sans-serif: "Poppins";
+  --font-size-base: 18px;
+  --text-color: var(--brand-secondary--inverted);
+  /* Navbar */
+  --main-navigation-color: var(--brand-primary);
+  --main-navigation-color--inverted: var(--brand-primary--inverted);
+}
