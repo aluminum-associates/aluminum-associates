@@ -1,7 +1,10 @@
+import { IoMdChatbubbles } from "react-icons/io";
+
 export default {
   name: "testimonial",
   title: "Testimonials",
   type: "document",
+  icon: IoMdChatbubbles,
   fields: [
     {
       name: "quote",

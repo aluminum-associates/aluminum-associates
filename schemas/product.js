@@ -1,7 +1,10 @@
+import { AiFillShopping } from "react-icons/ai";
+
 export default {
   name: "product",
   title: "Products",
   type: "document",
+  icon: AiFillShopping,
   fields: [
     {
       name: "title",

@@ -1,9 +1,11 @@
 import client from "part:@sanity/base/client"
+import { GoFileSubmodule } from "react-icons/go"
 
 export default {
   name: "category",
   title: "Categories",
   type: "document",
+  icon: GoFileSubmodule,
   fields: [
     {
       name: "title",
