@@ -118,7 +118,7 @@ export default function Home({ data }) {
         <div className="container">
           <h2 className="title">Vendors We Work With</h2>
           <div className="flex-wrap">
-            {data.vendors.edges.map(({ node: vendor }) => (
+            {data.page.vendors.map(vendor => (
               <Img
                 key={vendor.id}
                 fixed={vendor.logo.asset.fixed}
@@ -140,7 +140,7 @@ export default function Home({ data }) {
       <section className="section-testimonial">
         <div className="container">
           <Carousel>
-            {data.testimonials.edges.map(({ node: testimonial }) => (
+            {data.page.testimonials.map(testimonial => (
               <Testimonial
                 key={testimonial.id}
                 quote={testimonial._rawQuote}
@@ -209,6 +209,34 @@ export const data = graphql`
           client
           clientTitle
         }
+      }
+    }
+    page: sanityIndex {
+      title
+      metaDescription
+      heroImages {
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+      vendors {
+      id
+      title
+      logo {
+        asset {
+          fixed(width: 125) {
+            ...GatsbySanityImageFixed
+          }
+        }
+      }
+    }
+      testimonials {
+        id
+        _rawQuote
+        client
+        clientTitle
       }
     }
   }
