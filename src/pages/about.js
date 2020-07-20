@@ -1,9 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
-import HeroOverlay from "../components/HeroOverlay"
 import Hero from "../components/Hero"
 
 const About = ({ data }) => {
@@ -16,6 +14,7 @@ const About = ({ data }) => {
     _rawHeroCopy,
     _rawBody,
     heroImage,
+    heroSize,
   } = data.sanityAbout
 
   const BlockRenderer = props => {
@@ -36,35 +35,12 @@ const About = ({ data }) => {
   return (
     <div>
       <Layout title={title} description={metaDescription}>
-        {heroImage ? (
-          <BackgroundImage
-            fluid={heroImage.asset.fluid}
-            className="hero is-medium is-primary"
-          >
-            <HeroOverlay>
-              <div className="hero-body">
-                <div className="container">
-                  <div className="content">
-                    <PortableText
-                      blocks={_rawHeroCopy}
-                      serializers={{ types: { block: BlockRenderer } }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </HeroOverlay>
-          </BackgroundImage>
-        ) : (
-          <div className="hero is-medium is-primary">
-            <div className="hero-body">
-              <div className="container">
-                <div className="content" style={copyStyle}>
-                  <PortableText blocks={_rawHeroCopy} />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <Hero fluid={heroImage.asset.fluid} size={heroSize}>
+          <PortableText
+            blocks={_rawHeroCopy}
+            serializers={{ types: { block: BlockRenderer } }}
+          />
+        </Hero>
         <section className="section">
           <div className="container">
             <div className="content" style={copyStyle}>
@@ -91,6 +67,7 @@ export const data = graphql`
           }
         }
       }
+      heroSize
     }
   }
 `

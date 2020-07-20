@@ -6,6 +6,7 @@ import ContactForm from "../components/ContactForm"
 import Carousel from "../components/Carousel"
 import Testimonial from "../components/Testimonial"
 import Notification from "../components/Notification"
+import Hero from "../components/Hero"
 
 export default function Home({ data }) {
   const mapImage = data.map.childImageSharp.fluid
@@ -14,13 +15,9 @@ export default function Home({ data }) {
 
   return (
     <Layout title="Home">
-      <section className="hero is-fullheight-with-navbar is-primary">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title is-size-2">Windows, Doors and More</h1>
-          </div>
-        </div>
-      </section>
+      <Hero size={data.page.heroSize}>
+        <h1 className="title is-size-2">Windows, Doors and More</h1>
+      </Hero>
       <Notification />
       <section className="section-services has-background-white-bis">
         <div className="container">
@@ -170,6 +167,7 @@ export const data = graphql`
           }
         }
       }
+      heroSize
       vendors {
         id
         title
