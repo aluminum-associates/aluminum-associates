@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import HeroOverlay from "../components/HeroOverlay"
+import Hero from "../components/Hero"
 
 const About = ({ data }) => {
   const copyStyle = {
@@ -22,7 +22,6 @@ const About = ({ data }) => {
     const { style = "normal" } = props.node
 
     if (/^h\d/.test(style)) {
-      const level = style.replace(/[^\d]/g, "")
       return React.createElement(
         style,
         { className: `title is-size-2` },
