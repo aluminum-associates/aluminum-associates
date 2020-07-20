@@ -8,7 +8,7 @@ export default {
       { name: "medium", title: "Medium", value: "is-medium" },
       { name: "large", title: "Large", value: "is-large" },
       {
-        name: "Fullheight",
+        name: "fullheight",
         title: "Fullheight",
         value: "is-fullheight-with-navbar",
       },
