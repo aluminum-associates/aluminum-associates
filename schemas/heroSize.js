@@ -2,14 +2,16 @@ export default {
   name: "heroSize",
   title: "Hero Size",
   type: "string",
-  list: [
-    { name: "small", title: "small", value: "small" },
-    { name: "medium", title: "medium", value: "medium" },
-    { name: "large", title: "large", value: "large" },
-    {
-      name: "fullscreen",
-      title: "fullscreen",
-      value: "fullscreen-with-navbar",
-    },
-  ],
+  options: {
+    list: [
+      { name: "small", title: "Small", value: "" },
+      { name: "medium", title: "Medium", value: "is-medium" },
+      { name: "large", title: "Large", value: "is-large" },
+      {
+        name: "fullscreen",
+        title: "Fullscreen",
+        value: "is-fullscreen-with-navbar",
+      },
+    ],
+  },
 };
