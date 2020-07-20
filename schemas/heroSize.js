@@ -10,7 +10,7 @@ export default {
       {
         name: "Fullheight",
         title: "Fullheight",
-        value: "is-fullsheight-with-navbar",
+        value: "is-fullheight-with-navbar",
       },
     ],
   },
