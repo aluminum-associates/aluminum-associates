@@ -9,7 +9,6 @@ import blockImage from "./blockImage";
 import category from "./category";
 import product from "./product";
 import vendor from "./vendor";
-import notification from "./notification"
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import heroImage from "./heroImage";
@@ -23,7 +22,6 @@ export default createSchema({
     about,
     services,
     vendor,
-    notification,
     category,
     product,
     testimonial,

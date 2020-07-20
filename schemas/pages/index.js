@@ -18,7 +18,12 @@ export default {
     {
       name: "notification",
       title: "Notification",
-      type: "notification",
+      type: "blockContent",
+    },
+    {
+      name: "notificationActive",
+      title: "Notification Is Active",
+      type: "boolean",
     },
     {
       name: "heroImages",
