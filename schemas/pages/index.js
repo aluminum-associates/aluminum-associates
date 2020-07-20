@@ -16,6 +16,11 @@ export default {
       type: "text",
     },
     {
+      name: "notification",
+      title: "Notification",
+      type: "notification",
+    },
+    {
       name: "heroImages",
       title: "Hero Images",
       type: "array",
