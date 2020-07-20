@@ -162,6 +162,7 @@ export const data = graphql`
     page: sanityIndex {
       title
       metaDescription
+      notificationActive
       heroImages {
         asset {
           fluid {
