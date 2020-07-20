@@ -62,7 +62,7 @@ export const data = graphql`
       _rawHeroCopy
       heroImage {
         asset {
-          fluid {
+          fluid(maxWidth: 1920) {
             ...GatsbySanityImageFluid
           }
         }
