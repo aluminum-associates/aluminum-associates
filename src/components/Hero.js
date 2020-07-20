@@ -6,9 +6,9 @@ import HeroOverlay from "../components/HeroOverlay"
 const Hero = ({ size, fluid, fixed, children }) => {
   return fixed || fluid ? (
     <BackgroundImage
-      fluid={fixed ? fixed : null}
-      fixed={fluid ? fluid : null}
-      className={`hero is-${size} is-primary`}
+      fixed={fixed ? fixed : null}
+      fluid={fluid ? fluid : null}
+      className={`hero ${size} is-primary`}
     >
       <HeroOverlay>
         <div className="hero-body">
@@ -19,7 +19,7 @@ const Hero = ({ size, fluid, fixed, children }) => {
       </HeroOverlay>
     </BackgroundImage>
   ) : (
-    <div className={`hero is-${size} is-primary`}>
+    <div className={`hero ${size} is-primary`}>
       <div className="hero-body">
         <div className="container">
           <div className="content">{children}</div>
