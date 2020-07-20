@@ -39,6 +39,11 @@ export default {
       ],
     },
     {
+      name: "heroSize",
+      title: "Hero Size",
+      type: "heroSize",
+    },
+    {
       name: "vendors",
       title: "Vendors",
       type: "array",

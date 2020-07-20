@@ -51,6 +51,11 @@ export default {
       type: "heroImage",
     },
     {
+      name: "heroSize",
+      title: "Hero Size",
+      type: "heroSize",
+    },
+    {
       name: "imageGallery",
       title: "Image Gallery",
       type: "array",
