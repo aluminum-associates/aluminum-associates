@@ -12,6 +12,7 @@ import vendor from "./vendor";
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import heroImage from "./heroImage";
+import heroSize from "./heroSize"
 import productDocument from "./productDocument";
 import embed from "./embed";
 
@@ -29,6 +30,7 @@ export default createSchema({
     blockImage,
     galleryImage,
     heroImage,
+    heroSize,
     productDocument,
     embed,
   ]),

@@ -24,6 +24,11 @@ export default {
       },
     },
     {
+      name: "heroSize",
+      title: "Hero Size",
+      type: "heroSize",
+    },
+    {
       name: "heroCopy",
       title: "Hero Copy",
       type: "blockContent",
