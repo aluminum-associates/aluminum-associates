@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react"
-import PropTypes from "prop-types"
+import { graphql, useStaticQuery } from "gatsby"
+import PortableText from "@sanity/block-content-to-react"
 import { CSSTransition } from "react-transition-group"
 
-const Notification = ({ children }) => {
+const Notification = () => {
   const [closed, setClosed] = useState(false)
   const notificationRef = useRef()
   useEffect(() => {
@@ -10,6 +11,14 @@ const Notification = ({ children }) => {
       notificationRef.current.focus()
     }
   })
+  const query = useStaticQuery(graphql`
+    {
+      sanityIndex {
+        _rawNotification
+      }
+    }
+  `)
+  const { _rawNotification } = query.sanityIndex
 
   return (
     <CSSTransition
@@ -29,15 +38,13 @@ const Notification = ({ children }) => {
           onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
         ></button>
         <div className="container">
-          <div className="content">{children}</div>
+          <div className="content">
+            <PortableText blocks={_rawNotification} />
+          </div>
         </div>
       </div>
     </CSSTransition>
   )
-}
-
-Notification.propTypes = {
-  children: PropTypes.array.isRequired,
 }
 
 export default Notification
