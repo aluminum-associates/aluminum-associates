@@ -7,6 +7,7 @@ import Hero from "../components/Hero"
 const About = ({ data }) => {
   const copyStyle = {
     maxWidth: "70ch",
+    margin: "0 auto",
   }
   const {
     title,
@@ -36,14 +37,14 @@ const About = ({ data }) => {
     <div>
       <Layout title={title} description={metaDescription}>
         <Hero fluid={heroImage.asset.fluid} size={heroSize}>
-          <PortableText
-            blocks={_rawHeroCopy}
-            serializers={{ types: { block: BlockRenderer } }}
-          />
+            <PortableText
+              blocks={_rawHeroCopy}
+              serializers={{ types: { block: BlockRenderer } }}
+            />
         </Hero>
         <section className="section">
           <div className="container">
-            <div className="content" style={copyStyle}>
+            <div className="content">
               <PortableText blocks={_rawBody} />
             </div>
           </div>
