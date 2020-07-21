@@ -4,7 +4,7 @@ import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 
-export default function Services({ data }) {
+const Services = ({ data }) => {
   const {
     title,
     metaDescription,
@@ -45,3 +45,5 @@ export const data = graphql`
     }
   }
 `
+
+export default Services
