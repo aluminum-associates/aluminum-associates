@@ -7,55 +7,31 @@ import Carousel from "../components/Carousel"
 import Testimonial from "../components/Testimonial"
 import Notification from "../components/Notification"
 import Hero from "../components/Hero"
+import Card from "../components/Card"
 
 export default function Home({ data }) {
-  const mapImage = data.map.childImageSharp.fluid
-  const serviceImage = data.service.childImageSharp.fluid
-  const jobImage = data.job.childImageSharp.fluid
+  const { heroSize, cards, vendors, testimonials } = data.page
 
   return (
     <Layout title="Home">
-      <Hero size={data.page.heroSize}>
+      <Hero size={heroSize}>
         <h1 className="title is-size-2">Windows, Doors and More</h1>
       </Hero>
       <Notification />
       <section className="section-services has-background-white-bis">
         <div className="container">
           <div className="card-wrapper-landing">
-            <div className="card">
-              <div className="card-image">
-                <Img fluid={mapImage} alt="Image of a map" loading="eager" />
-              </div>
-              <div className="card-body">
-                <h2 className="subtitle">
-                  Servicing London and Surrounding Area Since 1963
-                </h2>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-image">
-                <Img
-                  fluid={serviceImage}
-                  alt="Employee helping customer"
-                  loading="eager"
+            {cards.map(card => {
+              const { _key, image, alt, title } = card
+              return (
+                <Card
+                  key={_key}
+                  image={image.asset.fluid}
+                  alt={alt}
+                  title={title}
                 />
-              </div>
-              <div className="card-body">
-                <h2 className="subtitle">Customer Service</h2>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-image">
-                <Img
-                  fluid={jobImage}
-                  alt="Contractor drilling into flooring"
-                  loading="eager"
-                />
-              </div>
-              <div className="card-body">
-                <h2 className="subtitle">Over 100,000 Jobs Serviced</h2>
-              </div>
-            </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -63,7 +39,7 @@ export default function Home({ data }) {
         <div className="container">
           <h2 className="title">Vendors We Work With</h2>
           <div className="flex-wrap">
-            {data.page.vendors.map(vendor => (
+            {vendors.map(vendor => (
               <Img
                 key={vendor.id}
                 fixed={vendor.logo.asset.fixed}
@@ -85,7 +61,7 @@ export default function Home({ data }) {
       <section className="section-testimonial">
         <div className="container">
           <Carousel>
-            {data.page.testimonials.map(testimonial => (
+            {testimonials.map(testimonial => (
               <Testimonial
                 key={testimonial.id}
                 quote={testimonial._rawQuote}
@@ -107,30 +83,6 @@ export default function Home({ data }) {
 
 export const data = graphql`
   {
-    map: file(relativePath: { eq: "index/map.jpeg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-          presentationWidth
-        }
-      }
-    }
-    service: file(relativePath: { eq: "index/customer-service.jpeg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-          presentationWidth
-        }
-      }
-    }
-    job: file(relativePath: { eq: "index/job-serviced.jpeg" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-          presentationWidth
-        }
-      }
-    }
     vendors: allSanityVendor {
       edges {
         node {
@@ -168,6 +120,22 @@ export const data = graphql`
         }
       }
       heroSize
+      cards {
+        _key
+        image {
+          asset {
+            fluid(maxWidth: 800, maxHeight: 600) {
+              ...GatsbySanityImageFluid
+            }
+          }
+          hotspot {
+            x
+            y
+          }
+        }
+        alt
+        title
+      }
       vendors {
         id
         title
