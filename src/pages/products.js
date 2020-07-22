@@ -20,7 +20,7 @@ export default function Products({ data }) {
               <Card
                 key={category.id}
                 to={"/products/" + category.slug.current}
-                heroImage={
+                image={
                   category.heroImage
                     ? category.heroImage.image.asset.fluid
                     : null
@@ -29,7 +29,7 @@ export default function Products({ data }) {
                   category.heroImage ? category.heroImage.alternativeText : null
                 }
                 title={category.title}
-                description={category.description}
+                body={category.description}
               />
             ))}
           </div>

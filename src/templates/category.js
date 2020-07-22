@@ -46,13 +46,13 @@ export default function Category({ data }) {
               <Card
                 to={"/products/" + category.slug.current}
                 key={category.id}
-                heroImage={
+                image={
                   !category.heroImage === null
                     ? category.heroImage.image.asset.fluid
                     : null
                 }
                 title={category.title}
-                description={category.description}
+                body={category.description}
               />
             ))}
             {products.map(({ node: product }) => (
