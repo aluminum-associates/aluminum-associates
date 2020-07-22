@@ -44,6 +44,12 @@ export default {
       type: "heroSize",
     },
     {
+      name: "cards",
+      title: "Cards",
+      type: "array",
+      of: [{ type: "card" }],
+    },
+    {
       name: "vendors",
       title: "Vendors",
       type: "array",
