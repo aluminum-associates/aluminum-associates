@@ -12,6 +12,11 @@ export default {
       },
     },
     {
+      name: "alt",
+      title: "Image alt text",
+      type: "string",
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
