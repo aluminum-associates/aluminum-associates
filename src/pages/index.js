@@ -83,31 +83,6 @@ export default function Home({ data }) {
 
 export const data = graphql`
   {
-    vendors: allSanityVendor {
-      edges {
-        node {
-          id
-          title
-          logo {
-            asset {
-              fixed(width: 125) {
-                ...GatsbySanityImageFixed
-              }
-            }
-          }
-        }
-      }
-    }
-    testimonials: allSanityTestimonial(limit: 5) {
-      edges {
-        node {
-          id
-          _rawQuote
-          client
-          clientTitle
-        }
-      }
-    }
     page: sanityIndex {
       title
       metaDescription
