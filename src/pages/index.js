@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
@@ -15,7 +15,10 @@ export default function Home({ data }) {
   return (
     <Layout title="Home">
       <Hero size={heroSize}>
-        <h1 className="title is-size-2">Windows, Doors and More</h1>
+        <h1 className="title is-size-2 mb-6">Windows, Doors and More</h1>
+        <Link to="#contact">
+          <button className="button is-danger is-medium">Contact Us</button>
+        </Link>
       </Hero>
       <Notification />
       <section className="section-services has-background-white-bis">
@@ -81,7 +84,7 @@ export default function Home({ data }) {
           </Carousel>
         </div>
       </section>
-      <section className="section-quote-form">
+      <section id="contact" className="section-quote-form">
         <div className="container">
           <ContactForm title="Request a Quote" className="form" />
         </div>
