@@ -25,7 +25,7 @@ export default {
       name: "tabs",
       title: "Tabs",
       type: "array",
-      of: [{ type: "pageTab" }],
+      of: [{ type: "reference", to: { type: "faqTabs" } }],
     },
   ],
 };

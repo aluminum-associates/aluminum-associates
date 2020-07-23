@@ -13,7 +13,7 @@ import vendor from "./vendor";
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import heroSize from "./heroSize";
-import pageTab from "./pageTab";
+import faqTabs from "./faqTabs";
 import card from "./card";
 import productDocument from "./productDocument";
 import embed from "./embed";
@@ -34,7 +34,7 @@ export default createSchema({
     galleryImage,
     heroSize,
     card,
-    pageTab,
+    faqTabs,
     productDocument,
     embed,
   ]),

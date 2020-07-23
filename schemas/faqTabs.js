@@ -1,7 +1,7 @@
 export default {
-  name: "pageTab",
-  title: "Page Tab",
-  type: "object",
+  name: "faqTabs",
+  title: "FAQ Tabs",
+  type: "document",
   fields: [
     {
       name: "title",
@@ -12,6 +12,9 @@ export default {
       name: "slug",
       title: "Slug",
       type: "slug",
+      options: {
+        source: "title",
+      },
     },
     {
       name: "body",
