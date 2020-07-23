@@ -1,12 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
+import Hero from "../components/Hero"
 import PortableText from "@sanity/block-content-to-react"
 import YouTube from "react-youtube"
 import { FaFile } from "react-icons/fa"
 import Layout from "../components/Layout"
 import ImageGallery from "../components/ImageGallery"
-import HeroOverlay from "../components/HeroOverlay"
 import getYouTubeID from "get-youtube-id"
 
 export default function Product({ data }) {
@@ -46,6 +45,7 @@ export default function Product({ data }) {
     _rawDescription,
     _rawAdditionalInfo,
     heroImage,
+    heroSize,
     title,
     standardFeatures,
     optionalFeatures,
@@ -61,28 +61,9 @@ export default function Product({ data }) {
           : null
       }
     >
-      {heroImage && heroImage.image ? (
-        <BackgroundImage
-          fluid={heroImage.image.asset.fluid}
-          className="hero is-fullheight-with-navbar is-primary"
-        >
-          <HeroOverlay>
-            <div className="hero-body">
-              <div className="container">
-                <h1 className="title is-size-2">{title}</h1>
-              </div>
-            </div>
-          </HeroOverlay>
-        </BackgroundImage>
-      ) : (
-        <div className="hero is-fullheight-with-navbar is-primary">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-size-2">{title}</h1>
-            </div>
-          </div>
-        </div>
-      )}
+      <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
+        <h1 className="title is-size-2">{title}</h1>
+      </Hero>
       <section className="section has-background-white-bis">
         <div className="container">
           <div className="product-grid-wrapper">
@@ -184,15 +165,13 @@ export const data = graphql`
         }
       }
       heroImage {
-        image {
-          asset {
-            fluid(maxWidth: 1920) {
-              ...GatsbySanityImageFluid
-            }
+        asset {
+          fluid(maxWidth: 1920) {
+            ...GatsbySanityImageFluid
           }
         }
-        alternativeText
       }
+      heroSize
       vendor {
         id
         title
@@ -205,9 +184,13 @@ export const data = graphql`
         image {
           asset {
             id
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 800, maxHeight: 600) {
               ...GatsbySanityImageFluid
             }
+          }
+          hotspot {
+            x
+            y
           }
         }
         alternativeText

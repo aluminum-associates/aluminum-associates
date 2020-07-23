@@ -1,37 +1,31 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import Hero from "../components/Hero"
 import Card from "../components/Card"
 
 export default function Products({ data }) {
   return (
     <Layout title="Products">
-      <div className="hero is-fullheight-with-navbar is-primary">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title is-size-2">Products</h1>
-          </div>
-        </div>
-      </div>
+      <Hero size="is-medium">
+        <h1 className="title is-size-2">Products</h1>
+      </Hero>
       <section className="section">
         <div className="container">
           <div className="card-wrapper">
-            {data.allSanityCategory.edges.map(({ node: category }) => (
-              <Card
-                key={category.id}
-                to={"/products/" + category.slug.current}
-                image={
-                  category.heroImage
-                    ? category.heroImage.image.asset.fluid
-                    : null
-                }
-                alt={
-                  category.heroImage ? category.heroImage.alternativeText : null
-                }
-                title={category.title}
-                body={category.description}
-              />
-            ))}
+            {data.allSanityCategory.edges.map(({ node: category }) => {
+              const { id, slug, heroImage, title, description } = category
+              return (
+                <Card
+                  key={id}
+                  to={"/products/" + slug.current}
+                  image={heroImage ? heroImage.image.asset.fluid : null}
+                  alt={heroImage ? heroImage.alternativeText : null}
+                  title={title}
+                  body={description}
+                />
+              )
+            })}
           </div>
         </div>
       </section>

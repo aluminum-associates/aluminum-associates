@@ -1,78 +1,58 @@
 import React from "react"
 import { graphql } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
 import Layout from "../components/Layout"
+import Hero from "../components/Hero"
 import Card from "../components/Card"
-import HeroOverlay from "../components/HeroOverlay"
 
 export default function Category({ data }) {
   const category = data.category
   const childCategories = data.childCategories.edges
   const products = data.products.edges
 
-  const { title, description, heroImage } = category
+  const { title, description, heroImage, heroSize } = category
 
   return (
     <Layout
       title={title}
       description={description ? description.substring(0, 154) + "..." : null}
     >
-      {heroImage && heroImage.image ? (
-        <BackgroundImage
-          className="hero is-fullheight-with-navbar is-primary"
-          fluid={heroImage.image.asset.fluid}
-        >
-          <HeroOverlay>
-            <div className="hero-body">
-              <div className="container">
-                <h1 className="title is-size-2">{title}</h1>
-              </div>
-            </div>
-          </HeroOverlay>
-        </BackgroundImage>
-      ) : (
-        <div className="hero is-fullheight-with-navbar is-primary">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-size-2">{title}</h1>
-            </div>
-          </div>
-        </div>
-      )}
+      <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
+        <h1 className="title is-size-2">{title}</h1>
+      </Hero>
       <section className="section has-background-white-bis">
         <div className="container">
           <div className="card-wrapper">
-            {childCategories.map(({ node: category }) => (
-              <Card
-                to={"/products/" + category.slug.current}
-                key={category.id}
-                image={
-                  !category.heroImage === null
-                    ? category.heroImage.image.asset.fluid
-                    : null
-                }
-                title={category.title}
-                body={category.description}
-              />
-            ))}
-            {products.map(({ node: product }) => (
-              <Card
-                to={
-                  "/products/" +
-                  product.category.slug.current +
-                  "/" +
-                  product.slug.current
-                }
-                key={product.id}
-                heroImage={
-                  product.heroImage && product.heroImage.image
-                    ? product.heroImage.image.asset.fluid
-                    : null
-                }
-                title={product.title}
-                description={product.description}
-              />
-            ))}
+            {childCategories.map(({ node: category }) => {
+              const { id, heroImage, slug, title, description } = category
+              return (
+                <Card
+                  to={"/products/" + slug.current}
+                  key={id}
+                  image={heroImage ? heroImage.asset.fluid : null}
+                  title={title}
+                  body={description}
+                />
+              )
+            })}
+            {products.map(({ node: product }) => {
+              const {
+                category,
+                slug,
+                id,
+                heroImage,
+                title,
+                description,
+              } = product
+              return (
+                <Card
+                  to={"/products/" + category.slug.current + "/" + slug.current}
+                  key={id}
+                  heroImage={heroImage ? heroImage.asset.fluid : null}
+                  title={title}
+                  description={description}
+                />
+              )
+            })}
           </div>
         </div>
       </section>
@@ -88,14 +68,17 @@ export const data = graphql`
       }
       title
       heroImage {
-        image {
-          asset {
-            fluid(maxWidth: 1920) {
-              ...GatsbySanityImageFluid
-            }
+        asset {
+          fluid(maxWidth: 1920) {
+            ...GatsbySanityImageFluid
           }
         }
+        hotspot {
+          x
+          y
+        }
       }
+      heroSize
     }
     childCategories: allSanityCategory(
       filter: { parents: { elemMatch: { slug: { current: { eq: $slug } } } } }
@@ -108,15 +91,17 @@ export const data = graphql`
             current
           }
           heroImage {
-            image {
-              asset {
-                fluid(maxWidth: 400, maxHeight: 300) {
-                  ...GatsbySanityImageFluid
-                }
+            asset {
+              fluid(maxWidth: 400, maxHeight: 300) {
+                ...GatsbySanityImageFluid
               }
             }
-            alternativeText
+            hotspot {
+              x
+              y
+            }
           }
+          heroSize
         }
       }
     }
@@ -137,15 +122,17 @@ export const data = graphql`
             current
           }
           heroImage {
-            alternativeText
-            image {
-              asset {
-                fluid(maxWidth: 400, maxHeight: 300) {
-                  ...GatsbySanityImageFluid
-                }
+            asset {
+              fluid(maxWidth: 400, maxHeight: 300) {
+                ...GatsbySanityImageFluid
               }
             }
+            hotspot {
+              x
+              y
+            }
           }
+          heroSize
         }
       }
     }

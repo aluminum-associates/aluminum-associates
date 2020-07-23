@@ -22,13 +22,14 @@ export default function Home({ data }) {
         <div className="container">
           <div className="card-wrapper-landing">
             {cards.map(card => {
-              const { _key, image, alt, title } = card
+              const { _key, image, alt, title, body } = card
               return (
                 <Card
                   key={_key}
                   image={image.asset.fluid}
                   alt={alt}
                   title={title}
+                  body={body}
                 />
               )
             })}
@@ -37,38 +38,46 @@ export default function Home({ data }) {
       </section>
       <section className="section">
         <div className="container">
-          <h2 className="title">Vendors We Work With</h2>
+          <h3 className="subtitle is-uppercase has-text-centered mb-5">
+            Vendors We Work With
+          </h3>
           <div className="flex-wrap">
-            {vendors.map(vendor => (
-              <Img
-                key={vendor.id}
-                fixed={vendor.logo.asset.fixed}
-                alt={vendor.title}
-                style={{
-                  minWidth: "100px",
-                  maxHeight: "80px",
-                  marginRight: "1rem",
-                  flex: 1,
-                  justifySelf: "center",
-                  alignSelf: "center",
-                }}
-                imgStyle={{ objectFit: "contain" }}
-              />
-            ))}
+            {vendors.map(vendor => {
+              const { id, logo, title } = vendor
+              return (
+                <Img
+                  key={id}
+                  fixed={logo.asset.fixed}
+                  alt={title}
+                  style={{
+                    minWidth: "100px",
+                    maxHeight: "80px",
+                    marginRight: "1rem",
+                    flex: 1,
+                    justifySelf: "center",
+                    alignSelf: "center",
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
+                />
+              )
+            })}
           </div>
         </div>
       </section>
       <section className="section-testimonial">
         <div className="container">
           <Carousel>
-            {testimonials.map(testimonial => (
-              <Testimonial
-                key={testimonial.id}
-                quote={testimonial._rawQuote}
-                client={testimonial.client}
-                clientTitle={testimonial.clientTitle}
-              />
-            ))}
+            {testimonials.map(testimonial => {
+              const { id, _rawQuote, client, clientTitle } = testimonial
+              return (
+                <Testimonial
+                  key={id}
+                  quote={_rawQuote}
+                  client={client}
+                  clientTitle={clientTitle}
+                />
+              )
+            })}
           </Carousel>
         </div>
       </section>
@@ -110,6 +119,7 @@ export const data = graphql`
         }
         alt
         title
+        body
       }
       vendors {
         id
