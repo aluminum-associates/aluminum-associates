@@ -1,5 +1,5 @@
-import client from "part:@sanity/base/client"
-import { GoFileSubmodule } from "react-icons/go"
+import client from "part:@sanity/base/client";
+import { GoFileSubmodule } from "react-icons/go";
 
 export default {
   name: "category",
@@ -41,6 +41,11 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: "heroSize",
+      title: "Hero Size",
+      type: "heroSize",
     },
     {
       name: "description",
