@@ -16,7 +16,10 @@ export default function Category({ data }) {
       title={title}
       description={description ? description.substring(0, 154) + "..." : null}
     >
-      <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
+      <Hero
+        size={heroSize}
+        fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
+      >
         <h1 className="title is-size-2">{title}</h1>
       </Hero>
       <section className="section has-background-white-bis">
@@ -28,7 +31,9 @@ export default function Category({ data }) {
                 <Card
                   to={"/products/" + slug.current}
                   key={id}
-                  image={heroImage ? heroImage.asset.fluid : null}
+                  image={
+                    heroImage && heroImage.asset ? heroImage.asset.fluid : null
+                  }
                   title={title}
                   body={description}
                 />

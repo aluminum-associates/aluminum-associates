@@ -61,7 +61,10 @@ export default function Product({ data }) {
           : null
       }
     >
-      <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
+      <Hero
+        size={heroSize}
+        fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
+      >
         <h1 className="title is-size-2">{title}</h1>
       </Hero>
       <section className="section has-background-white-bis">
