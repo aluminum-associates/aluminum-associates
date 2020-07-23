@@ -9,6 +9,14 @@ export default {
       type: "string",
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+    },
+    {
       name: "metaDescription",
       title: "Meta Description",
       type: "text",
