@@ -16,11 +16,14 @@
     "@sanity/desk-tool",
     "dashboard-widget-netlify",
     "media",
-    "related-products"
+    "related-products",
+    "datatable"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [

@@ -63,5 +63,6 @@ export default {
     // as a block type.
     { type: "blockImage" },
     { type: "embed" },
+    { type: "table" },
   ],
 };
