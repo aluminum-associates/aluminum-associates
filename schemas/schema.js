@@ -4,6 +4,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import index from "./pages/index";
 import about from "./pages/about";
 import services from "./pages/services";
+import faq from "./pages/faq";
 import blockContent from "./blockContent";
 import blockImage from "./blockImage";
 import category from "./category";
@@ -12,6 +13,7 @@ import vendor from "./vendor";
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
 import heroSize from "./heroSize";
+import pageTab from "./pageTab";
 import card from "./card";
 import productDocument from "./productDocument";
 import embed from "./embed";
@@ -22,6 +24,7 @@ export default createSchema({
     index,
     about,
     services,
+    faq,
     vendor,
     category,
     product,
@@ -31,6 +34,7 @@ export default createSchema({
     galleryImage,
     heroSize,
     card,
+    pageTab,
     productDocument,
     embed,
   ]),

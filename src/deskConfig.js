@@ -1,9 +1,9 @@
 import S from "@sanity/desk-tool/structure-builder";
-import { AiFillHome, AiFillInfoCircle } from "react-icons/ai";
+import { AiFillHome, AiFillInfoCircle, AiOutlineQuestionCircle } from "react-icons/ai";
 import { FaToolbox } from "react-icons/fa";
 
 const hiddenDocTypes = (listItem) =>
-  !["index", "about", "services"].includes(listItem.getId());
+  !["index", "about", "services", "faq"].includes(listItem.getId());
 
 export default () =>
   S.list()
@@ -25,6 +25,15 @@ export default () =>
             .id("services")
             .schemaType("services")
             .documentId("services")
+        ),
+      S.listItem()
+        .title("FAQ Page")
+        .icon(AiOutlineQuestionCircle)
+        .child (
+          S.editor()
+            .id("faq")
+            .schemaType("faq")
+            .documentId("faq")
         ),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ]);
