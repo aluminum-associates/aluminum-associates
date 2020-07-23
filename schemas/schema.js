@@ -11,7 +11,6 @@ import product from "./product";
 import vendor from "./vendor";
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
-import heroImage from "./heroImage";
 import heroSize from "./heroSize";
 import card from "./card";
 import productDocument from "./productDocument";
@@ -30,7 +29,6 @@ export default createSchema({
     blockContent,
     blockImage,
     galleryImage,
-    heroImage,
     heroSize,
     card,
     productDocument,
