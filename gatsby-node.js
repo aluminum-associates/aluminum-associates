@@ -30,6 +30,18 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      faqTabs: sanityFaq {
+        title
+        slug {
+          current
+        }
+        tabs {
+          title
+          slug {
+            current
+          }
+        }
+      }
     }
   `)
 
@@ -39,12 +51,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = res.data.products.edges
   const categories = res.data.categories.edges
+  const tabs = res.data.faqTabs.tabs
 
   products.forEach(edge => {
     const path = edge.node.category
       ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
       : `/products/${edge.node.slug.current}`
-      
+
     createPage({
       path,
       component: require.resolve("./src/templates/product.js"),
@@ -58,6 +71,15 @@ exports.createPages = async ({ graphql, actions }) => {
       path,
       component: require.resolve("./src/templates/category.js"),
       context: { slug: edge.node.slug.current },
+    })
+  })
+
+  tabs.forEach(tab => {
+    const path = `/faq/${tab.slug.current}`
+    createPage({
+      path,
+      component: require.resolve("./src/templates/faq-tab.js"),
+      context: { slug: tab.slug.current },
     })
   })
 }
