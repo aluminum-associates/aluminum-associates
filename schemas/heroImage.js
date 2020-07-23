@@ -11,11 +11,5 @@ export default {
         hotspot: true,
       },
     },
-    {
-      name: "alternativeText",
-      title: "Alternative Text",
-      description: "Important for SEO and accessibility!",
-      type: "string",
-    },
   ],
 };
