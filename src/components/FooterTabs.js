@@ -8,7 +8,7 @@ export default function FooterTabs(props, context) {
   return (
     <div className="hero-footer">
       <div className="tabs is-boxed is-fullwidth">
-        <div className="container">
+        <div className="container" style={{ maxWidth: "75ch" }}>
           <ul>
             {props.tabs.map(tab => (
               <li

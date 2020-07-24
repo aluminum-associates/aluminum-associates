@@ -19,8 +19,26 @@ const FaqTab = ({ data }) => {
 
   const serializers = {
     types: {
-      table: props => {
-        return <pre>{props}</pre>
+      table: ({ node }) => {
+        return (
+          <table className="table is-bordered is-striped">
+            <tbody>
+              {node.rows.map(({ cells: row }, i) => {
+                return (
+                  <tr key={i} className="tr">
+                    {row.map((cell, i) => {
+                      return (
+                        <td key={i} className="td">
+                          {cell}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        )
       },
     },
   }
@@ -29,18 +47,18 @@ const FaqTab = ({ data }) => {
     <Layout title={title} description={metaDescription}>
       <div className="hero is-medium is-primary">
         <div className="hero-body">
-          <div className="container">
+          <div className="container" style={{ maxWidth: "75ch" }}>
             <h1 className="title is-size-2">
               Frequently Asked Installation Questions
             </h1>
           </div>
         </div>
-        <FooterTabs tabs={footerTabs} serializers={serializers} />
+        <FooterTabs tabs={footerTabs} />
       </div>
       <section className="section">
-        <div className="container">
+        <div className="container" style={{ maxWidth: "75ch" }}>
           <div className="content">
-            <PortableText blocks={_rawBody} />
+            <PortableText blocks={_rawBody} serializers={serializers} />
           </div>
         </div>
       </section>
