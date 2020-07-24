@@ -64,5 +64,6 @@ export default {
     { type: "blockImage" },
     { type: "embed" },
     { type: "table" },
+    { type: "gallery" },
   ],
 };
