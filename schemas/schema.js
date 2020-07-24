@@ -12,7 +12,7 @@ import product from "./product";
 import vendor from "./vendor";
 import testimonial from "./testimonial";
 import galleryImage from "./galleryImage";
-import gallery from "./gallery";
+import imageGallery from "./imageGallery";
 import heroSize from "./heroSize";
 import faqTabs from "./faqTabs";
 import card from "./card";
@@ -32,7 +32,7 @@ export default createSchema({
     testimonial,
     blockContent,
     blockImage,
-    gallery,
+    imageGallery,
     galleryImage,
     heroSize,
     card,

@@ -1,3 +1,4 @@
+import { BsTable } from "react-icons/bs";
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -8,6 +9,7 @@
  *    type: 'blockContent'
  *  }
  */
+
 export default {
   title: "Block Content",
   name: "blockContent",
@@ -62,8 +64,8 @@ export default {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     { type: "blockImage" },
+    { type: "imageGallery" },
     { type: "embed" },
-    { type: "table" },
-    { type: "gallery" },
+    { type: "table", icon: BsTable },
   ],
 };
