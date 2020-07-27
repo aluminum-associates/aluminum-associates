@@ -46,22 +46,31 @@ export default function Home({ data }) {
           </h3>
           <div className="flex-wrap">
             {vendors.map(vendor => {
-              const { id, logo, title } = vendor
+              const { id, title, logo, url } = vendor
               return (
-                <Img
+                <a
                   key={id}
-                  fixed={logo.asset.fixed}
-                  alt={title}
+                  className="mx-2 my-2"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    minWidth: "100px",
-                    maxHeight: "80px",
-                    marginRight: "1rem",
+                    display: "flex",
                     flex: 1,
-                    justifySelf: "center",
-                    alignSelf: "center",
                   }}
-                  imgStyle={{ objectFit: "contain" }}
-                />
+                >
+                  <Img
+                    fixed={logo.asset.fixed}
+                    alt={title}
+                    style={{
+                      minWidth: "100px",
+                      maxHeight: "80px",
+                      flex: 1,
+                      alignSelf: "center",
+                    }}
+                    imgStyle={{ objectFit: "contain" }}
+                  />
+                </a>
               )
             })}
           </div>
@@ -134,6 +143,7 @@ export const data = graphql`
             }
           }
         }
+        url
       }
       testimonials {
         id

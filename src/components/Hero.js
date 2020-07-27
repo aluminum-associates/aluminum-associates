@@ -12,7 +12,7 @@ const Hero = ({ size, fluid, fixed, children }) => {
     >
       <HeroOverlay>
         <div className="hero-body">
-          <div className="container">
+          <div className="container" style={{ maxWidth: "75ch" }}>
             <div className="content">{children}</div>
           </div>
         </div>
@@ -21,7 +21,7 @@ const Hero = ({ size, fluid, fixed, children }) => {
   ) : (
     <div className={`hero ${size} is-primary`}>
       <div className="hero-body">
-        <div className="container">
+        <div className="container" style={{ maxWidth: "75ch" }}>
           <div className="content">{children}</div>
         </div>
       </div>

@@ -18,7 +18,7 @@ const Services = ({ data }) => {
         <h1 className="title is-size-2">{title}</h1>
       </Hero>
       <section className="section">
-        <div className="container">
+        <div className="container" style={{ maxWidth: "75ch" }}>
           <div className="content">
             <PortableText blocks={_rawBody} />
           </div>

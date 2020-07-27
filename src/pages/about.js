@@ -37,13 +37,13 @@ const About = ({ data }) => {
     <div>
       <Layout title={title} description={metaDescription}>
         <Hero fluid={heroImage.asset.fluid} size={heroSize}>
-            <PortableText
-              blocks={_rawHeroCopy}
-              serializers={{ types: { block: BlockRenderer } }}
-            />
+          <PortableText
+            blocks={_rawHeroCopy}
+            serializers={{ types: { block: BlockRenderer } }}
+          />
         </Hero>
         <section className="section">
-          <div className="container">
+          <div className="container" style={{ maxWidth: "75ch" }}>
             <div className="content">
               <PortableText blocks={_rawBody} />
             </div>
