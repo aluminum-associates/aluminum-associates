@@ -31,6 +31,11 @@ export default {
       title: "Description",
       type: "blockContent",
     },
+    {
+      name: "url",
+      title: "URL",
+      type: "url",
+    },
   ],
   preview: {
     select: {
