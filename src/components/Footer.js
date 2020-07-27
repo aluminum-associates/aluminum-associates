@@ -5,7 +5,8 @@ import { AiFillPhone } from "react-icons/ai"
 import { FaFax } from "react-icons/fa"
 
 const Footer = () => {
-  const data = useStaticQuery(query)
+  const query = useStaticQuery(data)
+  const { categories } = query
 
   return (
     <footer className="footer has-background-white-ter">
@@ -50,15 +51,16 @@ const Footer = () => {
               <Link to="/products">Products </Link>
             </h3>
 
-            {data.categories.edges.map(({ node: product }) =>
-              product.parents.length === 0 ? (
-                <p key={product.id}>
-                  <Link to={`/products/${product.slug.current}`}>
-                    {product.title}
+            {categories.edges.map(({ node: product }) => {
+              const {id, title, parents, slug} = product
+              return parents.length === 0 ? (
+                <p key={id}>
+                  <Link to={`/products/${slug.current}`}>
+                    {title}
                   </Link>
                 </p>
               ) : null
-            )}
+            })}
           </div>
           <div className="footer-section">
             <h3 className="title is-size-5">
@@ -76,16 +78,14 @@ const Footer = () => {
             </h3>
           </div>
         </div>
-        <p className="has-text-centered">
-          &copy; Aluminum Associates 2020
-        </p>
+        <p className="has-text-centered">&copy; Aluminum Associates 2020</p>
       </div>
     </footer>
   )
 }
 
-export const query = graphql`
-  query {
+export const data = graphql`
+  {
     categories: allSanityCategory(sort: { fields: title }) {
       edges {
         node {

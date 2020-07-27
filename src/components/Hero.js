@@ -33,7 +33,7 @@ Hero.propTypes = {
   size: PropTypes.string.isRequired,
   fluid: PropTypes.object,
   fixed: PropTypes.object,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.object.isRequired,
 }
 
 export default Hero
