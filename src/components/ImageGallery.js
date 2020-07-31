@@ -10,7 +10,7 @@ export default function ImageGallery(props) {
 
   const imagesLength = props.images.length
   return (
-    <>
+    <div className="image-gallery-wrapper">
       {props.images.map(prop => (
         <button
           aria-label="Image thumbnail"
@@ -22,7 +22,7 @@ export default function ImageGallery(props) {
           style={{
             border: "0",
             background: "none",
-            outline: "none"
+            outline: "none",
           }}
         >
           <Img
@@ -63,6 +63,6 @@ export default function ImageGallery(props) {
           }}
         />
       ) : null}
-    </>
+    </div>
   )
 }
