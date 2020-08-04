@@ -34,22 +34,22 @@ export default function ImageGallery(props) {
       ))}
       {isOpen ? (
         <Lightbox
-          mainSrc={props.images[index].image.asset.fluid.src}
+          mainSrc={props.images[index].image.asset.fixed.src}
           nextSrc={
-            props.images[(index + 1) % imagesLength].image.asset.fluid.src
+            props.images[(index + 1) % imagesLength].image.asset.fixed.src
           }
           prevSrc={
             props.images[(index + imagesLength - 1) % imagesLength].image.asset
-              .fluid.src
+              .fixed.src
           }
-          mainSrcThumbnail={props.images[index].image.asset.fluid.base64}
+          mainSrcThumbnail={props.images[index].image.asset.fixed.base64}
           nextSrcThumbnail={
-            props.images[(index + 1) % imagesLength].image.asset.fluid.base64
+            props.images[(index + 1) % imagesLength].image.asset.fixed.base64
           }
           imageTitle={props.images[index].alternativeText}
           prevSrcThumbnail={
             props.images[(index + imagesLength - 1) % imagesLength].image.asset
-              .fluid.base64
+              .fixed.base64
           }
           onCloseRequest={() => {
             setLightbox(!isOpen)

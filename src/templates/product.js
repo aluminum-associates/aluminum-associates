@@ -194,6 +194,9 @@ export const data = graphql`
             fluid(maxWidth: 800, maxHeight: 600) {
               ...GatsbySanityImageFluid
             }
+            fixed(width: 800) {
+              ...GatsbySanityImageFixed
+            }
           }
           hotspot {
             x
