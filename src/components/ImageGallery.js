@@ -1,54 +1,74 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import Img from "gatsby-image"
+import { motion } from "framer-motion"
 import Lightbox from "react-image-lightbox"
 
 import "react-image-lightbox/style.css"
 
-export default function ImageGallery(props) {
+export default function ImageGallery({ images }) {
   const [isOpen, setLightbox] = useState(false)
   const [index, setIndex] = useState(0)
 
-  const imagesLength = props.images.length
-  return (
-    <div className="image-gallery-wrapper">
-      {props.images.map(prop => (
-        <button
-          aria-label="Image thumbnail"
-          onClick={() => {
-            setLightbox(!isOpen)
-            setIndex(props.images.indexOf(prop))
-          }}
-          key={prop.image.asset.id}
-          style={{
-            border: "0",
-            background: "none",
-            outline: "none",
-          }}
-        >
-          <Img
-            fluid={prop.image.asset.fluid}
-            alt={prop.alternativeText}
-            className="gallery-thumbnail card"
-          />
-        </button>
-      ))}
+  return images ? (
+    <div
+      className="image-gallery-wrapper"
+      style={{
+        maxHeight: "700px",
+        minHeight: "600px",
+      }}
+    >
+      {images.map(prop => {
+        const { image, alternativeText } = prop
+
+        return (
+          <motion.button
+            aria-label="Image thumbnail"
+            onClick={() => {
+              setLightbox(!isOpen)
+              setIndex(images.indexOf(prop))
+            }}
+            key={image.asset.id}
+            style={{
+              border: "0",
+              background: "none",
+              outline: "none",
+              cursor: "click",
+              width: "100%",
+              height: "100%",
+            }}
+            initial={{
+              scale: 1,
+            }}
+            whileHover={{
+              scale: 1.05,
+            }}
+          >
+            <Img
+              fluid={image.asset.fluid}
+              alt={alternativeText}
+              className="gallery-thumbnail card"
+              style={{ width: "100%", height: "100%" }}
+              imgStyle={{ objectFit: "contain" }}
+            />
+          </motion.button>
+        )
+      })}
       {isOpen ? (
         <Lightbox
-          mainSrc={props.images[index].image.asset.fixed.src}
-          nextSrc={
-            props.images[(index + 1) % imagesLength].image.asset.fixed.src
-          }
+          mainSrc={images[index].image.asset.fixed.src}
+          nextSrc={images[(index + 1) % images.length].image.asset.fixed.src}
           prevSrc={
-            props.images[(index + imagesLength - 1) % imagesLength].image.asset
+            images[(index + images.length - 1) % images.length].image.asset
               .fixed.src
           }
-          mainSrcThumbnail={props.images[index].image.asset.fixed.base64}
+          mainSrcThumbnail={images[index].image.asset.fixed.base64}
           nextSrcThumbnail={
-            props.images[(index + 1) % imagesLength].image.asset.fixed.base64
+            images[(index + 1) % images.length].image.asset.fixed.base64
           }
-          imageTitle={props.images[index].alternativeText}
+          imageTitle={images[index].alternativeText}
           prevSrcThumbnail={
-            props.images[(index + imagesLength - 1) % imagesLength].image.asset
+            images[(index + images.length - 1) % images.length].image.asset
               .fixed.base64
           }
           onCloseRequest={() => {
@@ -56,13 +76,17 @@ export default function ImageGallery(props) {
             setIndex(0)
           }}
           onMoveNextRequest={() => {
-            setIndex((index + 1) % imagesLength)
+            setIndex((index + 1) % images.length)
           }}
           onMovePrevRequest={() => {
-            setIndex((index + imagesLength - 1) % imagesLength)
+            setIndex((index + images.length - 1) % images.length)
           }}
         />
       ) : null}
     </div>
-  )
+  ) : null
+}
+
+ImageGallery.propTypes = {
+  images: PropTypes.array.isRequired,
 }

@@ -13,7 +13,7 @@ export default function Layout(props) {
           class: "has-navbar-fixed-top",
         }}
       />
-      <div className="site">
+      <div className="site has-background-white-bis">
         <Navbar />
         <main className="page-content">{props.children}</main>
         <Footer />
