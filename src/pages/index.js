@@ -1,5 +1,5 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { useRef } from "react"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
@@ -9,16 +9,28 @@ import Notification from "../components/Notification"
 import Hero from "../components/Hero"
 import Card from "../components/Card"
 
+const scrollToRef = ref =>
+  window.scrollTo({
+    top: ref.current.offsetTop - 122,
+    behavior: "smooth",
+  })
+
 export default function Home({ data }) {
   const { heroSize, cards, vendors, testimonials } = data.page
+  const contactRef = useRef(null)
 
   return (
     <Layout title="Home">
       <Hero size={heroSize}>
         <h1 className="title is-size-2 mb-6">Windows, Doors and More</h1>
-        <Link to="#contact">
-          <button className="button is-danger is-medium">Contact Us</button>
-        </Link>
+        <button
+          className="button is-danger is-medium"
+          onClick={() => {
+            scrollToRef(contactRef)
+          }}
+        >
+          Contact Us
+        </button>
       </Hero>
       <Notification />
       <section className="section-services has-background-white-bis">
@@ -93,8 +105,8 @@ export default function Home({ data }) {
           </Carousel>
         </div>
       </section>
-      <section id="contact" className="section-quote-form">
-        <div className="container">
+      <section className="section-quote-form">
+        <div ref={contactRef} className="container">
           <ContactForm title="Request a Quote" className="form" />
         </div>
       </section>
