@@ -49,9 +49,11 @@ const Product = ({ data }) => {
                   </a>
                 )}{" "}
                 -{" "}
-                <Link to={`/products/${category.slug.current}`}>
-                  {category.title}
-                </Link>
+                {category && (
+                  <Link to={`/products/${category.slug.current}`}>
+                    {category.title}
+                  </Link>
+                )}
               </h3>
               <PortableText blocks={_rawDescription} />
               {standardFeatures || optionalFeatures ? (
