@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import BackgroundImage from "gatsby-background-image"
-import HeroOverlay from "../components/HeroOverlay"
+import HeroOverlay from "./HeroOverlay"
 
 const Hero = ({ size, fluid, fixed, children }) => {
   return fixed || fluid ? (

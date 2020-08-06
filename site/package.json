@@ -1,0 +1,64 @@
+{
+  "name": "site",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Alex Low",
+  "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
+    "bulma": "^0.9.0",
+    "framer-motion": "^2.3.0",
+    "gatsby": "^2.19.7",
+    "gatsby-background-image": "^0.10.2",
+    "gatsby-cli": "^2.12.77",
+    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-manifest": "^2.2.39",
+    "gatsby-plugin-netlify-cache": "^1.2.0",
+    "gatsby-plugin-offline": "^3.0.32",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sass": "^2.1.29",
+    "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-plugin-sitemap": "^2.4.2",
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-source-sanity": "^5.0.6",
+    "gatsby-transformer-sharp": "^2.3.13",
+    "get-youtube-id": "^1.0.1",
+    "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.10.0",
+    "react-image-lightbox": "^5.1.1",
+    "react-slick": "^0.25.2",
+    "react-spring": "^8.0.27",
+    "react-transition-group": "^4.4.1",
+    "react-youtube": "^7.11.2",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "dev": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "yarn run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}

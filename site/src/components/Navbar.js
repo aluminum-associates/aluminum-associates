@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import ProductDropdown from "../components/ProductDropdown"
+import ProductDropdown from "./ProductDropdown"
 import Logo from "../images/aa-logo.png"
 import { AiFillPhone } from "react-icons/ai"
 
