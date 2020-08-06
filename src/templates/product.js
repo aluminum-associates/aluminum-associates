@@ -5,6 +5,7 @@ import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
+import Accordion from "../components/Accordion"
 
 const Product = ({ data }) => {
   const {
@@ -50,6 +51,22 @@ const Product = ({ data }) => {
                   </Link>
                 </h3>
                 <PortableText blocks={_rawDescription} />
+                {standardFeatures || optionalFeatures ? (
+                  <div className="menus my-2">
+                    {standardFeatures.length > 0 && (
+                      <Accordion
+                        title="Standard Features"
+                        list={standardFeatures}
+                      />
+                    )}
+                    {optionalFeatures.length > 0 && (
+                      <Accordion
+                        title="Optional Features"
+                        list={optionalFeatures}
+                      />
+                    )}
+                  </div>
+                ) : null}
               </div>
             </div>
           ) : (
@@ -59,30 +76,29 @@ const Product = ({ data }) => {
                 {vendor.title}
               </h3>
               <PortableText blocks={_rawDescription} />
+              {standardFeatures || optionalFeatures ? (
+                <div className="menus my-2">
+                  {standardFeatures.length > 0 && (
+                    <Accordion
+                      title="Standard Features"
+                      list={standardFeatures}
+                    />
+                  )}
+                  {optionalFeatures.length > 0 && (
+                    <Accordion
+                      title="Optional Features"
+                      list={optionalFeatures}
+                    />
+                  )}
+                </div>
+              ) : null}
             </div>
           )}
         </section>
         <hr style={{ border: "1px solid #CFCFCF", margin: "1.5rem" }} />
         <section className="section">
           <h2 className="title is-size-3 is-size-4-mobile">More Detail</h2>
-          <div className="details-wrapper">
-            <div className="menu">
-              <p className="menu-label is-size-5">Standard Features</p>
-              <ul className="menu-list">
-                {standardFeatures.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="menu">
-              <p className="menu-label is-size-5">Optional Features</p>
-              <ul className="menu-list">
-                {optionalFeatures.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <div className="details-wrapper"></div>
         </section>
       </div>
     </Layout>
