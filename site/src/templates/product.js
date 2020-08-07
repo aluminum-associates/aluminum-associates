@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
 import Accordion from "../components/Accordion"
+import { imageGallery, blockStyles } from "../components/Serializers"
 
 const Product = ({ data }) => {
   const {
@@ -80,7 +81,12 @@ const Product = ({ data }) => {
             <hr style={{ border: "1px solid #CFCFCF", margin: "1.5rem" }} />
             <section className="section">
               <h2 className="title is-size-3 is-size-4-mobile">More Detail</h2>
-              <PortableText blocks={_rawAdditionalInfo} />
+              <PortableText
+                blocks={_rawAdditionalInfo}
+                serializers={{
+                  types: { imageGallery: imageGallery, block: blockStyles },
+                }}
+              />
             </section>
           </>
         )}
