@@ -5,43 +5,44 @@ on:
       - master
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
-      with:
-        path: "**/node_modules"
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-    - uses: actions/cache@v2
-      with:
-        path: site/public
-        key: cache-public-${{ hashFiles('site/public/**') }}
-        restore-keys: |
-          cache-public-
+      - uses: actions/cache@v2
+        with:
+          path: site/public
+          key: cache-public-${{ hashFiles('site/public/**') }}
+          restore-keys: |
+            cache-public-
 
-    - uses: actions/cache@v2
-      with:
-        path: site/.cache
-        key: cache-cache-${{ hashFiles('site/.cache/**') }}
-        restore-keys: |
-          cache-cache-
+      - uses: actions/cache@v2
+        with:
+          path: site/.cache
+          key: cache-cache-${{ hashFiles('site/.cache/**') }}
+          restore-keys: |
+            cache-cache-
 
-    - name: Install packages
-      run: yarn install
+      - name: Install packages
+        run: yarn install
 
-    - name: Run build
-      env: 
-        GATSBY_GMAPS_API_KEY: ${{ secrets.GATSBY_GMAPS_API_KEY }}
-        GATSBY_SANITY_ID: ${{ secrets.GATSBY_SANITY_ID }}
-        GATSBY_SANITY_TOKEN: ${{ secrets.GATSBY_SANITY_TOKEN }}
-        GATSBY_SANITY_WATCHMODE: ${{ secrets.GATSBY_SANITY_WATCHMODE }}
-      run: yarn workspace site build
+      - name: Run build
+        env: 
+          GATSBY_GMAPS_API_KEY: ${{ secrets.GATSBY_GMAPS_API_KEY }}
+          GATSBY_SANITY_ID: ${{ secrets.GATSBY_SANITY_ID }}
+          GATSBY_SANITY_TOKEN: ${{ secrets.GATSBY_SANITY_TOKEN }}
+          GATSBY_SANITY_WATCHMODE: ${{ secrets.GATSBY_SANITY_WATCHMODE }}
+        run: yarn workspace site build
 
-    - name: Deploy to Netlify
-      env: 
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Deploy to Netlify
+        env: 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
