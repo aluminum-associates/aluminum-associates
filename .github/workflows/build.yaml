@@ -10,21 +10,36 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/cache@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn lock
+        uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - uses: actions/cache@v2
+      - name: Cache node_modules
+        uses: actions.cache@v2
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-${{ matrix.node-version }}-nodemodules-${{ hasFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.node-version }}-nodemodules-
+
+      - name: Cache Gatsby public
+        uses: actions/cache@v2
         with:
           path: site/public
           key: cache-public-${{ hashFiles('site/public/**') }}
           restore-keys: |
             cache-public-
 
-      - uses: actions/cache@v2
+      - name: Cache Gatsby .cache
+        uses: actions/cache@v2
         with:
           path: site/.cache
           key: cache-cache-${{ hashFiles('site/.cache/**') }}
@@ -32,7 +47,10 @@ jobs:
             cache-cache-
 
       - name: Install packages
-        run: yarn install
+        run: yarn
+        if: |
+          steps.cache-yarn-cache.outputs.cache-hit != 'true' ||
+          steps.cache-node-modules.outputs.cache-hit != 'true'
 
       - name: Run build
         env:
