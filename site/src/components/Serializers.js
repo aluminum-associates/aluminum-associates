@@ -1,18 +1,21 @@
 import React, { createElement } from "react"
 import PortableText from "@sanity/block-content-to-react"
-import ImageGallery from "../components/ImageGallery"
+import imageUrlBuilder from "@sanity/image-url"
+
+const urlFor = src => {
+  return imageUrlBuilder({
+    projectId: "b4m1lsyt",
+    dataset: "production",
+  }).image(src)
+}
 
 export const imageGallery = ({ node }) => {
   const { gallery } = node
   return (
-    // <pre>{JSON.stringify(props, null, 2)}</pre>
     <div>
-      {gallery.map(galleryImage => {
-        const {image, alt} = galleryImage
-        return (
-          <img src={image.asset.src} alt={alt} />
-          // <pre>{JSON.stringify(image, null, 2)}</pre>
-        )
+      {gallery.map((galleryImage, i) => {
+        const { image, alt } = galleryImage
+        return <img key={i} src={urlFor(image).url()} alt={alt} />
       })}
     </div>
   )
