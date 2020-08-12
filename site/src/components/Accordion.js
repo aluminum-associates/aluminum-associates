@@ -37,6 +37,7 @@ const Accordion = ({ title, list }) => {
             animate="visible"
             exit="hidden"
             variants={variants}
+            style={{ listStyle: "disc" }}
           >
             {list.map((item, i) => (
               <li key={i}>{item}</li>
