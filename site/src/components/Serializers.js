@@ -12,12 +12,31 @@ const urlFor = src => {
 export const imageGallery = ({ node }) => {
   const { gallery } = node
   return (
-    <div>
+    <ul
+      style={{
+        display: "grid",
+        gridTemplate: "auto / repeat(auto-fill, minmax(200px, 1fr))",
+        gridGap: "12px",
+        padding: "1rem 0"
+      }}
+    >
       {gallery.map((galleryImage, i) => {
         const { image, alt } = galleryImage
-        return <img key={i} src={urlFor(image).url()} alt={alt} />
+        return (
+          <li key={i}>
+            <img
+              src={urlFor(image).url()}
+              alt={alt}
+              style={{
+                minWidth: "60px",
+                minHeight: "100px",
+                maxHeight: "200px",
+              }}
+            />
+          </li>
+        )
       })}
-    </div>
+    </ul>
   )
 }
 

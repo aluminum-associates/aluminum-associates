@@ -7,7 +7,7 @@ export default function HeroOverlay(props) {
       style={{
         minWidth: "100%",
         minHeight: "100%",
-        backgroundColor: "rgba(0,0,0,0.55)",
+        background: "radial-gradient(transparent, rgba(0,0,0,0.45))",
         flex: "1 0 auto",
         display: "flex",
         alignItems: "center",

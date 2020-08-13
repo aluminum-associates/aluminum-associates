@@ -16,15 +16,18 @@ const scrollToRef = ref =>
   })
 
 export default function Home({ data }) {
-  const { heroSize, cards, vendors, testimonials } = data.page
+  const { heroSize, heroImages, cards, vendors, testimonials } = data.page
   const contactRef = useRef(null)
 
   return (
     <Layout title="Home">
-      <Hero size={heroSize}>
+      <Hero
+        size={heroSize}
+        fluid={heroImages ? heroImages[0].asset.fluid : null}
+      >
         <h1 className="title is-size-2 mb-6">Windows, Doors and More</h1>
         <button
-          className="button is-danger is-medium"
+          className="button is-warning is-medium"
           onClick={() => {
             scrollToRef(contactRef)
           }}
