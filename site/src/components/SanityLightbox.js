@@ -7,22 +7,40 @@ import { urlFor } from "../components/Serializers"
 const SanityLightbox = ({ images }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
-  console.log(images[photoIndex].image.asset) //need to use urlFor() to grab images
+
   return (
     <div>
-      {images.map(({ node: image }, i) => {
-        return (
-          <button
-            key={i}
-            onClick={() => {
-              setIsOpen(!isOpen)
-              setPhotoIndex(i)
-            }}
-          >
-            {JSON.stringify(image, null, 2)}
-          </button>
-        )
-      })}
+      <div className="sanity-image-gallery">
+        {images.map((node, i) => {
+          const { image, alt } = node
+
+          return (
+            <button
+              key={i}
+              onClick={() => {
+                setIsOpen(!isOpen)
+                setPhotoIndex(i)
+              }}
+              style={{
+                flex: 1,
+                border: 0,
+                margin: "1rem",
+                background: "none",
+                cursor: "pointer",
+              }}
+            >
+              <img
+                src={urlFor(image.asset)}
+                alt={alt}
+                style={{
+                  minWidth: "200px",
+                  maxWidth: "100%",
+                }}
+              />
+            </button>
+          )
+        })}
+      </div>
       {isOpen && (
         <Lightbox
           imageTitle={images[photoIndex].image.alt}

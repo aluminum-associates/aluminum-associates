@@ -3,7 +3,7 @@ import PortableText from "@sanity/block-content-to-react"
 import imageUrlBuilder from "@sanity/image-url"
 import SanityLightbox from "../components/SanityLightbox"
 
-const urlFor = src => {
+export const urlFor = src => {
   return imageUrlBuilder({
     projectId: process.env.GATSBY_SANITY_ID,
     dataset: process.env.GATSBY_SANITY_DATASET,
@@ -12,34 +12,7 @@ const urlFor = src => {
 
 export const imageGallery = ({ node }) => {
   const { gallery } = node
-  return (
-    // <ul
-    //   style={{
-    //     display: "grid",
-    //     gridTemplate: "auto / repeat(auto-fill, minmax(200px, 1fr))",
-    //     gridGap: "12px",
-    //     padding: "1rem 0"
-    //   }}
-    // >
-    //   {gallery.map((galleryImage, i) => {
-    //     const { image, alt } = galleryImage
-    //     return (
-    //       <li key={i}>
-    //         <img
-    //           src={urlFor(image).url()}
-    //           alt={alt}
-    //           style={{
-    //             minWidth: "60px",
-    //             minHeight: "100px",
-    //             maxHeight: "200px",
-    //           }}
-    //         />
-    //       </li>
-    //     )
-    //   })}
-    // </ul>
-    <SanityLightbox images={gallery} />
-  )
+  return <SanityLightbox images={gallery} />
 }
 
 export const blockStyles = props => {
