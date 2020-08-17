@@ -50,13 +50,11 @@
 .image-gallery-wrapper
     display: grid
     grid-template: auto / repeat(auto-fill, minmax(90px, 1fr))
-    grid-auto-rows: 90px
     grid-row-gap: $gap / 3
     grid-column-gap: $gap / 6
 
     & > button:first-child
         grid-column: 1 / -1
-        grid-row: 1 / span 3
 
 .card-wrapper
     flex: 1

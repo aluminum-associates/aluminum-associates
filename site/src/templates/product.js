@@ -145,7 +145,7 @@ export const data = graphql`
         image {
           asset {
             id
-            fluid(maxWidth: 800, maxHeight: 600) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
             fixed(width: 800) {

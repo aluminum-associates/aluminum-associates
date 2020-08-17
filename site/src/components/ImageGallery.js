@@ -11,13 +11,7 @@ export default function ImageGallery({ images }) {
   const [index, setIndex] = useState(0)
 
   return images ? (
-    <div
-      className="image-gallery-wrapper"
-      style={{
-        maxHeight: "700px",
-        minHeight: "600px",
-      }}
-    >
+    <div className="image-gallery-wrapper">
       {images.map(prop => {
         const { image, alternativeText } = prop
 
@@ -34,8 +28,8 @@ export default function ImageGallery({ images }) {
               background: "none",
               outline: "none",
               cursor: "click",
-              width: "100%",
-              height: "100%",
+              maxHeight: "300px",
+              maxWidth: "auto",
             }}
             initial={{
               scale: 1,
@@ -48,8 +42,14 @@ export default function ImageGallery({ images }) {
               fluid={image.asset.fluid}
               alt={alternativeText}
               className="gallery-thumbnail card"
-              style={{ width: "100%", height: "100%" }}
-              imgStyle={{ objectFit: "contain" }}
+              style={{
+                backgroundColor: "transparent",
+                maxHeight: "300px",
+                maxWidth: "auto",
+              }}
+              imgStyle={{
+                objectFit: "contain",
+              }}
             />
           </motion.button>
         )
