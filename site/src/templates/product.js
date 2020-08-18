@@ -8,7 +8,7 @@ import Accordion from "../components/Accordion"
 import {
   imageGallery,
   blockStyles,
-  youtubePlayer,
+  videoEmbed,
 } from "../components/Serializers"
 
 const Product = ({ data }) => {
@@ -90,7 +90,7 @@ const Product = ({ data }) => {
                   types: {
                     imageGallery: imageGallery,
                     block: blockStyles,
-                    youtubePlayer: youtubePlayer,
+                    videoEmbed: videoEmbed,
                   },
                 }}
               />

@@ -4,7 +4,7 @@ import { MdOndemandVideo } from "react-icons/md";
 
 const EmbedPreview = ({ value }) => {
   const { url } = value;
-  return <ReactPlayer url={url} />;
+  return <ReactPlayer controls={true} url={url} width="100%" />;
 };
 
 export default {

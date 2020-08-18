@@ -16,8 +16,13 @@ export const imageGallery = ({ node }) => {
   return <SanityLightbox images={gallery} />
 }
 
-export const youtubePlayer = ({ url }) => {
-  return <ReactPlayer url={url} />
+export const videoEmbed = ({ node }) => {
+  const { url } = node
+  return (
+    <div style={{ margin: "2rem auto" }}>
+      <ReactPlayer url={url} controls={true} />
+    </div>
+  )
 }
 
 export const blockStyles = props => {
