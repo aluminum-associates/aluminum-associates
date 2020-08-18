@@ -9,7 +9,8 @@
   "scripts": {
     "start": "sanity start",
     "test": "sanity check",
-    "sanity": "sanity"
+    "sanity": "sanity",
+    "sgd": "sanity graphql deploy && sanity deploy"
   },
   "keywords": [
     "sanity"
