@@ -17,7 +17,7 @@ import heroSize from "./heroSize";
 import faqTabs from "./faqTabs";
 import card from "./card";
 import productDocument from "./productDocument";
-import embed from "./embed";
+import videoEmbed from "./videoEmbed";
 
 export default createSchema({
   name: "default",
@@ -38,6 +38,6 @@ export default createSchema({
     card,
     faqTabs,
     productDocument,
-    embed,
+    videoEmbed,
   ]),
 });

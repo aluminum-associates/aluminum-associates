@@ -5,7 +5,11 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
 import Accordion from "../components/Accordion"
-import { imageGallery, blockStyles } from "../components/Serializers"
+import {
+  imageGallery,
+  blockStyles,
+  youtubePlayer,
+} from "../components/Serializers"
 
 const Product = ({ data }) => {
   const {
@@ -83,7 +87,11 @@ const Product = ({ data }) => {
               <PortableText
                 blocks={_rawAdditionalInfo}
                 serializers={{
-                  types: { imageGallery: imageGallery, block: blockStyles },
+                  types: {
+                    imageGallery: imageGallery,
+                    block: blockStyles,
+                    youtubePlayer: youtubePlayer,
+                  },
                 }}
               />
             </section>

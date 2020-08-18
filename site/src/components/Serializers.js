@@ -1,6 +1,7 @@
 import React, { createElement } from "react"
 import PortableText from "@sanity/block-content-to-react"
 import imageUrlBuilder from "@sanity/image-url"
+import ReactPlayer from "react-player/youtube"
 import SanityLightbox from "../components/SanityLightbox"
 
 export const urlFor = src => {
@@ -13,6 +14,10 @@ export const urlFor = src => {
 export const imageGallery = ({ node }) => {
   const { gallery } = node
   return <SanityLightbox images={gallery} />
+}
+
+export const youtubePlayer = ({ url }) => {
+  return <ReactPlayer url={url} />
 }
 
 export const blockStyles = props => {

@@ -65,7 +65,7 @@ export default {
     // as a block type.
     { type: "blockImage" },
     { type: "imageGallery" },
-    { type: "embed" },
+    { type: "videoEmbed" },
     { type: "table", icon: BsTable },
   ],
 };

@@ -1,16 +1,17 @@
 import React from "react";
-import Embed from "react-embed";
-import { GrMultimedia } from "react-icons/gr";
+import ReactPlayer from "react-player";
+import { MdOndemandVideo } from "react-icons/md";
 
-const EmbedPreview = ({ url }) => {
-  return <Embed url={url} />;
+const EmbedPreview = ({ value }) => {
+  const { url } = value;
+  return <ReactPlayer url={url} />;
 };
 
 export default {
-  name: "embed",
+  name: "videoEmbed",
   title: "Embed Link",
   type: "object",
-  icon: GrMultimedia,
+  icon: MdOndemandVideo,
   fields: [
     {
       name: "url",
