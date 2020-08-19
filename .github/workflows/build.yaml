@@ -50,6 +50,7 @@ jobs:
           GATSBY_GMAPS_API_KEY: ${{ secrets.GATSBY_GMAPS_API_KEY }}
           GATSBY_SANITY_ID: ${{ secrets.GATSBY_SANITY_ID }}
           GATSBY_SANITY_TOKEN: ${{ secrets.GATSBY_SANITY_TOKEN }}
+          GATSBY_SANITY_DATASET: ${{ secrets.GATSBY_SANITY_DATASET }}
           GATSBY_SANITY_WATCHMODE: ${{ secrets.GATSBY_SANITY_WATCHMODE }}
         run: yarn workspace site build
 
