@@ -6,7 +6,7 @@ const logo = () => {
     alt="Arnie the Armadillo"
     style={{
       width: "auto",
-      height: "3rem",
+      height: "1.25rem",
       filter: ""
     }}
   />;

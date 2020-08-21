@@ -1,11 +1,32 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
+import { useLocation } from "@reach/router"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import ProductDropdown from "./ProductDropdown"
 import Logo from "../images/aa-logo.png"
 import { AiFillPhone } from "react-icons/ai"
 
-export default function Navbar() {
+const Navbar = () => {
   const [menu, setMenu] = useState(false)
+  const currentPath = useLocation().pathname
+
+  const data = useStaticQuery(graphql`
+    {
+      allTabs: sanityFaq {
+        title
+        metaDescription
+        slug {
+          current
+        }
+        tabs {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  const { tabs } = data.allTabs
 
   return (
     <nav className="navbar is-fixed-top">
@@ -69,9 +90,10 @@ export default function Navbar() {
               Services
             </Link>
             <Link
-              to="/faq/installation"
-              className="navbar-item is-size-5"
-              activeClassName="is-active"
+              to={`/faq/${tabs[0].slug.current}`}
+              className={`navbar-item is-size-5 ${
+                currentPath.includes("faq") ? "is-active" : ""
+              }`}
             >
               FAQ
             </Link>
@@ -92,3 +114,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar

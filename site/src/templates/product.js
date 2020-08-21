@@ -13,17 +13,17 @@ import {
 
 const Product = ({ data }) => {
   const {
-    _rawDescription,
-    _rawAdditionalInfo,
-    heroImage,
-    heroSize,
-    images,
     title,
-    standardFeatures,
-    optionalFeatures,
-    documentation,
+    images,
     vendor,
     category,
+    heroSize,
+    heroImage,
+    documentation,
+    _rawDescription,
+    standardFeatures,
+    optionalFeatures,
+    _rawAdditionalInfo,
   } = data.sanityProduct
 
   return (
