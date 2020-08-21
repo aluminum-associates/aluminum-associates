@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 
-export default function FooterTabs(props, context) {
+const FooterTabs = (props, context) => {
   const url = useLocation().pathname
 
   return (
@@ -24,3 +24,5 @@ export default function FooterTabs(props, context) {
     </div>
   )
 }
+
+export default FooterTabs
