@@ -8,7 +8,7 @@ import { AiFillPhone } from "react-icons/ai"
 const Navbar = () => {
   const [menu, setMenu] = useState(false)
   const currentPath = useLocation().pathname
-  console.log(currentPath.includes("faq"))
+
   const data = useStaticQuery(graphql`
     {
       allTabs: sanityFaq {
