@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 
 const FooterTabs = (props, context) => {
-  const url = useLocation().pathname
+  const currentPath = useLocation().pathname
 
   return (
     <div className="hero-footer">
@@ -13,7 +13,7 @@ const FooterTabs = (props, context) => {
             {props.tabs.map(tab => {
               const { title, slug } = tab
               return (
-                <li key={title} className={url === slug ? "is-active" : ""}>
+                <li key={title} className={currentPath === slug ? "is-active" : ""}>
                   <Link to={slug}>{title}</Link>
                 </li>
               )
