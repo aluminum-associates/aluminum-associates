@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react"
-import { InView } from "react-intersection-observer"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
