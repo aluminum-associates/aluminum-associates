@@ -1,12 +1,12 @@
-import React, { useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import Layout from "../components/Layout"
 import ContactForm from "../components/ContactForm"
 import Carousel from "../components/Carousel"
 import Testimonial from "../components/Testimonial"
 import Notification from "../components/Notification"
 import Hero from "../components/Hero"
+import VendorBanner from "../components/VendorBanner"
 import Card from "../components/Card"
 
 const scrollToRef = ref =>
@@ -16,8 +16,25 @@ const scrollToRef = ref =>
   })
 
 export default function Home({ data }) {
-  const { heroSize, heroImages, cards, vendors, testimonials } = data.page
+  const { heroSize, heroImages, cards, testimonials } = data.page
+  const [visible, setVisible] = useState(false)
   const contactRef = useRef(null)
+  const vendorRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If ref is intersecting, setVisible to load component
+        entry.isIntersecting && setVisible(true)
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    )
+    vendorRef.current && observer.observe(vendorRef.current)
+  })
 
   return (
     <Layout title="Home">
@@ -54,41 +71,12 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
-      <section className="section">
+      <section ref={vendorRef} className="section">
         <div className="container">
           <h3 className="subtitle is-uppercase has-text-centered mb-5">
             Vendors We Work With
           </h3>
-          <div className="flex-wrap">
-            {vendors.map(vendor => {
-              const { id, title, logo, url } = vendor
-              return (
-                <a
-                  key={id}
-                  className="mx-2 my-2"
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    flex: 1,
-                  }}
-                >
-                  <Img
-                    fixed={logo.asset.fixed}
-                    alt={title}
-                    style={{
-                      minWidth: "100px",
-                      maxHeight: "80px",
-                      flex: 1,
-                      alignSelf: "center",
-                    }}
-                    imgStyle={{ objectFit: "contain" }}
-                  />
-                </a>
-              )
-            })}
-          </div>
+          {visible ? <VendorBanner /> : null}
         </div>
       </section>
       <section className="section-testimonial">
@@ -108,8 +96,8 @@ export default function Home({ data }) {
           </Carousel>
         </div>
       </section>
-      <section className="section-quote-form">
-        <div ref={contactRef} className="container">
+      <section ref={contactRef} className="section-quote-form">
+        <div className="container">
           <ContactForm title="Request a Quote" className="form" />
         </div>
       </section>
@@ -148,18 +136,7 @@ export const data = graphql`
         title
         body
       }
-      vendors {
-        id
-        title
-        logo {
-          asset {
-            fixed(width: 125) {
-              ...GatsbySanityImageFixed
-            }
-          }
-        }
-        url
-      }
+
       testimonials {
         id
         _rawQuote
