@@ -36,7 +36,16 @@ const Product = ({ data }) => {
       </Hero>
       <div className="container" style={{ maxWidth: "960px" }}>
         <section className="section">
-          <div className="product-wrapper">
+          <div
+            className="product-wrapper"
+            style={
+              images.length === 0
+                ? {
+                    gridTemplateColumns: "1fr",
+                  }
+                : null
+            }
+          >
             {images && images.length > 0 ? (
               <ImageGallery images={images} />
             ) : null}
