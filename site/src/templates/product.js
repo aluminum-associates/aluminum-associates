@@ -9,6 +9,7 @@ import {
   imageGallery,
   blockStyles,
   videoEmbed,
+  list,
 } from "../components/Serializers"
 
 const Product = ({ data }) => {
@@ -51,7 +52,7 @@ const Product = ({ data }) => {
             ) : null}
             <div className="product-copy">
               <h2 className="title is-size-3 is-size-4-mobile">{title}</h2>
-              <h3 className="subtitle is-size-6">
+              <h3 className="subtitle is-size-6 mb-6">
                 {vendor && (
                   <a
                     href={vendor.url}
@@ -68,7 +69,17 @@ const Product = ({ data }) => {
                   </Link>
                 )}
               </h3>
-              <PortableText blocks={_rawDescription} />
+              <PortableText
+                blocks={_rawDescription}
+                serializers={{
+                  types: {
+                    imageGallery: imageGallery,
+                    block: blockStyles,
+                    videoEmbed: videoEmbed,
+                  },
+                  list,
+                }}
+              />
               {standardFeatures || optionalFeatures ? (
                 <div className="menus my-2">
                   {standardFeatures.length > 0 && (
@@ -101,6 +112,7 @@ const Product = ({ data }) => {
                     block: blockStyles,
                     videoEmbed: videoEmbed,
                   },
+                  list,
                 }}
               />
             </section>

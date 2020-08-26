@@ -25,6 +25,18 @@ export const videoEmbed = ({ node }) => {
   )
 }
 
+export const list = ({ children }) => (
+  <ul
+    style={{
+      listStyleType: "disc",
+      listStylePosition: "inside",
+      marginBottom: "1rem",
+    }}
+  >
+    {children}
+  </ul>
+)
+
 export const blockStyles = props => {
   const { style = "normal" } = props.node
 
@@ -32,7 +44,7 @@ export const blockStyles = props => {
     case "h1":
       return createElement(
         style,
-        { className: "title is-size-1  is-size-3-mobile" },
+        { className: "title is-size-2  is-size-4-mobile" },
         props.children
       )
       break
@@ -40,7 +52,7 @@ export const blockStyles = props => {
     case "h2":
       return createElement(
         style,
-        { className: "title is-size-3 is-size-5-mobile" },
+        { className: "title is-size-4 is-size-6-mobile" },
         props.children
       )
       break
@@ -48,7 +60,7 @@ export const blockStyles = props => {
     case "h3":
       return createElement(
         style,
-        { className: "title is-size-4 is-size-6-mobile" },
+        { className: "title is-size-5 is-size-6-mobile" },
         props.children
       )
       break
