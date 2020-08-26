@@ -12,10 +12,10 @@
   --font-size-base: 18px;
   --text-color: var(--brand-secondary--inverted);
   /* Navbar */
-  /* --main-navigation-color: var(--brand-primary);
-  --main-navigation-color--inverted: var(--brand-primary--inverted); */
+  --main-navigation-color: var(--brand-primary);
+  --main-navigation-color--inverted: var(--brand-primary--inverted);
 }
 
-.Navbar_root_2CbKM {
-  align-items: center !important;
+:global(.Navbar_root_2CbKM) {
+  align-items: center;
 }
