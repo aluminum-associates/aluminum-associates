@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useLocation } from "@reach/router"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import ProductDropdown from "./ProductDropdown"
-import Logo from "../images/aa-logo.png"
+import Logo from "../images/aa-logo.svg"
 import { AiFillPhone } from "react-icons/ai"
 
 const Navbar = () => {
@@ -37,6 +37,9 @@ const Navbar = () => {
               className="logo-img"
               src={Logo}
               alt="Aluminum Associates logo"
+              style={{
+                margin: "10px 0"
+              }}
             />
           </Link>
           <div
