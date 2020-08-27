@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useLocation } from "@reach/router"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import ProductDropdown from "./ProductDropdown"
-import Logo from "../images/aa-logo.svg"
+import Logo from "../images/logo.svg"
 import { AiFillPhone } from "react-icons/ai"
 
 const Navbar = () => {
