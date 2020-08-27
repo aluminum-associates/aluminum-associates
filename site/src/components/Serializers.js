@@ -29,8 +29,9 @@ export const list = ({ children }) => (
   <ul
     style={{
       listStyleType: "disc",
-      listStylePosition: "inside",
+      listStylePosition: "outside",
       marginBottom: "1rem",
+      marginLeft: "2ch",
     }}
   >
     {children}
