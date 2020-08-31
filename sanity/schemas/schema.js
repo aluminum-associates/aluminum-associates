@@ -18,6 +18,8 @@ import faqTabs from "./faqTabs";
 import card from "./card";
 import productDocument from "./productDocument";
 import videoEmbed from "./videoEmbed";
+import colorPalette from "./colorPalettes/colorPalette";
+import color from "./colorPalettes/color";
 
 export default createSchema({
   name: "default",
@@ -39,5 +41,7 @@ export default createSchema({
     faqTabs,
     productDocument,
     videoEmbed,
+    colorPalette,
+    color,
   ]),
 });
