@@ -24,6 +24,7 @@ const Product = ({ data }) => {
     _rawDescription,
     standardFeatures,
     optionalFeatures,
+    availableColors,
     _rawAdditionalInfo,
   } = data.sanityProduct
 
@@ -80,7 +81,7 @@ const Product = ({ data }) => {
                   list,
                 }}
               />
-              {standardFeatures || optionalFeatures ? (
+              {standardFeatures || optionalFeatures || availableColors ? (
                 <div className="menus my-2">
                   {standardFeatures.length > 0 && (
                     <Accordion
@@ -93,6 +94,14 @@ const Product = ({ data }) => {
                       title="Optional Features"
                       list={optionalFeatures}
                     />
+                  )}
+                  {availableColors && (
+                    <div>
+                      {availableColors.colors.map(color => {
+                        const { image, name } = color
+                        return <h1>{name}</h1>
+                      })}
+                    </div>
                   )}
                 </div>
               ) : null}
@@ -189,6 +198,18 @@ export const data = graphql`
       }
       standardFeatures
       optionalFeatures
+      availableColors {
+        colors {
+          name
+          image {
+            asset {
+              fixed(width: 60) {
+                ...GatsbySanityImageFixed
+              }
+            }
+          }
+        }
+      }
       documentation {
         file {
           asset {

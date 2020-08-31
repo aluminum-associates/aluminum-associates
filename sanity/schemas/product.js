@@ -105,6 +105,12 @@ export default {
       ],
     },
     {
+      name: "availableColors",
+      title: "Available Colors",
+      type: "reference",
+      to: [{ type: "colorPalette" }],
+    },
+    {
       name: "documentation",
       title: "Documentation",
       type: "array",

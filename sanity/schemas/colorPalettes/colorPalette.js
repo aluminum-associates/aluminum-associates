@@ -1,5 +1,5 @@
 export default {
-  name: "colors",
+  name: "colorPalette",
   title: "Color Palettes",
   type: "document",
   fields: [
