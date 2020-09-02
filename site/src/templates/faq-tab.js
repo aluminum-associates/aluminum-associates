@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import FooterTabs from "../components/FooterTabs"
+import { table } from "../components/Serializers"
 
 const FaqTab = ({ data }) => {
   const { title, _rawBody } = data.currentTab
@@ -15,33 +16,8 @@ const FaqTab = ({ data }) => {
       title: tab.title,
       slug: `/${slug.current}/${tab.slug.current}`,
     })
+    return footerTabs
   })
-
-  const serializers = {
-    types: {
-      table: ({ node }) => {
-        return (
-          <table className="table is-bordered is-striped">
-            <tbody>
-              {node.rows.map(({ cells: row }, i) => {
-                return (
-                  <tr key={i} className="tr">
-                    {row.map((cell, i) => {
-                      return (
-                        <td key={i} className="td">
-                          {cell}
-                        </td>
-                      )
-                    })}
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        )
-      },
-    },
-  }
 
   return (
     <Layout title={title} description={metaDescription}>
@@ -58,7 +34,14 @@ const FaqTab = ({ data }) => {
       <section className="section">
         <div className="container" style={{ maxWidth: "75ch" }}>
           <div className="content">
-            <PortableText blocks={_rawBody} serializers={serializers} />
+            <PortableText
+              blocks={_rawBody}
+              serializers={{
+                types: {
+                  table,
+                },
+              }}
+            />
           </div>
         </div>
       </section>
