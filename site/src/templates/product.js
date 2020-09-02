@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
 import Accordion from "../components/Accordion"
+import AvailableColors from "../components/AvailableColors"
 import {
   imageGallery,
   blockStyles,
@@ -96,12 +97,7 @@ const Product = ({ data }) => {
                     />
                   )}
                   {availableColors && (
-                    <div>
-                      {availableColors.colors.map(color => {
-                        const { image, name } = color
-                        return <h1>{name}</h1>
-                      })}
-                    </div>
+                    <AvailableColors colors={availableColors.colors} />
                   )}
                 </div>
               ) : null}
@@ -203,7 +199,7 @@ export const data = graphql`
           name
           image {
             asset {
-              fixed(width: 60) {
+              fixed(width: 300) {
                 ...GatsbySanityImageFixed
               }
             }
