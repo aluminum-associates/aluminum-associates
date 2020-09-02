@@ -38,6 +38,28 @@ export const list = ({ children }) => (
   </ul>
 )
 
+export const table = ({ node }) => {
+  return (
+    <table className="table is-bordered is-striped">
+      <tbody>
+        {node.rows.map(({ cells: row }, i) => {
+          return (
+            <tr key={i} className="tr">
+              {row.map((cell, i) => {
+                return (
+                  <td key={i} className="td">
+                    {cell}
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
+
 export const blockStyles = props => {
   const { style = "normal" } = props.node
 
