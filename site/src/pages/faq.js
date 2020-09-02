@@ -13,6 +13,7 @@ const FAQ = ({ data }) => {
       title: tab.title,
       slug: `/${slug.current}/${tab.slug.current}`,
     })
+    return footerTabs
   })
 
   return (

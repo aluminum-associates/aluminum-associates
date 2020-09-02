@@ -37,6 +37,7 @@ const AvailableColors = ({ colors }) => {
                 background-position: center;
                 background-size: contain;
               `}
+              aria-label={`${name} color swatch button`}
               onClick={() => {
                 setIsOpen(!isOpen)
                 setPhotoIndex(i)

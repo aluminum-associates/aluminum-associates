@@ -5,10 +5,6 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 
 const About = ({ data }) => {
-  const copyStyle = {
-    maxWidth: "70ch",
-    margin: "0 auto",
-  }
   const {
     title,
     metaDescription,
