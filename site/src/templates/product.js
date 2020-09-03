@@ -12,6 +12,7 @@ import {
   videoEmbed,
   list,
 } from "../components/Serializers"
+import { AiOutlineFile } from "react-icons/ai"
 
 const Product = ({ data }) => {
   const {
@@ -28,6 +29,8 @@ const Product = ({ data }) => {
     availableColors,
     _rawAdditionalInfo,
   } = data.sanityProduct
+
+  console.log(documentation)
 
   return (
     <Layout title={title}>
@@ -82,22 +85,48 @@ const Product = ({ data }) => {
                   list,
                 }}
               />
-              {standardFeatures || optionalFeatures || availableColors ? (
+              {standardFeatures ||
+              optionalFeatures ||
+              availableColors ||
+              documentation ? (
                 <div className="menus my-2">
-                  {standardFeatures.length > 0 && (
+                  {standardFeatures && standardFeatures.length !== 0 && (
                     <Accordion
                       title="Standard Features"
                       list={standardFeatures}
                     />
                   )}
-                  {optionalFeatures.length > 0 && (
+                  {optionalFeatures && optionalFeatures.length !== 0 && (
                     <Accordion
                       title="Optional Features"
                       list={optionalFeatures}
                     />
                   )}
-                  {availableColors && (
+                  {availableColors && availableColors.length !== 0 && (
                     <AvailableColors colors={availableColors.colors} />
+                  )}
+                  {documentation && documentation.length !== 0 && (
+                    <>
+                      <h2 className="title is-size-3 is-size-4-mobile">
+                        Documentation
+                      </h2>
+                      <ul>
+                        {documentation.map(document => {
+                          const { url, id } = document.file.asset
+                          return (
+                            <li key={id}>
+                              <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <AiOutlineFile /> {document.title}
+                              </a>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </>
                   )}
                 </div>
               ) : null}
@@ -210,10 +239,10 @@ export const data = graphql`
         file {
           asset {
             id
-            title
             url
           }
         }
+        title
       }
       _rawAdditionalInfo
     }

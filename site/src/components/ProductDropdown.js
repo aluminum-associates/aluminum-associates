@@ -48,8 +48,11 @@ const ProductLinks = () => {
   // 4. each grouping needs to have a class of "navbar-item" with a child div of "navbar-content"
 
   links.map(({ node: link }) => {
-    if (link.parents && link.parents.length === 0) parentCategories.push(link)
-    else if (link.parents && link.parents.length > 0) childCategories.push(link)
+    if (link.parents && link.parents.length === 0) {
+      parentCategories.push(link)
+    } else if (link.parents && link.parents.length > 0) {
+      childCategories.push(link)
+    }
   })
 
   return (
