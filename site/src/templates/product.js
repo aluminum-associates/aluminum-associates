@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
 import Accordion from "../components/Accordion"
+import DocumentAccordion from "../components/DocumentAccordion"
 import AvailableColors from "../components/AvailableColors"
 import {
   imageGallery,
@@ -12,7 +13,6 @@ import {
   videoEmbed,
   list,
 } from "../components/Serializers"
-import { AiOutlineFile } from "react-icons/ai"
 
 const Product = ({ data }) => {
   const {
@@ -106,27 +106,7 @@ const Product = ({ data }) => {
                     <AvailableColors colors={availableColors.colors} />
                   )}
                   {documentation && documentation.length !== 0 && (
-                    <>
-                      <h2 className="title is-size-3 is-size-4-mobile">
-                        Documentation
-                      </h2>
-                      <ul>
-                        {documentation.map(document => {
-                          const { url, id } = document.file.asset
-                          return (
-                            <li key={id}>
-                              <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <AiOutlineFile /> {document.title}
-                              </a>
-                            </li>
-                          )
-                        })}
-                      </ul>
-                    </>
+                    <DocumentAccordion documentation={documentation} />
                   )}
                 </div>
               ) : null}
