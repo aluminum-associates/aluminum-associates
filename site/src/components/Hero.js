@@ -14,7 +14,7 @@ const Hero = ({ size, fluid, fixed, children }) => {
         <div className="hero-body">
           <div
             className="container"
-            style={{ maxWidth: "75ch", minHeight: "100px" }}
+            style={{ maxWidth: "960px", minHeight: "100px" }}
           >
             <div className="content">{children}</div>
           </div>
@@ -24,7 +24,7 @@ const Hero = ({ size, fluid, fixed, children }) => {
   ) : (
     <div className={`hero ${size} is-primary`}>
       <div className="hero-body">
-        <div className="container" style={{ maxWidth: "75ch" }}>
+        <div className="container" style={{ maxWidth: "960px" }}>
           <div className="content">{children}</div>
         </div>
       </div>

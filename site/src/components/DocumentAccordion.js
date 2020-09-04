@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { motion, AnimatePresence } from "framer-motion"
 import { AiOutlinePlus, AiOutlineFile } from "react-icons/ai"
 
-const DocumentAccordion = ({ documentation }) => {
+const DocumentAccordion = ({ documentation, className }) => {
   const [isOpen, setIsOpen] = useState(false)
   const variants = {
     hidden: {
@@ -21,7 +21,7 @@ const DocumentAccordion = ({ documentation }) => {
   }
 
   return (
-    <div className="menu pt-2">
+    <div className={className}>
       <p
         className="menu-label is-size-6 mb-1"
         onClick={() => setIsOpen(!isOpen)}
@@ -58,6 +58,7 @@ const DocumentAccordion = ({ documentation }) => {
 
 DocumentAccordion.propTypes = {
   documentation: PropTypes.array.isRequired,
+  className: PropTypes.string,
 }
 
 export default DocumentAccordion
