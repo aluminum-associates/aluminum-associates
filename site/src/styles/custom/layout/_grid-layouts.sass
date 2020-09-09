@@ -48,10 +48,9 @@
         grid-template: auto / 1fr
 
 .image-gallery-wrapper
-    display: grid
-    grid-template: auto / repeat(auto-fill, minmax(120px, 1fr))
-    grid-row-gap: $gap / 3
-    grid-column-gap: $gap / 6
+    display: flex
+    flex-wrap: wrap
+    gap: $gap
 
 .sanity-image-gallery
     display: grid

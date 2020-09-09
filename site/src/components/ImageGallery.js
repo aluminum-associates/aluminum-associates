@@ -24,12 +24,15 @@ export default function ImageGallery({ images }) {
             }}
             key={image.asset.id}
             style={{
+              flex: 1,
               border: "0",
               background: "none",
               outline: "none",
               cursor: "click",
+              minWidth: "120px",
+              minHeight: "120px",
+              maxWidth: "300px",
               maxHeight: "300px",
-              maxWidth: "auto",
             }}
             initial={{
               scale: 1,
@@ -41,14 +44,20 @@ export default function ImageGallery({ images }) {
             <Img
               fluid={image.asset.fluid}
               alt={alternativeText}
-              className="gallery-thumbnail card"
+              className="card"
               style={{
                 backgroundColor: "transparent",
-                maxHeight: "300px",
-                maxWidth: "auto",
+                minWidth: "inherit",
+                minHeight: "inherit",
+                maxWidth: "inherit",
+                maxHeight: "inherit",
               }}
               imgStyle={{
-                objectFit: "contain",
+                objectFit: "cover",
+                minWidth: "inherit",
+                minHeight: "inherit",
+                maxWidth: "inherit",
+                maxHeight: "inherit",
               }}
             />
           </motion.button>
