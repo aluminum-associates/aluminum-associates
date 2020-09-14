@@ -106,7 +106,7 @@ const Product = ({ data }) => {
                     <AvailableColors colors={availableColors.colors} />
                   )}
                   {documentation && documentation.length !== 0 && (
-                    <DocumentAccordion className="menu pt-4" documentation={documentation} />
+                    <DocumentAccordion className="menu pt-2" documentation={documentation} />
                   )}
                 </div>
               ) : null}
