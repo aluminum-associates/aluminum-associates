@@ -38,6 +38,13 @@ module.exports = {
       },
     },
     {
+      resolve: `@chakra-ui/gatsby-plugin`,
+      options: {
+        isResettingCSS: true,
+        isUsingColorMode: false,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `aluminum-associates`,

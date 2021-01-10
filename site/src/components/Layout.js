@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import SEO from "./SEO"
-import Navbar from "./Navbar"
+import Navbar from "./Navbar/index"
 import Footer from "./Footer"
 
 export default function Layout(props) {
