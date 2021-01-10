@@ -6,7 +6,7 @@ import { FiMenu } from "react-icons/fi"
 const ToggleButton = ({ toggle, isOpen }) => {
   return (
     <Box display={{ base: "display", md: "none" }} onClick={toggle}>
-      {isOpen ? <Icon as={IoClose} boxSize="1.15rem"/> : <Icon as={FiMenu} />}
+      {isOpen ? <Icon as={IoClose} boxSize="1.75rem"/> : <Icon as={FiMenu} boxSize="1.5rem" />}
     </Box>
   )
 }
