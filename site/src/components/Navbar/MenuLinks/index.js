@@ -1,13 +1,11 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { useLocation } from "@reach/router"
 import { Box, Icon, Stack } from "@chakra-ui/react"
 import MenuItem from "./MenuItem"
 import { AiFillPhone } from "react-icons/ai"
 import MenuDropdown from "./MenuDropdown"
 
 const MenuLinks = ({ isOpen }) => {
-  const currentPath = useLocation().pathname
   const data = useStaticQuery(graphql`
     {
       allTabs: sanityFaq {
@@ -32,11 +30,11 @@ const MenuLinks = ({ isOpen }) => {
       flexBasis={{ base: "100%", md: "auto" }}
     >
       <Stack
-        spacing={8}
+        spacing={4}
         align={{ base: "flex-start", md: "center" }}
         justify={["flex-start", "space-between", "flex-end", "flex-end"]}
         direction={{ base: "column", md: "row" }}
-        pt={[4, 4, 0, 0]}
+        pt={{ base: 4, md: 0 }}
       >
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/about">About</MenuItem>

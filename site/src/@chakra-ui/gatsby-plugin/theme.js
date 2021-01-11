@@ -23,6 +23,11 @@ const theme = extendTheme({
       "900": "#112594",
     },
   },
+  fonts: {
+    body: "Work Sans, sans-serif",
+    heading: "Work Sans, sans-serif",
+    mono: "monospace",
+  },
   breakpoints,
 })
 

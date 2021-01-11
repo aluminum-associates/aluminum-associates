@@ -7,7 +7,7 @@ const Navbar = props => {
   const [isOpen, setIsOpen] = useState(false)
   const theme = useTheme()
   const { breakpoints } = theme
-  console.log(breakpoints)
+
   return (
     <Box bg="white">
       <Container flex={1} maxW={breakpoints.lg}>

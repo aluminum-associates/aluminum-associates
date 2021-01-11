@@ -14,6 +14,14 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify-cache`,
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Work Sans', 'Poppins']
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

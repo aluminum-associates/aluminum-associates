@@ -30,8 +30,6 @@ const Product = ({ data }) => {
     _rawAdditionalInfo,
   } = data.sanityProduct
 
-  console.log(documentation)
-
   return (
     <Layout title={title}>
       <Hero
