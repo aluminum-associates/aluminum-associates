@@ -9,6 +9,9 @@ import {
   Link,
   Grid,
   Heading,
+  List,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react"
 import { ChevronDownIcon } from "@chakra-ui/icons"
 import { Link as GatsbyLink, useStaticQuery, graphql } from "gatsby"
@@ -100,29 +103,33 @@ const MenuDropdown = ({ children }) => {
             {parentCategories.map(parent => (
               <Box key={parent.id}>
                 <Heading size="md">{parent.title}</Heading>
-                {childCategories.map(child =>
-                  child.parents[0].title === parent.title ? (
-                    <Link
-                      as={GatsbyLink}
-                      key={child.id}
-                      to={`/products/${child.slug.current}`}
-                    >
-                      {child.title}
-                    </Link>
-                  ) : null
-                )}
-                {products.map(({ node: product }) =>
-                  product.category &&
-                  product.category.title === parent.title ? (
-                    <Link
-                      as={GatsbyLink}
-                      key={product.id}
-                      to={`/products/${product.category.slug.current}/${product.slug.current}`}
-                    >
-                      {product.title}
-                    </Link>
-                  ) : null
-                )}
+                <UnorderedList listStyleType="none" marginLeft={0}>
+                  {childCategories.map(child =>
+                    child.parents[0].title === parent.title ? (
+                      <ListItem key={child.id}>
+                        <Link
+                          as={GatsbyLink}
+                          to={`/products/${child.slug.current}`}
+                        >
+                          {child.title}
+                        </Link>
+                      </ListItem>
+                    ) : null
+                  )}
+                  {products.map(({ node: product }) =>
+                    product.category &&
+                    product.category.title === parent.title ? (
+                      <ListItem key={product.id}>
+                        <Link
+                          as={GatsbyLink}
+                          to={`/products/${product.category.slug.current}/${product.slug.current}`}
+                        >
+                          {product.title}
+                        </Link>
+                      </ListItem>
+                    ) : null
+                  )}
+                </UnorderedList>
               </Box>
             ))}
           </Grid>
