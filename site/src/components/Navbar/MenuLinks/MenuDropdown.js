@@ -10,6 +10,7 @@ import {
   Grid,
   Heading,
 } from "@chakra-ui/react"
+import { ChevronDownIcon } from "@chakra-ui/icons"
 import { Link as GatsbyLink, useStaticQuery, graphql } from "gatsby"
 import React from "react"
 
@@ -77,8 +78,19 @@ const MenuDropdown = ({ children }) => {
   return (
     <Popover placement="bottom">
       <PopoverTrigger>
-        <Text display="block" fontSize={{ base: "lg", md: "xl" }}>
-          {children}
+        <Text
+          display="block"
+          fontSize={{ base: "lg", md: "xl" }}
+          _hover={{
+            backgroundColor: "gray.100",
+            color: "primary.600",
+          }}
+          w={{ base: "100%", md: "max-content" }}
+          borderRadius="4px"
+          p="0.5rem 0.75rem"
+          flex="0 0 auto"
+        >
+          {children} <ChevronDownIcon color="primary.900" />
         </Text>
       </PopoverTrigger>
       <PopoverContent w="700px">

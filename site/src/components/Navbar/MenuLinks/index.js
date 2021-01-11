@@ -28,11 +28,12 @@ const MenuLinks = ({ isOpen }) => {
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
       flexBasis={{ base: "100%", md: "auto" }}
+      h="100%"
     >
       <Stack
-        spacing={4}
+        spacing={2}
         align={{ base: "flex-start", md: "center" }}
-        justify={["flex-start", "space-between", "flex-end", "flex-end"]}
+        justify={{ base: "flex-start", md: "flex-end" }}
         direction={{ base: "column", md: "row" }}
         pt={{ base: 4, md: 0 }}
       >

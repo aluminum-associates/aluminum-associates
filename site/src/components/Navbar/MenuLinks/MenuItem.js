@@ -13,11 +13,14 @@ const MenuItem = ({ children, inLast, to = "/", internal = true, ...rest }) => {
     <Link
       as={internal ? GatsbyLink : Link}
       href={to}
-      display="flex"
       _hover={{
         backgroundColor: "gray.100",
+        color: "primary.600",
       }}
       w={{ base: "100%", md: "max-content" }}
+      borderRadius="4px"
+      p="0.5rem 0.75rem"
+      flex="0 0 auto"
     >
       <Text
         display="block"
