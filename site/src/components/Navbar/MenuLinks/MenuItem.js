@@ -6,7 +6,7 @@ import { Link, Text } from "@chakra-ui/react"
 const MenuItem = ({ children, inLast, to = "/", internal = true, ...rest }) => {
   const currentPath = useLocation().pathname
   const path =
-    (currentPath.includes(to) && to != "/") ||
+    (currentPath.includes(to) && to !== "/") ||
     (currentPath === "/" && to === "/")
 
   return (
