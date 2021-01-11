@@ -9,7 +9,6 @@ import {
   Link,
   Grid,
   Heading,
-  List,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react"
@@ -85,7 +84,7 @@ const MenuDropdown = ({ children }) => {
           display="block"
           fontSize={{ base: "lg", md: "xl" }}
           _hover={{
-            backgroundColor: "gray.100",
+            backgroundColor: "gray.50",
             color: "primary.600",
           }}
           w={{ base: "100%", md: "max-content" }}

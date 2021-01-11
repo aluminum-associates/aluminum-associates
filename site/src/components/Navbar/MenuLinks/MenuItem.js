@@ -14,7 +14,7 @@ const MenuItem = ({ children, inLast, to = "/", internal = true, ...rest }) => {
       as={internal ? GatsbyLink : Link}
       href={to}
       _hover={{
-        backgroundColor: "gray.100",
+        backgroundColor: "gray.50",
         color: "primary.600",
       }}
       w={{ base: "100%", md: "max-content" }}
