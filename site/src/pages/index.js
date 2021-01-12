@@ -34,7 +34,7 @@ export default function Home({ data }) {
       }
     )
     vendorRef.current && observer.observe(vendorRef.current)
-  })
+  }, [])
 
   return (
     <Layout title="Home">

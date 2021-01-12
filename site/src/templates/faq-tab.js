@@ -25,7 +25,7 @@ const FaqTab = ({ data }) => {
         <div className="hero-body">
           <div className="container" style={{ maxWidth: "75ch" }}>
             <h1 className="title is-size-2">
-              Frequently Asked Installation Questions
+              Frequently Asked Questions
             </h1>
           </div>
         </div>
