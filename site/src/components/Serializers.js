@@ -70,7 +70,6 @@ export const blockStyles = props => {
         { className: "title is-size-2  is-size-4-mobile" },
         props.children
       )
-      break
 
     case "h2":
       return createElement(
@@ -78,7 +77,6 @@ export const blockStyles = props => {
         { className: "title is-size-4 is-size-6-mobile" },
         props.children
       )
-      break
 
     case "h3":
       return createElement(
@@ -86,7 +84,6 @@ export const blockStyles = props => {
         { className: "title is-size-5 is-size-6-mobile" },
         props.children
       )
-      break
 
     default:
       return PortableText.defaultSerializers.types.block(props)

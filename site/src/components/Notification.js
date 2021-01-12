@@ -7,10 +7,8 @@ const Notification = () => {
   const [closed, setClosed] = useState(false)
   const notificationRef = useRef()
   useEffect(() => {
-    if (!closed) {
-      notificationRef.current.focus()
-    }
-  })
+    notificationRef.current.focus()
+  }, [])
   const query = useStaticQuery(graphql`
     {
       sanityIndex {
@@ -49,7 +47,6 @@ const Notification = () => {
             className="delete"
             onClick={() => setClosed(!closed)}
             ref={notificationRef}
-            tabIndex={-1}
             onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
           ></button>
           <div className="container">

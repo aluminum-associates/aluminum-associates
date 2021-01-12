@@ -44,6 +44,7 @@ const MenuLinks = ({ isOpen }) => {
         <MenuItem to="/about">About</MenuItem>
         <MenuDropdown>Products</MenuDropdown>
         <MenuItem to="/services">Services</MenuItem>
+        <MenuItem to="/gallery">Gallery</MenuItem>
         <MenuItem to={`/faq/${tabs[0].slug.current}`}>FAQ</MenuItem>
         <MenuItem to="/contact">Contact</MenuItem>
         <MenuItem to="tel:519-453-6400" internal={false}>

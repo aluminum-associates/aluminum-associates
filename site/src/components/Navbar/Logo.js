@@ -5,7 +5,7 @@ import { AluminumAssociatesLogo } from "../Icons"
 
 const Logo = () => {
   return (
-    <Link as={GatsbyLink} href="/">
+    <Link as={GatsbyLink} to="/">
       <AluminumAssociatesLogo
         color="primary.900"
         boxSize="14rem"

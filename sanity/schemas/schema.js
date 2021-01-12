@@ -20,13 +20,18 @@ import productDocument from "./productDocument";
 import videoEmbed from "./videoEmbed";
 import colorPalette from "./colorPalettes/colorPalette";
 import color from "./colorPalettes/color";
+import gallery from "./pages/gallery";
+import galleryEntry from "./galleryEntry";
+import siteSettings from "./siteSettings";
 
 export default createSchema({
   name: "default",
   types: schemaTypes.concat([
+    siteSettings,
     index,
     about,
     services,
+    gallery,
     faq,
     vendor,
     category,
@@ -34,6 +39,7 @@ export default createSchema({
     testimonial,
     blockContent,
     blockImage,
+    galleryEntry,
     imageGallery,
     galleryImage,
     heroSize,

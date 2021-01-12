@@ -19,7 +19,7 @@ import React from "react"
 const MenuDropdown = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
-      categories: allSanityCategory(
+      childCategories: allSanityCategory(
         filter: { slug: { current: { ne: null } } }
       ) {
         edges {
@@ -36,6 +36,15 @@ const MenuDropdown = ({ children }) => {
                 current
               }
             }
+          }
+        }
+      }
+      parentCategories: sanitySiteSettings {
+        edges: prodCatOrder {
+          id
+          title
+          slug {
+            current
           }
         }
       }
@@ -58,24 +67,16 @@ const MenuDropdown = ({ children }) => {
       }
     }
   `)
-  const categories = data.categories.edges
+  const parentCategories = data.parentCategories.edges
+  const childCategories = data.childCategories.edges.filter(
+    ({ node }) => node.parents.length > 0
+  )
   const products = data.products.edges
-  const links = [...categories, ...products]
-  let parentCategories = []
-  let childCategories = []
 
   // 1. map over array and find "parent" categories and push to new array*/}
   // 2. find "child" categories and have them be sub-menu items of parent (in a new array)
   // 3. for every nth index, return a new block of items
   // 4. each grouping needs to have a class of "navbar-item" with a child div of "navbar-content"
-
-  links.map(({ node: link }) => {
-    if (link.parents && link.parents.length === 0) {
-      parentCategories.push(link)
-    } else if (link.parents && link.parents.length > 0) {
-      childCategories.push(link)
-    }
-  })
 
   return (
     <Popover placement="bottom">
@@ -103,18 +104,23 @@ const MenuDropdown = ({ children }) => {
               <Box key={parent.id}>
                 <Heading size="md">{parent.title}</Heading>
                 <UnorderedList listStyleType="none" marginLeft={0}>
-                  {childCategories.map(child =>
-                    child.parents[0].title === parent.title ? (
-                      <ListItem key={child.id}>
-                        <Link
-                          as={GatsbyLink}
-                          to={`/products/${child.slug.current}`}
-                        >
-                          {child.title}
-                        </Link>
-                      </ListItem>
-                    ) : null
-                  )}
+                  {childCategories
+                    .filter(
+                      ({ node: child }) =>
+                        child.parents[0].title === parent.title
+                    )
+                    .map(({ node: child }) => {
+                      return (
+                        <ListItem key={child.id}>
+                          <Link
+                            as={GatsbyLink}
+                            to={`/products/${child.slug.current}`}
+                          >
+                            {child.title}
+                          </Link>
+                        </ListItem>
+                      )
+                    })}
                   {products.map(({ node: product }) =>
                     product.category &&
                     product.category.title === parent.title ? (

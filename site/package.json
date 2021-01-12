@@ -24,7 +24,7 @@
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
-    "gatsby-plugin-sass": "^2.1.29",
+    "gatsby-plugin-sass": "^3.0.0",
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-plugin-web-font-loader": "^1.0.4",
@@ -32,7 +32,6 @@
     "gatsby-source-sanity": "^6.0.4",
     "gatsby-transformer-sharp": "^2.3.13",
     "get-youtube-id": "^1.0.1",
-    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -43,6 +42,7 @@
     "react-slick": "^0.25.2",
     "react-transition-group": "^4.4.1",
     "react-youtube": "^7.11.2",
+    "sass": "^1.32.3",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
