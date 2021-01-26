@@ -96,10 +96,10 @@ const MenuDropdown = ({ children }) => {
           {children} <ChevronDownIcon color="primary.900" />
         </Text>
       </PopoverTrigger>
-      <PopoverContent w="700px">
+      <PopoverContent w="700px" p="1.25rem">
         <PopoverCloseButton />
         <PopoverBody>
-          <Grid templateColumns="repeat(3, 1fr)">
+          <Grid templateColumns="repeat(3, 1fr)" rowGap={4} columnGap={3}>
             {parentCategories.map(parent => (
               <Box key={parent.id}>
                 <Heading size="md">{parent.title}</Heading>

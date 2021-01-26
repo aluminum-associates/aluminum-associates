@@ -29,6 +29,17 @@ const theme = extendTheme({
     mono: "monospace",
   },
   breakpoints,
+  components: {
+    Link: {
+      baseStyle: {
+        textDecoration: "none",
+        _hover: {
+          textDecoration: "none",
+          color: "primary.700",
+        },
+      },
+    },
+  },
 })
 
 export default theme
