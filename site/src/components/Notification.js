@@ -1,62 +1,40 @@
-import React, { useState, useEffect, useRef } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react"
 import PortableText from "@sanity/block-content-to-react"
-import { motion, AnimatePresence } from "framer-motion"
 
 const Notification = () => {
-  const [closed, setClosed] = useState(false)
-  const notificationRef = useRef()
-  useEffect(() => {
-    notificationRef.current.focus()
-  }, [])
+  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true })
+
   const query = useStaticQuery(graphql`
     {
       sanityIndex {
+        notificationHeading
         _rawNotification
       }
     }
   `)
-  const { _rawNotification } = query.sanityIndex
-  const variants = {
-    hidden: {
-      y: 30,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        type: "tween",
-      },
-    },
-  }
+  const { notificationHeading, _rawNotification } = query.sanityIndex
 
   return (
-    <AnimatePresence>
-      {!closed && (
-        <motion.div
-          className="notification is-warning"
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={variants}
-        >
-          <button
-            aria-label="Close notification"
-            className="delete"
-            onClick={() => setClosed(!closed)}
-            ref={notificationRef}
-            onKeyDown={e => (e.key === "Escape" ? setClosed(!closed) : null)}
-          ></button>
-          <div className="container">
-            <div className="content">
-              <PortableText blocks={_rawNotification} />
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <Modal isCentered isOpen={isOpen}>
+      <ModalOverlay />
+      <ModalContent bg="yellow.400">
+        <ModalHeader>{notificationHeading}</ModalHeader>
+        <ModalCloseButton onClick={onClose} />
+        <ModalBody>
+          <PortableText blocks={_rawNotification} />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   )
 }
 

@@ -16,6 +16,11 @@ export default {
       type: "text",
     },
     {
+      name: "notificationHeading",
+      title: "Notification Heading",
+      type: "string",
+    },
+    {
       name: "notification",
       title: "Notification",
       type: "blockContent",
