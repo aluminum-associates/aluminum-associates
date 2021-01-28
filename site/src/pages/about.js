@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
+import Serializers from "../components/Serializers"
+import { Box } from "@chakra-ui/react"
 
 const About = ({ data }) => {
   const {
@@ -14,39 +16,19 @@ const About = ({ data }) => {
     heroSize,
   } = data.sanityAbout
 
-  const BlockRenderer = props => {
-    const { style = "normal" } = props.node
-
-    if (/^h\d/.test(style)) {
-      return React.createElement(
-        style,
-        { className: `title is-size-2` },
-        props.children
-      )
-    }
-
-    // Fall back to default handling
-    return PortableText.defaultSerializers.types.block(props)
-  }
-
   return (
-    <div>
+    <Box>
       <Layout title={title} description={metaDescription}>
         <Hero fluid={heroImage.asset.fluid} size={heroSize}>
-          <PortableText
-            blocks={_rawHeroCopy}
-            serializers={{ types: { block: BlockRenderer } }}
-          />
+          <PortableText blocks={_rawHeroCopy} serializers={Serializers} />
         </Hero>
-        <section className="section">
-          <div className="container" style={{ maxWidth: "75ch" }}>
-            <div className="content">
-              <PortableText blocks={_rawBody} />
-            </div>
-          </div>
-        </section>
+        <Box as="section" className="section">
+          <Box maxWidth="75ch" m="0 auto">
+            <PortableText blocks={_rawBody} serializers={Serializers} />
+          </Box>
+        </Box>
       </Layout>
-    </div>
+    </Box>
   )
 }
 

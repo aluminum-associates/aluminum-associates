@@ -13,7 +13,10 @@ const FooterTabs = (props, context) => {
             {props.tabs.map(tab => {
               const { title, slug } = tab
               return (
-                <li key={title} className={currentPath === slug ? "is-active" : ""}>
+                <li
+                  key={title}
+                  className={currentPath === slug ? "is-active" : ""}
+                >
                   <Link to={slug}>{title}</Link>
                 </li>
               )

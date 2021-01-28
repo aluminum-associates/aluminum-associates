@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
+import { Box, Heading } from "@chakra-ui/react"
+import Serializers from "../components/Serializers"
 
 const Services = ({ data }) => {
   const {
@@ -15,15 +17,15 @@ const Services = ({ data }) => {
   return (
     <Layout title={title} description={metaDescription}>
       <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
-        <h1 className="title is-size-2">{title}</h1>
+        <Box maxW="75ch" m="0 auto">
+          <Heading as="h1">{title}</Heading>
+        </Box>
       </Hero>
-      <section className="section">
-        <div className="container" style={{ maxWidth: "75ch" }}>
-          <div className="content">
-            <PortableText blocks={_rawBody} />
-          </div>
-        </div>
-      </section>
+      <Box as="section" className="section">
+        <Box maxW="75ch" m="0 auto">
+          <PortableText blocks={_rawBody} serializers={Serializers} />
+        </Box>
+      </Box>
     </Layout>
   )
 }

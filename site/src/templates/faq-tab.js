@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Box, Heading } from "@chakra-ui/react"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import FooterTabs from "../components/FooterTabs"
@@ -21,19 +22,19 @@ const FaqTab = ({ data }) => {
 
   return (
     <Layout title={title} description={metaDescription}>
-      <div className="hero is-medium is-primary">
-        <div className="hero-body">
-          <div className="container" style={{ maxWidth: "75ch" }}>
-            <h1 className="title is-size-2">Frequently Asked Questions</h1>
-          </div>
-        </div>
+      <Box className="hero is-medium is-primary">
+        <Box className="hero-body">
+          <Box maxW="75ch" m="0 auto">
+            <Heading as="h1">Frequently Asked Questions</Heading>
+          </Box>
+        </Box>
         <FooterTabs tabs={footerTabs} />
-      </div>
-      <section className="section">
-        <div className="container" style={{ maxWidth: "75ch" }}>
+      </Box>
+      <Box as="section" className="section">
+        <Box maxWidth="75ch" m="0 auto">
           <PortableText blocks={_rawBody} serializers={Serializers} />
-        </div>
-      </section>
+        </Box>
+      </Box>
     </Layout>
   )
 }

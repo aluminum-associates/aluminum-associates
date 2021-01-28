@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import FooterTabs from "../components/FooterTabs"
+import { Box, Heading } from "@chakra-ui/react"
 
 const FAQ = ({ data }) => {
   const { tabs, slug } = data.allTabs
@@ -18,14 +19,14 @@ const FAQ = ({ data }) => {
 
   return (
     <Layout title="Frequently Asked Questions">
-      <section className="hero is-medium is-primary">
-        <div className="hero-body">
-          <div className="container" style={{ maxWidth: "70ch" }}>
-            <h1 className="title is-size-1">Frequently Asked Questions</h1>
-          </div>
-        </div>
+      <Box as="section" className="hero is-medium is-primary">
+        <Box className="hero-body">
+          <Box maxW="70ch" m="0 auto">
+            <Heading as="h1">Frequently Asked Questions</Heading>
+          </Box>
+        </Box>
         <FooterTabs tabs={footerTabs} />
-      </section>
+      </Box>
     </Layout>
   )
 }

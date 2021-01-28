@@ -5,50 +5,76 @@ import Map from "../components/Map"
 import { MdEmail } from "react-icons/md"
 import { AiFillPhone } from "react-icons/ai"
 import { FaFax } from "react-icons/fa"
+import {
+  Box,
+  Heading,
+  Text,
+  Link,
+  Grid,
+  ListItem,
+  ListIcon,
+  List,
+} from "@chakra-ui/react"
+import Container from "../components/Layout/Container"
 
 export default function Contact() {
   return (
-    <>
+    <Box>
       <Layout title="Contact">
-        <div className="hero is-medium is-primary">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title is-size-1">Let's Get In Touch</h1>
-            </div>
-          </div>
-        </div>
-        <section className="section-contact-page">
-          <div className="container">
-            <div className="contact-wrapper">
+        <Box className="hero is-medium is-primary">
+          <Box className="hero-body">
+            <Container>
+              <Heading as="h1">Let's Get In Touch</Heading>
+            </Container>
+          </Box>
+        </Box>
+        <Box as="section" className="section-contact-page">
+          <Container>
+            <Grid
+              templateColumns={{ base: "minmax(0, 1fr)", md: "repeat(2, 1fr)" }}
+              gap="32px"
+            >
               <ContactForm title="Email Us" />
-              <div className="contact-info">
-                <h1 className="title">Visit Us</h1>
+              <Box>
+                <Heading as="h1" className="title">
+                  Visit Us
+                </Heading>
                 <Map />
-                <div className="content has-text-weight-semibold">
-                  <p>Aluminum Associates A Division of Homeway Company Ltd.</p>
-                  <p>
+                <Box fontWeight="bold">
+                  <Text>
+                    Aluminum Associates A Division of Homeway Company Ltd.
+                  </Text>
+                  <Text pb="1rem">
                     1801 Trafalgar Street East London, Ontario N5W 1X7 Canada
-                  </p>
-                  <p>
-                    <AiFillPhone /> Phone:{" "}
-                    <a href="tel:519-453-6400">519-453-6400</a>
-                  </p>
-                  <p>
-                    <AiFillPhone /> Toll Free:{" "}
-                    <a href="tel:1-800-465-1791">1-800-465-1791</a>
-                  </p>
-                  <p>
-                    <FaFax /> Fax: <a href="fax:519-453-6438">519-453-6438</a>
-                  </p>
-                  <a href="mailto:webpage@aluminumassociates.com">
-                    <MdEmail /> Email Us
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                  </Text>
+                  <List>
+                    <ListItem>
+                      <ListIcon as={AiFillPhone} />
+                      <Link href="tel:519-453-6400">Phone: 519-453-6400</Link>
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={AiFillPhone} />
+                      <Link href="tel:1-800-465-1791">
+                        Toll Free: 1-800-465-1791
+                      </Link>
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={FaFax} />
+                      <Link href="fax:519-453-6438">Fax: 519-453-6438</Link>
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={MdEmail} />
+                      <Link href="mailto:webpage@aluminumassociates.com">
+                        Email Us
+                      </Link>
+                    </ListItem>
+                  </List>
+                </Box>
+              </Box>
+            </Grid>
+          </Container>
+        </Box>
       </Layout>
-    </>
+    </Box>
   )
 }

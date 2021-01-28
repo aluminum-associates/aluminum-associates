@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import Card from "../components/Card"
+import { Box, Grid, Heading } from "@chakra-ui/react"
+import Container from "../components/Layout/Container"
 
 export default function Category({ data }) {
   const category = data.category
@@ -20,11 +22,20 @@ export default function Category({ data }) {
         size={heroSize}
         fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
       >
-        <h1 className="title is-size-2">{title}</h1>
+        <Heading as="h1" className="title is-size-2">
+          {title}
+        </Heading>
       </Hero>
-      <section className="section has-background-white-bis">
-        <div className="container">
-          <div className="card-wrapper">
+      <Box as="section" className="section has-background-white-bis">
+        <Container>
+          <Grid
+            templateColumns={{
+              base: "minmax(0, 1fr)",
+              md: "repeat(auto-fill, minmax(225px, 1fr))",
+            }}
+            gridAutoRows
+            gap="24px"
+          >
             {childCategories.map(({ node: category }) => {
               const { id, heroImage, slug, title, description } = category
               return (
@@ -60,9 +71,9 @@ export default function Category({ data }) {
                 />
               )
             })}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Container>
+      </Box>
     </Layout>
   )
 }

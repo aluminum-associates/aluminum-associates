@@ -1,13 +1,15 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link as GatsbyLink, graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import ImageGallery from "../components/ImageGallery"
-import Accordion from "../components/Accordion"
-import DocumentAccordion from "../components/DocumentAccordion"
-import AvailableColors from "../components/AvailableColors"
+import DocumentAccordion from "../components/Accordions/DocumentAccordion"
 import Serializers from "../components/Serializers"
+import { Accordion, Box, Grid, Heading, Link } from "@chakra-ui/react"
+import Container from "../components/Layout/Container"
+import AccordionItem from "../components/Accordions/AccordionItem"
+import ColorsAccordion from "../components/Accordions/ColorsAccordion"
 
 const Product = ({ data }) => {
   const {
@@ -31,42 +33,34 @@ const Product = ({ data }) => {
         size={heroSize}
         fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
       >
-        <h1 className="title is-size-2">{title}</h1>
+        <Heading as="h1">{title}</Heading>
       </Hero>
-      <div className="container" style={{ maxWidth: "960px" }}>
-        <section className="section">
-          <div
-            className="product-wrapper"
-            style={
-              images.length === 0
-                ? {
-                    gridTemplateColumns: "1fr",
-                  }
-                : null
-            }
-          >
+      <Container>
+        <Box as="section" className="section">
+          <Grid templateColumns={images.length === 0 && "1fr"}>
             {images && images.length > 0 ? (
               <ImageGallery images={images} />
             ) : null}
-            <div className="product-copy">
-              <h2 className="title is-size-3 is-size-4-mobile">{title}</h2>
-              <h3 className="subtitle is-size-6 mb-6">
+            <Box>
+              <Heading as="h2" size="lg">
+                {title}
+              </Heading>
+              <Heading as="h3" size="md" color="gray.600">
                 {vendor && (
-                  <a
-                    href={vendor.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={vendor.url} isExternal>
                     {vendor.title}
-                  </a>
+                  </Link>
                 )}{" "}
                 -{" "}
                 {category && (
-                  <Link to={`/products/${category.slug.current}`}>
+                  <Link
+                    as={GatsbyLink}
+                    to={`/products/${category.slug.current}`}
+                  >
                     {category.title}
                   </Link>
                 )}
-              </h3>
+              </Heading>
               <PortableText
                 blocks={_rawDescription}
                 serializers={Serializers}
@@ -76,32 +70,31 @@ const Product = ({ data }) => {
               availableColors ||
               documentation ? (
                 <div className="menus my-2">
-                  {standardFeatures && standardFeatures.length !== 0 && (
-                    <Accordion
-                      title="Standard Features"
-                      list={standardFeatures}
-                    />
-                  )}
-                  {optionalFeatures && optionalFeatures.length !== 0 && (
-                    <Accordion
-                      title="Optional Features"
-                      list={optionalFeatures}
-                    />
-                  )}
-                  {availableColors && availableColors.length !== 0 && (
-                    <AvailableColors colors={availableColors.colors} />
-                  )}
-                  {documentation && documentation.length !== 0 && (
-                    <DocumentAccordion
-                      className="menu pt-2"
-                      documentation={documentation}
-                    />
-                  )}
+                  <Accordion allowToggle allowMultiple>
+                    {standardFeatures && standardFeatures.length !== 0 && (
+                      <AccordionItem
+                        title="Standard Features"
+                        list={standardFeatures}
+                      />
+                    )}
+                    {optionalFeatures && optionalFeatures.length !== 0 && (
+                      <AccordionItem
+                        title="Optional Features"
+                        list={optionalFeatures}
+                      />
+                    )}
+                    {availableColors && availableColors.length !== 0 && (
+                      <ColorsAccordion colors={availableColors.colors} />
+                    )}
+                    {documentation && documentation.length !== 0 && (
+                      <DocumentAccordion documentation={documentation} />
+                    )}
+                  </Accordion>
                 </div>
               ) : null}
-            </div>
-          </div>
-        </section>
+            </Box>
+          </Grid>
+        </Box>
         {_rawAdditionalInfo && (
           <>
             <hr style={{ border: "1px solid #CFCFCF", margin: "1.5rem" }} />
@@ -128,7 +121,7 @@ const Product = ({ data }) => {
             .
           </p>
         </section>
-      </div>
+      </Container>
     </Layout>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react"
-import SEO from "./SEO"
+import SEO from "../SEO"
 import Navbar from "./Navbar"
-import Footer from "./Footer"
+import Footer from "../Footer"
 
 export default function Layout(props) {
   return (

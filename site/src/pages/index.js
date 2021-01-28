@@ -8,6 +8,8 @@ import Notification from "../components/Notification"
 import Hero from "../components/Hero"
 import VendorBanner from "../components/VendorBanner"
 import Card from "../components/Card"
+import { Box, Button, Grid, Heading } from "@chakra-ui/react"
+import Container from "../components/Layout/Container"
 
 const scrollToRef = ref =>
   window.scrollTo({
@@ -42,20 +44,31 @@ export default function Home({ data }) {
         size={heroSize}
         fluid={heroImages ? heroImages[0].asset.fluid : null}
       >
-        <h1 className="title is-size-2 mb-6">Windows, Doors and More</h1>
-        <button
-          className="button is-warning is-medium"
-          onClick={() => {
-            scrollToRef(contactRef)
-          }}
-        >
-          Contact Us
-        </button>
+        <Container>
+          <Heading as="h1" pb="1rem">
+            Windows, Doors and More
+          </Heading>
+          <Button
+            size="lg"
+            colorScheme="yellow"
+            onClick={() => {
+              scrollToRef(contactRef)
+            }}
+          >
+            Contact Us
+          </Button>
+        </Container>
       </Hero>
       <Notification />
-      <section className="section-services has-background-white-bis">
-        <div className="container">
-          <div className="card-wrapper-landing">
+      <Box as="section" className="section has-background-white-bis">
+        <Container>
+          <Grid
+            templateColumns={{
+              base: "minmax(0, 1fr)",
+              md: "repeat(auto-fill, minmax(350px, 1fr))",
+            }}
+            gap={{ base: "24px", md: "36px" }}
+          >
             {cards.map(card => {
               const { _key, image, alt, title, body } = card
               return (
@@ -68,19 +81,26 @@ export default function Home({ data }) {
                 />
               )
             })}
-          </div>
-        </div>
-      </section>
-      <section ref={vendorRef} className="section">
-        <div className="container">
-          <h3 className="subtitle is-uppercase has-text-centered mb-5">
+          </Grid>
+        </Container>
+      </Box>
+      <Box as="section" ref={vendorRef} className="section">
+        <Container>
+          <Heading
+            as="h3"
+            mb="1rem"
+            fontSize="2xl"
+            fontWeight={200}
+            textTransform="uppercase"
+            textAlign="center"
+          >
             Vendors We Work With
-          </h3>
+          </Heading>
           {visible ? <VendorBanner /> : null}
-        </div>
-      </section>
-      <section className="section-testimonial">
-        <div className="container">
+        </Container>
+      </Box>
+      <Box as="section" className="section-testimonial">
+        <Container>
           <Carousel>
             {testimonials.map(testimonial => {
               const { id, _rawQuote, client, clientTitle } = testimonial
@@ -94,8 +114,8 @@ export default function Home({ data }) {
               )
             })}
           </Carousel>
-        </div>
-      </section>
+        </Container>
+      </Box>
       <section ref={contactRef} className="section-quote-form">
         <div className="container">
           <ContactForm title="Request a Quote" className="form" />

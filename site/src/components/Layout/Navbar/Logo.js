@@ -1,7 +1,7 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 import { Link } from "@chakra-ui/react"
-import { AluminumAssociatesLogo } from "../Icons"
+import { AluminumAssociatesLogo } from "../../Icons"
 
 const Logo = () => {
   return (
