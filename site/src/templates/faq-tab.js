@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import FooterTabs from "../components/FooterTabs"
-import { table } from "../components/Serializers"
+import Serializers from "../components/Serializers"
 
 const FaqTab = ({ data }) => {
   const { title, _rawBody } = data.currentTab
@@ -24,25 +24,14 @@ const FaqTab = ({ data }) => {
       <div className="hero is-medium is-primary">
         <div className="hero-body">
           <div className="container" style={{ maxWidth: "75ch" }}>
-            <h1 className="title is-size-2">
-              Frequently Asked Questions
-            </h1>
+            <h1 className="title is-size-2">Frequently Asked Questions</h1>
           </div>
         </div>
         <FooterTabs tabs={footerTabs} />
       </div>
       <section className="section">
         <div className="container" style={{ maxWidth: "75ch" }}>
-          <div className="content">
-            <PortableText
-              blocks={_rawBody}
-              serializers={{
-                types: {
-                  table,
-                },
-              }}
-            />
-          </div>
+          <PortableText blocks={_rawBody} serializers={Serializers} />
         </div>
       </section>
     </Layout>

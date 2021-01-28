@@ -7,12 +7,7 @@ import ImageGallery from "../components/ImageGallery"
 import Accordion from "../components/Accordion"
 import DocumentAccordion from "../components/DocumentAccordion"
 import AvailableColors from "../components/AvailableColors"
-import {
-  imageGallery,
-  blockStyles,
-  videoEmbed,
-  list,
-} from "../components/Serializers"
+import Serializers from "../components/Serializers"
 
 const Product = ({ data }) => {
   const {
@@ -74,14 +69,7 @@ const Product = ({ data }) => {
               </h3>
               <PortableText
                 blocks={_rawDescription}
-                serializers={{
-                  types: {
-                    imageGallery: imageGallery,
-                    block: blockStyles,
-                    videoEmbed: videoEmbed,
-                  },
-                  list,
-                }}
+                serializers={Serializers}
               />
               {standardFeatures ||
               optionalFeatures ||
@@ -104,7 +92,10 @@ const Product = ({ data }) => {
                     <AvailableColors colors={availableColors.colors} />
                   )}
                   {documentation && documentation.length !== 0 && (
-                    <DocumentAccordion className="menu pt-2" documentation={documentation} />
+                    <DocumentAccordion
+                      className="menu pt-2"
+                      documentation={documentation}
+                    />
                   )}
                 </div>
               ) : null}
@@ -118,14 +109,7 @@ const Product = ({ data }) => {
               <h2 className="title is-size-3 is-size-4-mobile">More Detail</h2>
               <PortableText
                 blocks={_rawAdditionalInfo}
-                serializers={{
-                  types: {
-                    imageGallery: imageGallery,
-                    block: blockStyles,
-                    videoEmbed: videoEmbed,
-                  },
-                  list,
-                }}
+                serializers={Serializers}
               />
             </section>
           </>
