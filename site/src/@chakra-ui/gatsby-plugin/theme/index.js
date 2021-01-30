@@ -36,6 +36,7 @@ const theme = extendTheme({
         _hover: {
           textDecoration: "none",
           color: "primary.700",
+          bg: "gray.50",
         },
       },
     },

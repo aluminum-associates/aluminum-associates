@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import BackgroundImage from "gatsby-background-image"
-import HeroOverlay from "./HeroOverlay"
+import Overlay from "./Overlay"
 import { Box } from "@chakra-ui/react"
-import Container from "../components/Layout/Container"
+import Container from "../Layout/Container"
 
 const Hero = ({ size, fluid, fixed, children }) => {
   return fixed || fluid ? (
@@ -12,13 +12,13 @@ const Hero = ({ size, fluid, fixed, children }) => {
       fluid={fluid ? fluid : null}
       className={`hero ${size} is-primary`}
     >
-      <HeroOverlay>
+      <Overlay>
         <Box className="hero-body">
           <Box flex={1} minH="100px">
             <Container>{children}</Container>
           </Box>
         </Box>
-      </HeroOverlay>
+      </Overlay>
     </BackgroundImage>
   ) : (
     <Box className={`hero ${size} is-primary`}>
