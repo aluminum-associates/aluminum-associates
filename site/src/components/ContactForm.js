@@ -1,4 +1,15 @@
-import React, { Component } from "react"
+import React from "react"
+import { useForm } from "react-hook-form"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+  Box,
+  Heading,
+  Textarea,
+  Button,
+} from "@chakra-ui/react"
 
 const encode = data => {
   return Object.keys(data)
@@ -6,203 +17,169 @@ const encode = data => {
     .join("&")
 }
 
-const initState = {
-  name: "",
-  address: "",
-  email: "",
-  phone: "",
-  message: "",
-  errs: {
-    isErr: false,
-    name: "",
-    address: "",
-    email: "",
-    phone: "",
-    message: "",
+// Regex for email address
+const re = /\S+@\S+\.\S+/
+
+// Form styles
+const controlStyles = {
+  pb: "0.75rem",
+}
+
+const labelStyles = {
+  color: "gray.700",
+  fontSize: "lg",
+}
+
+const inputStyles = {
+  borderColor: "gray.500",
+  _hover: {
+    borderColor: "primary.500",
   },
 }
 
-export class ContactForm extends Component {
-  state = initState
+//Form Component
+const ContactForm = ({ title }) => {
+  const { register, handleSubmit, errors } = useForm()
 
-  validateForm = () => {
-    let name = ""
-    let address = ""
-    let email = ""
-    let phone = ""
-    let message = ""
-
-    if (!this.state.name) {
-      name = "Name is required."
+  // Validation rules
+  const validateName = value => {
+    if (!value) {
+      return "Name field cannot be left blank."
     }
 
-    if (!this.state.address) {
-      address = "Address is required."
+    return true
+  }
+  const validateAddress = value => {
+    if (!value) {
+      return "Address field cannot be left blank."
     }
 
-    if (!this.state.email.includes("@")) {
-      email = "Please enter a valid email address."
+    return true
+  }
+  const validateEmail = value => {
+    if (!value) {
+      return "Email field cannot be left blank."
+    } else if (!re.test(value)) {
+      return "Please enter a valid email address."
     }
 
-    if (!this.state.email) {
-      email = "Email is required."
+    return true
+  }
+  const validatePhone = value => {
+    if (!value) {
+      return "Phone number field cannot be left blank."
     }
 
-    if (!this.state.phone) {
-      phone = "Phone number is required."
-    }
-
-    if (!this.state.message) {
-      message = "Message field cannot be left blank."
-    }
-
-    if (name || address || email || phone || message) {
-      this.setState({
-        errs: { name, address, email, phone, message },
-      })
-
-      return false
+    return true
+  }
+  const validateMessage = value => {
+    if (!value) {
+      return "Your message cannot be left blank."
     }
 
     return true
   }
 
-  handleChange = e => {
-    const target = e.target
-    const name = target.name
-    const value = target.value
-
-    this.setState({
-      [name]: value,
+  // Form submit handler
+  const onSubmit = data => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...data }),
     })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 
-  handleSubmit = e => {
-    const isValid = this.validateForm()
-
-    if (isValid) {
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...this.state }),
-      })
-        .then(() => {
-          alert("Success!")
-          this.setState(initState)
-        })
-        .catch(error => alert(error))
-    }
-
-    e.preventDefault()
-  }
-
-  render() {
-    const formStyle = {
-      maxWidth: "600px",
-    }
-    const { name, address, email, phone, message } = this.state
-
-    return (
-      <>
-        <form
-          onSubmit={this.handleSubmit}
-          style={formStyle}
-          className="contact-form"
-        >
-          {this.props.title ? (
-            <h1 className="title">{this.props.title}</h1>
-          ) : null}
-          <div className="field">
-            <input
-              type="text"
-              aria-label="Name field"
-              name="name"
-              value={name}
-              className={`input ${this.state.errs.name ? "is-danger" : null}`}
-              onChange={this.handleChange}
-              placeholder="Name"
-            />
-          </div>
-          {this.state.errs.name ? (
-            <p className="field has-text-danger">{this.state.errs.name}</p>
-          ) : null}
-
-          <div className="field">
-            <input
-              type="text"
-              aria-label="Street address field"
-              name="address"
-              value={address}
-              className={`input ${
-                this.state.errs.address ? "is-danger" : null
-              }`}
-              onChange={this.handleChange}
-              placeholder="Address"
-            />
-          </div>
-          {this.state.errs.address ? (
-            <p className="field has-text-danger">{this.state.errs.address}</p>
-          ) : null}
-
-          <div className="field">
-            <input
-              type="text"
-              aria-label="Email address field"
-              name="email"
-              value={email}
-              className={`input ${this.state.errs.email ? "is-danger" : null}`}
-              onChange={this.handleChange}
-              placeholder="Email"
-            />
-          </div>
-          {this.state.errs.email ? (
-            <p className="field has-text-danger">{this.state.errs.email}</p>
-          ) : null}
-
-          <div className="field">
-            <input
-              type="text"
-              aria-label="Phone number field"
-              name="phone"
-              value={phone}
-              className={`input ${this.state.errs.phone ? "is-danger" : null}`}
-              onChange={this.handleChange}
-              placeholder="Phone"
-            />
-          </div>
-          {this.state.errs.phone ? (
-            <p className="field has-text-danger">{this.state.errs.phone}</p>
-          ) : null}
-
-          <div className="field">
-            <textarea
-              name="message"
-              aria-label="Message field"
-              value={message}
-              cols="30"
-              rows="10"
-              className={`textarea ${
-                this.state.errs.message ? "is-danger" : null
-              }`}
-              onChange={this.handleChange}
-              placeholder="Message"
-            ></textarea>
-          </div>
-          {this.state.errs.message ? (
-            <p className="field has-text-danger">{this.state.errs.message}</p>
-          ) : null}
-
-          <button
-            type="submit"
-            onClick={this.handleSubmit}
-            className="button is-primary"
-          >
-            Submit
-          </button>
-        </form>
-      </>
-    )
-  }
+  return (
+    <Box flex={1} maxW="50ch">
+      <Heading as="h2" pb="1rem">
+        {title}
+      </Heading>
+      <form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <FormControl isInvalid={errors.name} {...controlStyles}>
+          <FormLabel htmlFor="name" {...labelStyles}>
+            Name
+          </FormLabel>
+          <Input
+            name="name"
+            placeholder="Jane Doe"
+            ref={register({ validate: validateName })}
+            {...inputStyles}
+          />
+          <FormErrorMessage>
+            {errors.name && errors.name.message}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={errors.address} {...controlStyles}>
+          <FormLabel htmlFor="address" {...labelStyles}>
+            Address
+          </FormLabel>
+          <Input
+            name="address"
+            placeholder="1801 Trafalgar St. East"
+            ref={register({ validate: validateAddress })}
+            {...inputStyles}
+          />
+          <FormErrorMessage>
+            {errors.address && errors.address.message}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={errors.email} {...controlStyles}>
+          <FormLabel htmlFor="email" {...labelStyles}>
+            Email
+          </FormLabel>
+          <Input
+            name="email"
+            placeholder="jane.d@email.com"
+            ref={register({ validate: validateEmail })}
+            {...inputStyles}
+          />
+          <FormErrorMessage>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={errors.phone} {...controlStyles}>
+          <FormLabel htmlFor="phone" {...labelStyles}>
+            Phone Number
+          </FormLabel>
+          <Input
+            name="phone"
+            placeholder="519-123-4567"
+            ref={register({ validate: validatePhone })}
+            {...inputStyles}
+          />
+          <FormErrorMessage>
+            {errors.phone && errors.phone.message}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={errors.message} {...controlStyles}>
+          <FormLabel htmlFor="message" {...labelStyles}>
+            Message
+          </FormLabel>
+          <Textarea
+            name="message"
+            placeholder="Hello!"
+            rows={10}
+            ref={register({ validate: validateMessage })}
+            {...inputStyles}
+          />
+          <FormErrorMessage>
+            {errors.message && errors.message.message}
+          </FormErrorMessage>
+        </FormControl>
+        <Button type="submit" colorScheme="primary">
+          Submit
+        </Button>
+      </form>
+    </Box>
+  )
 }
 
 export default ContactForm

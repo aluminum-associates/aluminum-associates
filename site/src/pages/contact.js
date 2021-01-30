@@ -36,9 +36,7 @@ export default function Contact() {
             >
               <ContactForm title="Email Us" />
               <Box>
-                <Heading as="h1" className="title">
-                  Visit Us
-                </Heading>
+                <Heading as="h2">Visit Us</Heading>
                 <Map />
                 <Box fontWeight="bold">
                   <Text>
