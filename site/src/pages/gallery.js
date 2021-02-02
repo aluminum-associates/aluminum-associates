@@ -70,16 +70,20 @@ const Gallery = ({ data }) => {
           color="white"
           bg="rgba(0,0,0,0.65)"
           maxW="max-content"
-          maxH="90vh"
+          // maxH="90vh"
         >
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDirection="column">
-            <Box pb="1rem" maxW="100%" maxH="100%">
+          <ModalBody maxH="100%" display="flex" flexDirection="column">
+            <Box flex="1 0 auto" pb="1rem" maxW="100%" maxH="auto">
               <Img
                 fixed={project?.image?.asset?.fixed}
                 alt={project?.title}
-                style={{ maxWidth: "inherit", maxHeight: "inherit" }}
+                style={{
+                  flex: "inherit",
+                  maxWidth: "inherit",
+                  maxHeight: "inherit",
+                }}
                 imgStyle={{ objectFit: "contain" }}
               />
             </Box>
