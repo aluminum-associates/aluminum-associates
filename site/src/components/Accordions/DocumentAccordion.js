@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { motion, AnimatePresence } from "framer-motion"
 import { AiOutlineFile } from "react-icons/ai"
 import {
   AccordionItem as Item,

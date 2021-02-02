@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { jsx, css } from "@emotion/core"
 import Lightbox from "react-image-lightbox"
 import "react-image-lightbox/style.css"
 import {
@@ -9,7 +7,6 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Heading,
   Box,
   Grid,
   Button,
