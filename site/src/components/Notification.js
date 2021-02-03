@@ -55,7 +55,7 @@ const Notification = () => {
           right={{ base: 0, md: "1.25rem" }}
           bottom={{ base: 0, md: "1.25rem" }}
           zIndex={10}
-          overflowY="scroll"
+          overflowY={{ base: "scroll", md: "hidden" }}
           w={{ base: "100%", md: "60ch" }}
           maxH={{ base: "70vh", md: "100%" }}
           p="1.25rem"

@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import {
-  Box,
   Button,
   Grid,
   Heading,
+  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -39,6 +38,7 @@ const Gallery = ({ data }) => {
         >
           {images.map((img, i) => {
             const { title, excerpt, image } = img
+
             return (
               <Button
                 key={i}
@@ -52,36 +52,32 @@ const Gallery = ({ data }) => {
                   onOpen()
                 }}
               >
-                <Box maxW="inherit" maxH="inherit">
-                  <Img
-                    fixed={image.asset.fixed}
-                    alt={title}
-                    style={{ maxWidth: "inherit", maxHeight: "inherit" }}
-                  />
-                </Box>
+                <Image
+                  fallbackSrc={image.asset.fixed.base64}
+                  srcSet={image.asset.fixed.srcSet}
+                  fit="cover"
+                  align="center"
+                  w="100%"
+                  h="100%"
+                />
               </Button>
             )
           })}
         </Grid>
       </Container>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent color="white" bg="rgba(0,0,0,0.65)" w="auto" maxH="90vh">
+        <ModalContent color="white" bg="rgba(0,0,0,0.65)">
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDirection="column">
-            <Box flex={1} pb="1rem" maxW="100%" h="auto">
-              <Img
-                fixed={project?.image?.asset?.fixed}
-                alt={project?.title}
-                style={{
-                  flex: "inherit",
-                  maxWidth: "inherit",
-                  height: "inherit",
-                }}
-                imgStyle={{ flex: 1, objectFit: "contain" }}
-              />
-            </Box>
+          <ModalBody display="flex" flexDirection="column" w="auto" maxH="80vh">
+            <Image
+              fallbackSrc={project?.image?.asset?.fixed?.base64}
+              srcSet={project?.image?.asset?.fixed?.srcSet}
+              alt={project?.title}
+              fit="contain"
+              pb="1rem"
+            />
             <Text pb="1rem">{project?.excerpt}</Text>
           </ModalBody>
         </ModalContent>
