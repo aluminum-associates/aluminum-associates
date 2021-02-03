@@ -66,25 +66,20 @@ const Gallery = ({ data }) => {
       </Container>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent
-          color="white"
-          bg="rgba(0,0,0,0.65)"
-          maxW="max-content"
-          // maxH="90vh"
-        >
+        <ModalContent color="white" bg="rgba(0,0,0,0.65)" w="auto" maxH="90vh">
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody maxH="100%" display="flex" flexDirection="column">
-            <Box flex="1 0 auto" pb="1rem" maxW="100%" maxH="auto">
+          <ModalBody display="flex" flexDirection="column">
+            <Box flex={1} pb="1rem" maxW="100%" h="auto">
               <Img
                 fixed={project?.image?.asset?.fixed}
                 alt={project?.title}
                 style={{
                   flex: "inherit",
                   maxWidth: "inherit",
-                  maxHeight: "inherit",
+                  height: "inherit",
                 }}
-                imgStyle={{ objectFit: "contain" }}
+                imgStyle={{ flex: 1, objectFit: "contain" }}
               />
             </Box>
             <Text pb="1rem">{project?.excerpt}</Text>
