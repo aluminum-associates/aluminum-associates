@@ -67,15 +67,17 @@ const Gallery = ({ data }) => {
       </Container>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent color="white" bg="rgba(0,0,0,0.65)">
+        <ModalContent color="white" bg="rgba(0,0,0,0.65)" maxW="max-content">
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDirection="column" w="auto" maxH="80vh">
+          <ModalBody display="flex" flexDirection="column" maxW="inherit">
             <Image
               fallbackSrc={project?.image?.asset?.fixed?.base64}
               srcSet={project?.image?.asset?.fixed?.srcSet}
               alt={project?.title}
               fit="contain"
+              maxW="inherit"
+              maxH="70vh"
               pb="1rem"
             />
             <Text pb="1rem">{project?.excerpt}</Text>
