@@ -1,7 +1,11 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import { Box, Link } from "@chakra-ui/react"
 import Img from "gatsby-image"
 import { motion } from "framer-motion"
+
+const MotionBox = motion.custom(Box)
+const MotionLink = motion.custom(Link)
 
 const VendorBanner = () => {
   const data = useStaticQuery(graphql`
@@ -52,7 +56,7 @@ const VendorBanner = () => {
   }
 
   return (
-    <motion.div
+    <MotionBox
       className="flex-wrap"
       style={{ justifyContent: "flex-start" }}
       initial="initial"
@@ -62,21 +66,18 @@ const VendorBanner = () => {
       {vendors.map((vendor, i) => {
         const { id, title, logo, url } = vendor
         return (
-          <motion.a
+          <MotionLink
+            key={id}
             custom={i}
             initial="initial"
             animate="animate"
             variants={childVars}
-            key={id}
-            className="mx-2 my-2"
+            display="flex"
+            flex={1}
+            justifyContent="flex-start"
+            m="0.75rem"
             href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              flex: 1,
-              justifyContent: "flex-start",
-            }}
+            isExternal
           >
             <Img
               fixed={logo.asset.fixed}
@@ -89,10 +90,10 @@ const VendorBanner = () => {
               }}
               imgStyle={{ objectFit: "contain" }}
             />
-          </motion.a>
+          </MotionLink>
         )
       })}
-    </motion.div>
+    </MotionBox>
   )
 }
 

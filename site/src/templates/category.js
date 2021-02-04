@@ -33,8 +33,9 @@ export default function Category({ data }) {
               base: "minmax(0, 1fr)",
               md: "repeat(auto-fill, minmax(225px, 1fr))",
             }}
-            gridAutoRows
-            gap="24px"
+            autoRows="1fr"
+            columnGap="24px"
+            rowGap={{ base: "24px", md: "36px" }}
           >
             {childCategories.map(({ node: category }) => {
               const { id, heroImage, slug, title, description } = category
