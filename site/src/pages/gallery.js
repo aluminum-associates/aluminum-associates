@@ -63,24 +63,27 @@ const Gallery = ({ data }) => {
                   h="100%"
                   pos="absolute"
                   top={0}
+                  _hover={{
+                    opacity: 0.75,
+                  }}
                 />
               </Button>
             )
           })}
         </Grid>
       </Container>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent color="white" bg="rgba(0,0,0,0.65)" maxW="max-content">
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody display="flex" flexDirection="column" maxW="inherit">
+          <ModalBody display="flex" flexDirection="column" maxW="inherit" m="auto">
             <Image
               fallbackSrc={project?.image?.asset?.fixed?.base64}
               srcSet={project?.image?.asset?.fixed?.srcSet}
               alt={project?.title}
               fit="contain"
-              maxW="inherit"
+              maxW="100%"
               maxH="70vh"
               pb="1rem"
             />
