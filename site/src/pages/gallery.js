@@ -43,10 +43,12 @@ const Gallery = ({ data }) => {
               <Button
                 key={i}
                 variant="unstyled"
-                maxW="250px"
+                maxW={{ base: "100%", md: "250px" }}
+                pt={{ base: "100%", md: 0 }}
                 maxH="250px"
                 minH="250px"
                 boxShadow="xl"
+                pos="relative"
                 onClick={() => {
                   setProject({ title, excerpt, image })
                   onOpen()
@@ -59,6 +61,8 @@ const Gallery = ({ data }) => {
                   align="center"
                   w="100%"
                   h="100%"
+                  pos="absolute"
+                  top={0}
                 />
               </Button>
             )
