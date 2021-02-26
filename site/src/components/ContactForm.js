@@ -45,7 +45,7 @@ const inputStyles = {
 }
 
 //Form Component
-const ContactForm = ({ title }) => {
+const ContactForm = (props) => {
   const { register, handleSubmit, errors, reset } = useForm()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -104,9 +104,9 @@ const ContactForm = ({ title }) => {
 
   return (
     <>
-      <Box flex={1} maxW="50ch">
+      <Box flex={1} maxW="50ch" {...props}>
         <Heading as="h2" pb="1rem">
-          {title}
+          {props.title}
         </Heading>
         <form
           name="contact"

@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import { Box, Heading } from "@chakra-ui/react"
 import Serializers from "../components/Serializers"
+import Container from "../components/Layout/Container"
 
 const Services = ({ data }) => {
   const {
@@ -17,11 +18,13 @@ const Services = ({ data }) => {
   return (
     <Layout title={title} description={metaDescription}>
       <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
-        <Box maxW="75ch" m="0 auto">
-          <Heading as="h1">{title}</Heading>
-        </Box>
+        <Container>
+          <Box maxW="75ch" m="0 auto">
+            <Heading as="h1">{title}</Heading>
+          </Box>
+        </Container>
       </Hero>
-      <Box as="section" className="section">
+      <Box as="section" p="3rem 1.25rem">
         <Box maxW="75ch" m="0 auto">
           <PortableText blocks={_rawBody} serializers={Serializers} />
         </Box>

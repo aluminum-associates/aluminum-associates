@@ -5,6 +5,8 @@ import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import FooterTabs from "../components/FooterTabs"
 import Serializers from "../components/Serializers"
+import Hero from "../components/Hero"
+import Container from "../components/Layout/Container"
 
 const FaqTab = ({ data }) => {
   const { title, _rawBody } = data.currentTab
@@ -22,15 +24,17 @@ const FaqTab = ({ data }) => {
 
   return (
     <Layout title={title} description={metaDescription}>
-      <Box className="hero is-medium is-primary">
-        <Box className="hero-body">
+      <Hero
+        className="hero is-medium is-primary"
+        footer={<FooterTabs tabs={footerTabs} />}
+      >
+        <Container>
           <Box maxW="75ch" m="0 auto">
             <Heading as="h1">Frequently Asked Questions</Heading>
           </Box>
-        </Box>
-        <FooterTabs tabs={footerTabs} />
-      </Box>
-      <Box as="section" className="section">
+        </Container>
+      </Hero>
+      <Box as="section" p="3rem 1.25rem">
         <Box maxWidth="75ch" m="0 auto">
           <PortableText blocks={_rawBody} serializers={Serializers} />
         </Box>

@@ -22,9 +22,9 @@ export default function Category({ data }) {
         size={heroSize}
         fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
       >
-        <Heading as="h1" className="title is-size-2">
-          {title}
-        </Heading>
+        <Container>
+          <Heading as="h1">{title}</Heading>
+        </Container>
       </Hero>
       <Box as="section" className="section has-background-white-bis">
         <Container>

@@ -16,18 +16,17 @@ import {
   List,
 } from "@chakra-ui/react"
 import Container from "../components/Layout/Container"
+import Hero from "../components/Hero"
 
 export default function Contact() {
   return (
     <Box>
       <Layout title="Contact">
-        <Box className="hero is-medium is-primary">
-          <Box className="hero-body">
-            <Container>
-              <Heading as="h1">Let's Get In Touch</Heading>
-            </Container>
-          </Box>
-        </Box>
+        <Hero>
+          <Container>
+            <Heading as="h1">Let's Get In Touch</Heading>
+          </Container>
+        </Hero>
         <Box as="section" className="section-contact-page">
           <Container>
             <Grid

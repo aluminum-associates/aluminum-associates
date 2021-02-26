@@ -65,7 +65,7 @@ export default function Home({ data }) {
           <Grid
             templateColumns={{
               base: "minmax(0, 1fr)",
-              md: "repeat(auto-fill, minmax(350px, 1fr))",
+              md: "repeat(auto-fill, minmax(340px, 1fr))",
             }}
             gap={{ base: "24px", md: "36px" }}
           >
@@ -116,11 +116,14 @@ export default function Home({ data }) {
           </Carousel>
         </Container>
       </Box>
-      <section ref={contactRef} className="section-quote-form">
-        <div className="container">
-          <ContactForm title="Request a Quote" className="form" />
-        </div>
-      </section>
+      <Box as="section" ref={contactRef}>
+        <Container display="flex" flexDirection="column" alignItems="center">
+          <ContactForm
+            title="Request a Quote"
+            minW={{ base: "100%", md: "50ch" }}
+          />
+        </Container>
+      </Box>
     </Layout>
   )
 }

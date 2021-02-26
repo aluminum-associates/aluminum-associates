@@ -9,7 +9,7 @@ const FooterTabs = props => {
   const defaultIndex = props.tabs.map(tab => tab.slug).indexOf(currentPath)
 
   return (
-    <Flex justifyContent="center" alignItems="center" overflow="hidden">
+    <Flex poisition="relative" bottom="0" justifyContent="center" alignItems="center" overflow="hidden">
       <Tabs
         flex={1}
         maxW="75ch"

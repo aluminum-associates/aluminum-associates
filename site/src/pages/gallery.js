@@ -25,7 +25,9 @@ const Gallery = ({ data }) => {
   return (
     <Layout title={title}>
       <Hero>
-        <Heading as="h1">{title}</Heading>
+        <Container>
+          <Heading as="h1">{title}</Heading>
+        </Container>
       </Hero>
       <Container>
         <Grid

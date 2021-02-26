@@ -33,7 +33,9 @@ const Product = ({ data }) => {
         size={heroSize}
         fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
       >
-        <Heading as="h1">{title}</Heading>
+        <Container>
+          <Heading as="h1">{title}</Heading>
+        </Container>
       </Hero>
       <Container>
         <Box as="section" className="section">
