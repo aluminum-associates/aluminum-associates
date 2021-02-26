@@ -7,7 +7,7 @@ import Card from "../components/Card"
 export default function Products({ data }) {
   return (
     <Layout title="Products">
-      <Hero size="is-medium">
+      <Hero size="medium">
         <h1 className="title is-size-2">Products</h1>
       </Hero>
       <section className="section">

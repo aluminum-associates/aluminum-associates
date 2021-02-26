@@ -19,8 +19,8 @@ export default function Category({ data }) {
       description={description ? description.substring(0, 154) + "..." : null}
     >
       <Hero
-        size={heroSize}
-        fluid={heroImage && heroImage.asset ? heroImage.asset.fluid : null}
+        size={heroSize && heroSize}
+        image={heroImage && heroImage}
       >
         <Container>
           <Heading as="h1">{title}</Heading>

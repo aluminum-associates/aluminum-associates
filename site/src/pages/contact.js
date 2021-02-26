@@ -22,7 +22,7 @@ export default function Contact() {
   return (
     <Box>
       <Layout title="Contact">
-        <Hero>
+      <Hero>
           <Container>
             <Heading as="h1">Let's Get In Touch</Heading>
           </Container>

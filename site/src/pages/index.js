@@ -10,6 +10,7 @@ import VendorBanner from "../components/VendorBanner"
 import Card from "../components/Card"
 import { Box, Button, Grid, Heading } from "@chakra-ui/react"
 import Container from "../components/Layout/Container"
+import imageUrl from "../../utils/imageUrl"
 
 const scrollToRef = ref =>
   window.scrollTo({
@@ -38,11 +39,21 @@ export default function Home({ data }) {
     vendorRef.current && observer.observe(vendorRef.current)
   }, [])
 
+  const { asset, crop, hotspot } = heroImages[0]
+
+  const heroImageUrl = imageUrl(asset._id)
+    .width(1440)
+    .height(800)
+    // .focalPoint(hotspot.x, hotspot.y)
+    .url()
+
+  console.log(heroImageUrl)
   return (
     <Layout title="Home">
       <Hero
-        size={heroSize}
-        fluid={heroImages ? heroImages[0].asset.fluid : null}
+        size={heroSize && heroSize}
+        image={heroImages && heroImageUrl}
+        hotspot={hotspot}
       >
         <Container>
           <Heading as="h1" pb="1rem">
@@ -136,9 +147,19 @@ export const data = graphql`
       notificationActive
       heroImages {
         asset {
-          fluid {
-            ...GatsbySanityImageFluid
-          }
+          _id
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+        hotspot {
+          height
+          width
+          x
+          y
         }
       }
       heroSize

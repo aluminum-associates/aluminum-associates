@@ -17,7 +17,7 @@ const Services = ({ data }) => {
   } = data.sanityServices
   return (
     <Layout title={title} description={metaDescription}>
-      <Hero size={heroSize} fluid={heroImage ? heroImage.asset.fluid : null}>
+      <Hero size={heroSize && heroSize} fluid={heroImage && heroImage}>
         <Container>
           <Box maxW="75ch" m="0 auto">
             <Heading as="h1">{title}</Heading>
@@ -43,6 +43,10 @@ export const data = graphql`
           fluid(maxWidth: 1920) {
             ...GatsbySanityImageFluid
           }
+        }
+        hotspot {
+          x
+          y
         }
       }
       heroSize

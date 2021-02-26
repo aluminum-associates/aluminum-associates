@@ -20,7 +20,7 @@ const About = ({ data }) => {
   return (
     <Box>
       <Layout title={title} description={metaDescription}>
-        <Hero fluid={heroImage.asset.fluid} size={heroSize}>
+        <Hero image={heroImage && heroImage} size={heroSize && heroSize}>
           <Container>
             <PortableText blocks={_rawHeroCopy} serializers={Serializers} />
           </Container>
@@ -49,6 +49,10 @@ export const data = graphql`
           fluid(maxWidth: 1920) {
             ...GatsbySanityImageFluid
           }
+        }
+        hotspot {
+          x
+          y
         }
       }
       heroSize

@@ -25,7 +25,6 @@ const FaqTab = ({ data }) => {
   return (
     <Layout title={title} description={metaDescription}>
       <Hero
-        className="hero is-medium is-primary"
         footer={<FooterTabs tabs={footerTabs} />}
       >
         <Container>
