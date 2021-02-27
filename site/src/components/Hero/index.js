@@ -13,7 +13,9 @@ const Hero = ({ size, image, hotspot, children, footer }) => {
       bg="primary.800"
       bgImage={image && `url(${image})`}
       backgroundSize="cover"
-      backgroundPosition={`${hotspot.x * 100}%, ${hotspot.y * 100}%`}
+      backgroundPosition={
+        hotspot && `${hotspot?.x * 100}%, ${hotspot?.y * 100}%`
+      }
       bgRepeat="no-repeat"
     >
       <Box
