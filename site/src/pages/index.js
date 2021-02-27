@@ -41,13 +41,11 @@ export default function Home({ data }) {
 
   const { asset, crop, hotspot } = heroImages[0]
 
-  const heroImageUrl = imageUrl(asset._id)
+  const heroImageUrl = imageUrl(heroImages[0])
     .width(1440)
-    .height(800)
-    // .focalPoint(hotspot.x, hotspot.y)
+    .height(810)
     .url()
 
-  console.log(heroImageUrl)
   return (
     <Layout title="Home">
       <Hero
