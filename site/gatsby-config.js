@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -14,12 +14,12 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify-cache`,
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Work Sans', 'Poppins']
-        }
-      }
+          families: ["Work Sans", "Poppins"],
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -52,18 +52,6 @@ module.exports = {
         isUsingColorMode: false,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `aluminum-associates`,
-    //     short_name: `aluminum`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/favicon.ico`,
-    //   },
-    // },
     `gatsby-plugin-sass`,
   ],
-}
+};
