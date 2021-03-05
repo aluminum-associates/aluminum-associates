@@ -4,8 +4,8 @@ import { Box, Link } from "@chakra-ui/react"
 import Img from "gatsby-image"
 import { motion } from "framer-motion"
 
-const MotionBox = motion.custom(Box)
-const MotionLink = motion.custom(Link)
+const MotionBox = motion(Box)
+const MotionLink = motion(Link)
 
 const VendorBanner = () => {
   const data = useStaticQuery(graphql`

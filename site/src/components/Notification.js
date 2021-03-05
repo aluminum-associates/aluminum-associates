@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import PortableText from "@sanity/block-content-to-react"
 import Serializers from "./Serializers"
 
-const MotionBox = motion.custom(Box)
+const MotionBox = motion(Box)
 
 const boxVariants = {
   hidden: {
