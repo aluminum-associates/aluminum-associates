@@ -41,10 +41,7 @@ export default function Home({ data }) {
 
   const { asset, crop, hotspot } = heroImages[0]
 
-  const heroImageUrl = imageUrl(heroImages[0])
-    .width(1440)
-    .height(810)
-    .url()
+  const heroImageUrl = imageUrl(heroImages[0]).width(1440).height(810).url()
 
   return (
     <Layout title="Home">

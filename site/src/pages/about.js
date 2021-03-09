@@ -6,6 +6,7 @@ import Hero from "../components/Hero"
 import Serializers from "../components/Serializers"
 import { Box } from "@chakra-ui/react"
 import Container from "../components/Layout/Container"
+import imageUrl from "../../utils/imageUrl"
 
 const About = ({ data }) => {
   const {
@@ -17,10 +18,18 @@ const About = ({ data }) => {
     heroSize,
   } = data.sanityAbout
 
+  console.log(heroSize)
+
+  const heroImageUrl = imageUrl(heroImage).url()
+
   return (
     <Box>
       <Layout title={title} description={metaDescription}>
-        <Hero image={heroImage && heroImage} size={heroSize && heroSize}>
+        <Hero
+          image={heroImage && heroImageUrl}
+          size={heroSize && heroSize}
+          hotspot={heroImage.hotspot}
+        >
           <Container>
             <PortableText blocks={_rawHeroCopy} serializers={Serializers} />
           </Container>
@@ -46,9 +55,13 @@ export const data = graphql`
       _rawHeroCopy
       heroImage {
         asset {
-          fluid(maxWidth: 1920) {
-            ...GatsbySanityImageFluid
-          }
+          _id
+        }
+        crop {
+          top
+          bottom
+          left
+          right
         }
         hotspot {
           x

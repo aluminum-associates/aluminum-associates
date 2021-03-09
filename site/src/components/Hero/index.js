@@ -24,16 +24,17 @@ const Hero = ({ size, image, hotspot, children, footer }) => {
         flex={1}
         minH={size === "fullscreen" ? "calc(100vh - 90px)" : "320px"}
         p={size => {
+          var padding = ""
           switch (size) {
-            case "small":
-              return "1.5rem 0"
-            case "medium":
-              return "9rem 4.5rem"
-            case "large":
-              return "18rem 6 rem"
             default:
-              return "1.5rem 0"
+            case "small":
+              padding = "1.5rem 0"
+            case "medium":
+              padding = "9rem 4.5rem"
+            case "large":
+              padding = "18rem 6rem"
           }
+          return padding
         }}
       >
         {children}
