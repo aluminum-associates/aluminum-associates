@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/Layout"
 
-export default () => {
+const Custom404 = () => {
   return (
     <Layout title="404: Not found">
       <h1>NOT FOUND</h1>
@@ -9,3 +9,5 @@ export default () => {
     </Layout>
   )
 }
+
+export default Custom404
