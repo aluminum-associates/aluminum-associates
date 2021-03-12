@@ -18,8 +18,6 @@ const About = ({ data }) => {
     heroSize,
   } = data.sanityAbout
 
-  console.log(heroSize)
-
   const heroImageUrl = imageUrl(heroImage).url()
 
   return (

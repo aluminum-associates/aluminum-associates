@@ -51,7 +51,7 @@ export default function Home({ data }) {
         hotspot={hotspot}
       >
         <Container>
-          <Heading as="h1" pb="1rem">
+          <Heading as="h1" size="2xl" pb="1rem" textShadow="2px 2px rgba(0,0,0,0.15)">
             Windows, Doors and More
           </Heading>
           <Button

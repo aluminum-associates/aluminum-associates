@@ -1,5 +1,3 @@
-const path = require(`path`)
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -53,17 +51,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = res.data.categories.edges
   const tabs = res.data.faqTabs.tabs
 
-  products.forEach(edge => {
-    const path = edge.node.category
-      ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
-      : `/products/${edge.node.slug.current}`
+  // products.forEach(edge => {
+  //   const path = edge.node.category
+  //     ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
+  //     : `/products/${edge.node.slug.current}`
 
-    createPage({
-      path,
-      component: require.resolve("./src/templates/product.js"),
-      context: { slug: edge.node.slug.current },
-    })
-  })
+  //   createPage({
+  //     path,
+  //     component: require.resolve("./src/templates/product.js"),
+  //     context: { slug: edge.node.slug.current },
+  //   })
+  // })
 
   categories.forEach(edge => {
     const path = `/products/${edge.node.slug.current}`
