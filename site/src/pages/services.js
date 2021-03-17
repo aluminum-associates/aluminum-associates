@@ -3,9 +3,10 @@ import { graphql } from "gatsby"
 import PortableText from "@sanity/block-content-to-react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
-import { Box, Heading } from "@chakra-ui/react"
+import { Box, Grid, Heading } from "@chakra-ui/react"
 import Serializers from "../components/Serializers"
 import Container from "../components/Layout/Container"
+import Card from "../components/Card"
 
 const Services = ({ data }) => {
   const {
@@ -14,6 +15,7 @@ const Services = ({ data }) => {
     heroImage,
     heroSize,
     _rawBody,
+    pages,
   } = data.sanityServices
   return (
     <Layout title={title} description={metaDescription}>
@@ -24,6 +26,22 @@ const Services = ({ data }) => {
           </Box>
         </Container>
       </Hero>
+      <Grid
+        as="section"
+        maxW="75ch"
+        m="0 auto"
+        p="3rem 1.25rem"
+        gap="24px"
+        templateColumns={{
+          base: "minmax(0, 1fr)",
+          md: "repeat(auto-fit, minmax(250px, 1fr))",
+        }}
+      >
+        {pages.map((page, i) => {
+          const { title, slug } = page
+          return <Card title={title} to={`/services/${slug.current}`} />
+        })}
+      </Grid>
       <Box as="section" p="3rem 1.25rem">
         <Box maxW="75ch" m="0 auto">
           <PortableText blocks={_rawBody} serializers={Serializers} />
@@ -51,6 +69,12 @@ export const data = graphql`
       }
       heroSize
       _rawBody
+      pages {
+        title
+        slug {
+          current
+        }
+      }
     }
   }
 `
