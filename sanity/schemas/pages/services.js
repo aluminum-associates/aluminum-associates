@@ -33,5 +33,11 @@ export default {
       title: "Body",
       type: "blockContent",
     },
+    {
+      name: "pages",
+      title: "Pages",
+      type: "array",
+      of: [{ type: "page" }],
+    },
   ],
 };

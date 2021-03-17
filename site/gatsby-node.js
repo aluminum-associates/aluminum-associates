@@ -28,6 +28,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      servicePages: sanityServices {
+        pages {
+          title
+          slug {
+            current
+          }
+          _rawBody
+        }
+      }
       faqTabs: sanityFaq {
         title
         slug {
@@ -49,19 +58,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = res.data.products.edges
   const categories = res.data.categories.edges
+  const servicePages = res.data.servicePages.pages
   const tabs = res.data.faqTabs.tabs
 
-  // products.forEach(edge => {
-  //   const path = edge.node.category
-  //     ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
-  //     : `/products/${edge.node.slug.current}`
+  products.forEach(edge => {
+    const path = edge.node.category
+      ? `/products/${edge.node.category.slug.current}/${edge.node.slug.current}`
+      : `/products/${edge.node.slug.current}`
 
-  //   createPage({
-  //     path,
-  //     component: require.resolve("./src/templates/product.js"),
-  //     context: { slug: edge.node.slug.current },
-  //   })
-  // })
+    createPage({
+      path,
+      component: require.resolve("./src/templates/product.js"),
+      context: { slug: edge.node.slug.current },
+    })
+  })
 
   categories.forEach(edge => {
     const path = `/products/${edge.node.slug.current}`
@@ -69,6 +79,20 @@ exports.createPages = async ({ graphql, actions }) => {
       path,
       component: require.resolve("./src/templates/category.js"),
       context: { slug: edge.node.slug.current },
+    })
+  })
+
+  servicePages.forEach(page => {
+    const { title, slug, _rawBody } = page
+    const path = `/services/${slug.current}`
+    createPage({
+      path,
+      component: require.resolve("./src/templates/generic-page.js"),
+      context: {
+        title,
+        slug: slug.current,
+        body: _rawBody,
+      },
     })
   })
 

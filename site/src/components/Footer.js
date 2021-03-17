@@ -22,8 +22,36 @@ const headingStyles = {
 }
 
 const Footer = () => {
-  const query = useStaticQuery(data)
-  const { categories } = query
+  const query = useStaticQuery(graphql`
+    {
+      categories: allSanityCategory(sort: { fields: title }) {
+        edges {
+          node {
+            id
+            title
+            slug {
+              current
+            }
+            parents {
+              id
+              slug {
+                current
+              }
+            }
+          }
+        }
+      }
+      services: sanityServices {
+        pages {
+          title
+          slug {
+            current
+          }
+        }
+      }
+    }
+  `)
+  const { categories, services } = query
 
   return (
     <Box as="footer" bg="gray.100" p="3rem 1.25rem">
@@ -101,6 +129,18 @@ const Footer = () => {
                 Services
               </Link>
             </Heading>
+            <List>
+              {services.pages.map((service, i) => {
+                const { title, slug } = service
+                return (
+                  <ListItem key={i}>
+                    <Link as={GatsbyLink} to={`/services/${slug.current}`}>
+                      {title}
+                    </Link>
+                  </ListItem>
+                )
+              })}
+            </List>
           </Flex>
           <Flex direction="column">
             <Heading as="h3" {...headingStyles}>
@@ -124,27 +164,5 @@ const Footer = () => {
     </Box>
   )
 }
-
-export const data = graphql`
-  {
-    categories: allSanityCategory(sort: { fields: title }) {
-      edges {
-        node {
-          id
-          title
-          slug {
-            current
-          }
-          parents {
-            id
-            slug {
-              current
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Footer

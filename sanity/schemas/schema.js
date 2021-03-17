@@ -23,6 +23,7 @@ import color from "./colorPalettes/color";
 import gallery from "./pages/gallery";
 import galleryEntry from "./galleryEntry";
 import siteSettings from "./siteSettings";
+import page from "./page";
 
 export default createSchema({
   name: "default",
@@ -49,5 +50,6 @@ export default createSchema({
     videoEmbed,
     colorPalette,
     color,
+    page,
   ]),
 });
