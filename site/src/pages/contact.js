@@ -22,9 +22,11 @@ export default function Contact() {
   return (
     <Box>
       <Layout title="Contact">
-      <Hero>
+        <Hero>
           <Container>
-            <Heading as="h1">Let's Get In Touch</Heading>
+            <Heading as="h1" size="2xl">
+              Let's Get In Touch
+            </Heading>
           </Container>
         </Hero>
         <Box as="section" className="section-contact-page">

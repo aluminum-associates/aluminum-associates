@@ -24,12 +24,12 @@ const FaqTab = ({ data }) => {
 
   return (
     <Layout title={title} description={metaDescription}>
-      <Hero
-        footer={<FooterTabs tabs={footerTabs} />}
-      >
+      <Hero footer={<FooterTabs tabs={footerTabs} />}>
         <Container>
           <Box maxW="75ch" m="0 auto">
-            <Heading as="h1">Frequently Asked Questions</Heading>
+            <Heading as="h1" size="2xl">
+              Frequently Asked Questions
+            </Heading>
           </Box>
         </Container>
       </Hero>

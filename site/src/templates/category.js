@@ -18,12 +18,11 @@ export default function Category({ data }) {
       title={title}
       description={description ? description.substring(0, 154) + "..." : null}
     >
-      <Hero
-        size={heroSize && heroSize}
-        image={heroImage && heroImage}
-      >
+      <Hero size={heroSize && heroSize} image={heroImage && heroImage}>
         <Container>
-          <Heading as="h1">{title}</Heading>
+          <Heading as="h1" size="2xl">
+            {title}
+          </Heading>
         </Container>
       </Hero>
       <Box as="section" className="section has-background-white-bis">

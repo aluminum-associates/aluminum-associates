@@ -17,7 +17,9 @@ const Page = data => {
       <Hero>
         <Container>
           <Box maxW="75ch" m="0 auto">
-            <Heading as="h1">{title && title}</Heading>
+            <Heading as="h1" size="2xl">
+              {title && title}
+            </Heading>
           </Box>
         </Container>
       </Hero>

@@ -39,7 +39,7 @@ export default function Home({ data }) {
     vendorRef.current && observer.observe(vendorRef.current)
   }, [])
 
-  const { asset, crop, hotspot } = heroImages[0]
+  const { hotspot } = heroImages[0]
 
   const heroImageUrl = imageUrl(heroImages[0]).width(1440).height(810).url()
 

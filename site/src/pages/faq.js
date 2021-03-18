@@ -22,7 +22,9 @@ const FAQ = ({ data }) => {
     <Layout title="Frequently Asked Questions">
       <Hero footer={<FooterTabs tabs={footerTabs} />}>
         <Box maxW="70ch" m="0 auto">
-          <Heading as="h1">Frequently Asked Questions</Heading>
+          <Heading as="h1" size="2xl">
+            Frequently Asked Questions
+          </Heading>
         </Box>
       </Hero>
     </Layout>

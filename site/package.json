@@ -1,9 +1,9 @@
 {
   "name": "site",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Alex Low",
+  "description": "A Gatsby marketing site for Aluminum Associates",
+  "version": "0.9.0",
+  "author": "Xander Low",
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^1.0.1",
     "@chakra-ui/icons": "^1.0.5",
@@ -25,7 +25,7 @@
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sass": "^4.0.1",
     "gatsby-plugin-sharp": "^3.0.0",
-    "gatsby-plugin-sitemap": "^3.0.0",
+    "gatsby-plugin-sitemap": "^3.1.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-source-sanity": "^6.0.5",
@@ -68,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/XanderJL/aluminum-associates"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

@@ -22,7 +22,9 @@ const Services = ({ data }) => {
       <Hero size={heroSize && heroSize} fluid={heroImage && heroImage}>
         <Container>
           <Box maxW="75ch" m="0 auto">
-            <Heading as="h1">{title}</Heading>
+            <Heading as="h1" size="2xl">
+              {title}
+            </Heading>
           </Box>
         </Container>
       </Hero>
@@ -39,7 +41,7 @@ const Services = ({ data }) => {
       >
         {pages.map((page, i) => {
           const { title, slug } = page
-          return <Card title={title} to={`/services/${slug.current}`} />
+          return <Card key={i} title={title} to={`/services/${slug.current}`} />
         })}
       </Grid>
       <Box as="section" p="3rem 1.25rem">
