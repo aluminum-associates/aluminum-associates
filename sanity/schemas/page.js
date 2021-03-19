@@ -1,7 +1,7 @@
 export default {
   name: "page",
   title: "Page",
-  type: "document",
+  type: "object",
   fields: [
     {
       name: "title",

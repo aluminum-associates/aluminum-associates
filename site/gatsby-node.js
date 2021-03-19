@@ -37,6 +37,14 @@ exports.createPages = async ({ graphql, actions }) => {
           _rawBody
         }
       }
+      gallerySections: sanityGallery {
+        sections {
+          title
+          slug {
+            current
+          }
+        }
+      }
       faqTabs: sanityFaq {
         title
         slug {
@@ -58,6 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const products = res.data.products.edges
   const categories = res.data.categories.edges
+  const galleries = res.data.gallerySections.sections
   const servicePages = res.data.servicePages.pages
   const tabs = res.data.faqTabs.tabs
 
@@ -79,6 +88,19 @@ exports.createPages = async ({ graphql, actions }) => {
       path,
       component: require.resolve("./src/templates/category.js"),
       context: { slug: edge.node.slug.current },
+    })
+  })
+
+  galleries.forEach(page => {
+    const { title, slug } = page
+    const path = `/gallery/${slug.current}`
+    createPage({
+      path,
+      component: require.resolve("./src/templates/gallery-page.js"),
+      context: {
+        title,
+        slug: slug.current,
+      },
     })
   })
 

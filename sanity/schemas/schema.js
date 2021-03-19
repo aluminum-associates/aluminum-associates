@@ -21,9 +21,10 @@ import videoEmbed from "./videoEmbed";
 import colorPalette from "./colorPalettes/colorPalette";
 import color from "./colorPalettes/color";
 import gallery from "./pages/gallery";
-import galleryEntry from "./galleryEntry";
+import galleryEntry from "./pages/gallery/galleryEntry";
 import siteSettings from "./siteSettings";
 import page from "./page";
+import gallerySection from "./pages/gallery/gallerySection";
 
 export default createSchema({
   name: "default",
@@ -41,6 +42,7 @@ export default createSchema({
     blockContent,
     blockImage,
     galleryEntry,
+    gallerySection,
     imageGallery,
     galleryImage,
     heroSize,

@@ -109,13 +109,23 @@ export const data = graphql`
   {
     sanityGallery {
       title
-      images {
+      sections {
         title
-        excerpt
-        image {
-          asset {
-            fixed(width: 1200) {
-              ...GatsbySanityImageFixed
+        slug {
+          current
+        }
+        images {
+          title
+          excerpt
+          image {
+            asset {
+              url
+            }
+            hotspot {
+              x
+              y
+              width
+              height
             }
           }
         }
