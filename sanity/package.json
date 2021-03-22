@@ -32,9 +32,9 @@
     "react-embed": "^3.3.2",
     "react-icons": "^4.2.0",
     "react-player": "^2.9.0",
-    "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-dashboard-widget-netlify": "^1.1.0",
     "sanity-plugin-datatable": "^1.1.0",
-    "sanity-plugin-media": "^0.4.0"
+    "sanity-plugin-media": "^1.1.4"
   },
   "devDependencies": {},
   "repository": {

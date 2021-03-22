@@ -37,6 +37,7 @@ module.exports = {
         token: process.env.GATSBY_SANITY_TOKEN,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
