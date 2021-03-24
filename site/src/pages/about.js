@@ -26,7 +26,7 @@ const About = ({ data }) => {
         <Hero
           image={heroImage && heroImageUrl}
           size={heroSize && heroSize}
-          hotspot={heroImage.hotspot}
+          hotspot={heroImage && heroImage.hotspot}
         >
           <Container>
             <PortableText blocks={_rawHeroCopy} serializers={Serializers} />

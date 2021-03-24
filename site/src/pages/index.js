@@ -19,7 +19,7 @@ const scrollToRef = ref =>
   })
 
 export default function Home({ data }) {
-  const { heroSize, heroImages, cards, testimonials } = data.page
+  const { heroSize, heroImages, heroHeading, cards, testimonials } = data.page
   const [visible, setVisible] = useState(false)
   const contactRef = useRef(null)
   const vendorRef = useRef(null)
@@ -52,7 +52,7 @@ export default function Home({ data }) {
       >
         <Container>
           <Heading as="h1" size="2xl" pb="1rem" color="gray.800">
-            Windows, Doors and More
+            {heroHeading}
           </Heading>
           <Button
             size="lg"
@@ -158,6 +158,7 @@ export const data = graphql`
         }
       }
       heroSize
+      heroHeading
       cards {
         _key
         image {

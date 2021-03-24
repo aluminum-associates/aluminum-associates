@@ -49,6 +49,11 @@ export default {
       type: "heroSize",
     },
     {
+      name: "heroHeading",
+      title: "Hero Heading",
+      type: "string",
+    },
+    {
       name: "cards",
       title: "Cards",
       type: "array",
