@@ -5,7 +5,6 @@ import Hero from "../components/Hero"
 import Card from "../components/Card"
 import { Box, Grid, Heading } from "@chakra-ui/react"
 import Container from "../components/Layout/Container"
-import imageUrl from "../../utils/imageUrl"
 
 export default function Category({ data }) {
   const category = data.category
@@ -20,7 +19,7 @@ export default function Category({ data }) {
       description={description ? description.substring(0, 154) + "..." : null}
     >
       <Hero
-        image={heroImage && heroImage.asset ? imageUrl(heroImage).url() : null}
+        image={heroImage && heroImage.asset ? heroImage.url : null}
         size={heroSize && heroSize}
         hotspot={heroImage && heroImage.hotspot}
       >
@@ -120,6 +119,7 @@ export const data = graphql`
           heroImage {
             asset {
               _id
+              url
             }
             crop {
               top

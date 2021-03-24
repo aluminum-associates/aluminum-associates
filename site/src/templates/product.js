@@ -10,7 +10,6 @@ import { Accordion, Box, Grid, Heading, Link } from "@chakra-ui/react"
 import Container from "../components/Layout/Container"
 import AccordionItem from "../components/Accordions/AccordionItem"
 import ColorsAccordion from "../components/Accordions/ColorsAccordion"
-import imageUrl from "../../utils/imageUrl"
 
 const Product = ({ data }) => {
   const {
@@ -31,7 +30,7 @@ const Product = ({ data }) => {
   return (
     <Layout title={title}>
       <Hero
-        image={heroImage && imageUrl(heroImage).url()}
+        image={heroImage && heroImage.asset ? heroImage.asset.url : null}
         size={heroSize && heroSize}
         hotspot={heroImage && heroImage.hotspot}
       >
@@ -150,6 +149,7 @@ export const data = graphql`
       heroImage {
         asset {
           _id
+          url
         }
         crop {
           top

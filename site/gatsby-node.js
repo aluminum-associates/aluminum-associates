@@ -43,6 +43,21 @@ exports.createPages = async ({ graphql, actions }) => {
           slug {
             current
           }
+          images {
+            title
+            excerpt
+            image {
+              asset {
+                url
+              }
+              hotspot {
+                x
+                y
+                width
+                height
+              }
+            }
+          }
         }
       }
       faqTabs: sanityFaq {
@@ -92,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   galleries.forEach(page => {
-    const { title, slug } = page
+    const { title, slug, images } = page
     const path = `/gallery/${slug.current}`
     createPage({
       path,
@@ -100,6 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         title,
         slug: slug.current,
+        images,
       },
     })
   })
