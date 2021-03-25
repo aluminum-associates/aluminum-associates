@@ -48,13 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
             excerpt
             image {
               asset {
-                url
-              }
-              hotspot {
-                x
-                y
-                width
-                height
+                gatsbyImageData(placeholder: BLURRED)
               }
             }
           }

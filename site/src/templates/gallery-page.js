@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
 import {
   Button,
   Image,
@@ -13,10 +12,12 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Flex,
 } from "@chakra-ui/react"
 import Hero from "../components/Hero"
 import Layout from "../components/Layout"
 import Container from "../components/Layout/Container"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const GalleryPage = data => {
   const { title, images } = data.pageContext
@@ -45,6 +46,8 @@ const GalleryPage = data => {
           {images.map((img, i) => {
             const { title, excerpt, image } = img
 
+            console.log(image.asset)
+
             return (
               <Button
                 key={i}
@@ -60,10 +63,7 @@ const GalleryPage = data => {
                   onOpen()
                 }}
               >
-                <Image
-                  srcSet={image.asset.url}
-                  fit="cover"
-                  align="center"
+                <Flex
                   w="100%"
                   h="100%"
                   pos="absolute"
@@ -71,7 +71,17 @@ const GalleryPage = data => {
                   _hover={{
                     opacity: 0.75,
                   }}
-                />
+                >
+                  <GatsbyImage
+                    image={image.asset.gatsbyImageData}
+                    alt={title}
+                    objectPosition="center"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Flex>
               </Button>
             )
           })}
@@ -79,7 +89,12 @@ const GalleryPage = data => {
       </Container>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent color="white" bg="rgba(0,0,0,0.65)" maxW="max-content">
+        <ModalContent
+          color="white"
+          bg="rgba(0,0,0,0.65)"
+          maxW="max-content"
+          m="1.25rem"
+        >
           <ModalHeader>{project?.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody
@@ -88,14 +103,16 @@ const GalleryPage = data => {
             maxW="inherit"
             m="auto"
           >
-            <Image
-              srcSet={project?.image?.asset?.url}
-              alt={project?.title}
-              fit="contain"
-              maxW="100%"
-              maxH="70vh"
-              pb="1rem"
-            />
+            <Flex maxW="100%" maxH="70vh" pb="1rem">
+              <GatsbyImage
+                image={project?.image?.asset?.gatsbyImageData}
+                objectFit="contain"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </Flex>
             <Text pb="1rem">{project?.excerpt}</Text>
           </ModalBody>
         </ModalContent>
@@ -103,34 +120,5 @@ const GalleryPage = data => {
     </Layout>
   )
 }
-
-export const data = graphql`
-  {
-    sanityGallery {
-      title
-      sections {
-        title
-        slug {
-          current
-        }
-        images {
-          title
-          excerpt
-          image {
-            asset {
-              url
-            }
-            hotspot {
-              x
-              y
-              width
-              height
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default GalleryPage
