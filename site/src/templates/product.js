@@ -47,10 +47,10 @@ const Product = ({ data }) => {
               <ImageGallery images={images} />
             ) : null}
             <Box>
-              <Heading as="h2" size="lg">
+              <Heading as="h2" size="xl" pb="0.25rem">
                 {title}
               </Heading>
-              <Heading as="h3" size="md" color="gray.600">
+              <Heading as="h3" size="md" color="gray.600" pb="1.25rem">
                 {vendor && (
                   <Link href={vendor.url} isExternal>
                     {vendor.title}

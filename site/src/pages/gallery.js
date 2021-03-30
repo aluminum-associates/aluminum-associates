@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link as GatsbyLink } from "gatsby"
-import { Flex, Heading, VStack, Link, Text, Icon } from "@chakra-ui/react"
+import { Flex, Heading, VStack, Link, Text, Icon, Grid } from "@chakra-ui/react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import Container from "../components/Layout/Container"
@@ -20,14 +20,23 @@ const Gallery = ({ data }) => {
         </Container>
       </Hero>
       <Container>
-        <VStack align="stretch" spacing={10} maxW="80ch" m="0 auto">
+        <Grid
+          maxW="max-content"
+          m="0 auto"
+          templateColumns={{ base: "minmax(0, 1fr)", md: "repeat(2, 1fr)" }}
+          gap={8}
+        >
           {sections.map((section, i) => {
             const { title, slug, images } = section
             return (
               <Link key={i} as={GatsbyLink} to={`/gallery/${slug.current}`}>
                 <Flex role="group" boxShadow="lg">
                   {images.length > 0 ? (
-                    <Flex _groupHover={{ opacity: 0.5 }}>
+                    <Flex
+                      maxH={{ base: "120px", md: "150px" }}
+                      maxW={{ base: "120px", md: "150px" }}
+                      _groupHover={{ opacity: 0.5 }}
+                    >
                       <GatsbyImage
                         image={images[0].image.asset.gatsbyImageData}
                         alt="b"
@@ -36,6 +45,8 @@ const Gallery = ({ data }) => {
                   ) : (
                     <Icon
                       as={AiFillCamera}
+                      maxH={{ base: "120px", md: "150px" }}
+                      maxW={{ base: "120px", md: "150px" }}
                       color="gray.400"
                       bg="gray.200"
                       boxSize={200}
@@ -43,15 +54,25 @@ const Gallery = ({ data }) => {
                       _groupHover={{ opacity: 0.5 }}
                     />
                   )}
-                  <Flex direction="column" p="2rem 1.25rem">
-                    <Heading>{title}</Heading>
-                    <Text>Beepbeep</Text>
+                  <Flex
+                    flex={1}
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="flex-start"
+                    p="2rem"
+                  >
+                    <Heading
+                      fontSize={{ base: "lg", md: "2xl" }}
+                      textAlign="center"
+                    >
+                      {title}
+                    </Heading>
                   </Flex>
                 </Flex>
               </Link>
             )
           })}
-        </VStack>
+        </Grid>
       </Container>
     </Layout>
   )
