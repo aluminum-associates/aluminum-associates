@@ -30,7 +30,7 @@ const Product = ({ data }) => {
   return (
     <Layout title={title}>
       <Hero
-        image={heroImage && heroImage.asset ? heroImage.asset.url : null}
+        image={heroImage && heroImage?.asset?.url}
         size={heroSize && heroSize}
         hotspot={heroImage && heroImage.hotspot}
       >
@@ -176,12 +176,7 @@ export const data = graphql`
         image {
           asset {
             id
-            fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
-            }
-            fixed(width: 800) {
-              ...GatsbySanityImageFixed
-            }
+            gatsbyImageData(width: 800)
           }
           hotspot {
             x
@@ -197,9 +192,7 @@ export const data = graphql`
           name
           image {
             asset {
-              fixed(width: 300) {
-                ...GatsbySanityImageFixed
-              }
+              gatsbyImageData(width: 300)
             }
           }
         }

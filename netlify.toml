@@ -1,3 +1,2 @@
 [build]
-  publish = "site/public"
-  functions = "site/functions"
+publish = "./public"

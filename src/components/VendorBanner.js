@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Box, Link } from "@chakra-ui/react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 
 const MotionBox = motion(Box)
@@ -16,9 +16,7 @@ const VendorBanner = () => {
           title
           logo {
             asset {
-              fixed(width: 125) {
-                ...GatsbySanityImageFixed
-              }
+              gatsbyImageData(width: 125)
             }
           }
           url
@@ -79,8 +77,8 @@ const VendorBanner = () => {
             href={url}
             isExternal
           >
-            <Img
-              fixed={logo.asset.fixed}
+            <GatsbyImage
+              image={logo.asset.gatsbyImageData}
               alt={title}
               style={{
                 minWidth: "100px",

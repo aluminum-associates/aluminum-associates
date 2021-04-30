@@ -60,9 +60,7 @@ export const data = graphql`
       metaDescription
       heroImage {
         asset {
-          fluid(maxWidth: 1920) {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(width: 1920)
         }
         hotspot {
           x

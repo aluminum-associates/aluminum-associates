@@ -80,7 +80,7 @@ export default function Home({ data }) {
               return (
                 <Card
                   key={_key}
-                  image={image.asset.fluid}
+                  image={image.asset.gatsbyImageData}
                   alt={alt}
                   title={title}
                   body={body}
@@ -163,9 +163,7 @@ export const data = graphql`
         _key
         image {
           asset {
-            fluid(maxWidth: 800, maxHeight: 600) {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(width: 800, height: 800)
           }
           hotspot {
             x
@@ -176,7 +174,6 @@ export const data = graphql`
         title
         body
       }
-
       testimonials {
         id
         _rawQuote

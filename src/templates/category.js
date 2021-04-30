@@ -46,9 +46,7 @@ export default function Category({ data }) {
                 <Card
                   to={"/products/" + slug.current}
                   key={id}
-                  image={
-                    heroImage && heroImage.asset ? heroImage.asset.fluid : null
-                  }
+                  image={heroImage && heroImage?.asset?.gatsbyImageData}
                   title={title}
                   body={description}
                 />
@@ -155,9 +153,7 @@ export const data = graphql`
           heroImage {
             asset {
               _id
-              fluid(maxWidth: 400, maxHeight: 300) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 400, height: 300)
             }
             hotspot {
               x

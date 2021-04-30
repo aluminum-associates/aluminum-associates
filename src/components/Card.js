@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Link as GatsbyLink } from "gatsby"
 import { Box, Heading, Link, Text } from "@chakra-ui/react"
 import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const Card = ({ to, image, alt, title, body }) => {
   return to ? (
@@ -10,7 +11,7 @@ const Card = ({ to, image, alt, title, body }) => {
       <Box boxShadow="lg" w="100%" h="100%">
         <Box _hover={{ opacity: 0.75 }}>
           {image ? (
-            <Img fluid={image} alt={alt} />
+            <GatsbyImage image={image} alt={alt} />
           ) : (
             <div className="image is-4by3 has-background-grey-lighter"></div>
           )}
@@ -27,7 +28,7 @@ const Card = ({ to, image, alt, title, body }) => {
     <Box boxShadow="lg" w="100%" h="100%">
       <Box>
         {image ? (
-          <Img fluid={image} alt={alt} />
+          <GatsbyImage image={image} alt={alt} />
         ) : (
           <div className="image is-4by3 has-background-grey-lighter"></div>
         )}

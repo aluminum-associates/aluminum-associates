@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link as GatsbyLink } from "gatsby"
-import { Flex, Heading, VStack, Link, Text, Icon, Grid } from "@chakra-ui/react"
+import { Flex, Heading, Link, Icon, Grid } from "@chakra-ui/react"
 import Layout from "../components/Layout"
 import Hero from "../components/Hero"
 import Container from "../components/Layout/Container"
