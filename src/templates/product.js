@@ -11,6 +11,8 @@ import Container from "../components/Layout/Container"
 import AccordionItem from "../components/Accordions/AccordionItem"
 import ColorsAccordion from "../components/Accordions/ColorsAccordion"
 
+// TODO: fix ColorsAccordion and ImageGallery to play nice with the new GatsbyImage
+
 const Product = ({ data }) => {
   const {
     title,
@@ -43,9 +45,9 @@ const Product = ({ data }) => {
       <Container>
         <Box as="section" className="section">
           <Grid templateColumns={images.length === 0 && "1fr"}>
-            {images && images.length > 0 ? (
+            {/* {images && images.length > 0 ? (
               <ImageGallery images={images} />
-            ) : null}
+            ) : null} */}
             <Box>
               <Heading as="h2" size="xl" pb="0.25rem">
                 {title}
@@ -88,9 +90,9 @@ const Product = ({ data }) => {
                         list={optionalFeatures}
                       />
                     )}
-                    {availableColors && availableColors.length !== 0 && (
+                    {/* {availableColors && availableColors.length !== 0 && (
                       <ColorsAccordion colors={availableColors.colors} />
-                    )}
+                    )} */}
                     {documentation && documentation.length !== 0 && (
                       <DocumentAccordion documentation={documentation} />
                     )}

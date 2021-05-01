@@ -19,7 +19,7 @@ const Services = ({ data }) => {
   } = data.sanityServices
   return (
     <Layout title={title} description={metaDescription}>
-      <Hero size={heroSize && heroSize} fluid={heroImage && heroImage}>
+      <Hero size={heroSize && heroSize} image={heroImage && heroImage}>
         <Container>
           <Box maxW="75ch" m="0 auto">
             <Heading as="h1" size="2xl">

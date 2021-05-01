@@ -65,9 +65,7 @@ export default function Category({ data }) {
                 <Card
                   to={"/products/" + category.slug.current + "/" + slug.current}
                   key={id}
-                  heroImage={
-                    heroImage && heroImage.asset ? heroImage.asset.fluid : null
-                  }
+                  heroImage={heroImage?.asset?.gatsbyImageData}
                   title={title}
                   description={description}
                 />

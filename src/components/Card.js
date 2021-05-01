@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link as GatsbyLink } from "gatsby"
 import { Box, Heading, Link, Text } from "@chakra-ui/react"
-import Img from "gatsby-image"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const Card = ({ to, image, alt, title, body }) => {

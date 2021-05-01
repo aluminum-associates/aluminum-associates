@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import Img from "gatsby-image"
+import GatsbyImage from "gatsby-plugin-image"
 import { motion } from "framer-motion"
 import Lightbox from "react-image-lightbox"
 
@@ -41,8 +41,8 @@ export default function ImageGallery({ images }) {
               scale: 1.05,
             }}
           >
-            <Img
-              fluid={image.asset.fluid}
+            <GatsbyImage
+              image={image.asset.gatsbyImageData}
               alt={alternativeText}
               className="card"
               style={{

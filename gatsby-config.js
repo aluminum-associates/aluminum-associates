@@ -35,6 +35,7 @@ module.exports = {
         dataset: `production`,
         watchMode: process.env.GATSBY_SANITY_WATCHMODE,
         token: process.env.GATSBY_SANITY_TOKEN,
+        useCdn: false,
       },
     },
     `gatsby-plugin-image`,

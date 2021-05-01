@@ -46,8 +46,6 @@ const Hero = ({ size, image, hotspot, children, footer }) => {
 
 Hero.propTypes = {
   size: PropTypes.string.isRequired,
-  fluid: PropTypes.object,
-  fixed: PropTypes.object,
 }
 
 export default Hero

@@ -163,7 +163,7 @@ export const data = graphql`
         _key
         image {
           asset {
-            gatsbyImageData(width: 800, height: 800)
+            gatsbyImageData(width: 800, height: 600, placeholder: BLURRED)
           }
           hotspot {
             x
