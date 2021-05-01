@@ -11,8 +11,6 @@ import Container from "../components/Layout/Container"
 import AccordionItem from "../components/Accordions/AccordionItem"
 import ColorsAccordion from "../components/Accordions/ColorsAccordion"
 
-// TODO: fix ColorsAccordion and ImageGallery to play nice with the new GatsbyImage
-
 const Product = ({ data }) => {
   const {
     title,
@@ -45,9 +43,7 @@ const Product = ({ data }) => {
       <Container>
         <Box as="section" className="section">
           <Grid templateColumns={images.length === 0 && "1fr"}>
-            {/* {images && images.length > 0 ? (
-              <ImageGallery images={images} />
-            ) : null} */}
+            {images?.length > 0 && <ImageGallery images={images} />}
             <Box>
               <Heading as="h2" size="xl" pb="0.25rem">
                 {title}
@@ -78,22 +74,22 @@ const Product = ({ data }) => {
               documentation ? (
                 <div className="menus my-2">
                   <Accordion allowToggle allowMultiple>
-                    {standardFeatures && standardFeatures.length !== 0 && (
+                    {standardFeatures?.length > 0 && (
                       <AccordionItem
                         title="Standard Features"
                         list={standardFeatures}
                       />
                     )}
-                    {optionalFeatures && optionalFeatures.length !== 0 && (
+                    {optionalFeatures?.length > 0 && (
                       <AccordionItem
                         title="Optional Features"
                         list={optionalFeatures}
                       />
                     )}
-                    {/* {availableColors && availableColors.length !== 0 && (
-                      <ColorsAccordion colors={availableColors.colors} />
-                    )} */}
-                    {documentation && documentation.length !== 0 && (
+                    {availableColors?.colors?.length > 0 && (
+                      <ColorsAccordion colors={availableColors?.colors} />
+                    )}
+                    {documentation?.length > 0 && (
                       <DocumentAccordion documentation={documentation} />
                     )}
                   </Accordion>
@@ -194,6 +190,7 @@ export const data = graphql`
           name
           image {
             asset {
+              url
               gatsbyImageData(width: 300)
             }
           }
