@@ -96,14 +96,22 @@ const About = ({ data }) => {
                           {jobTitle}
                         </Heading>
                       </Box>
-                      <Link href={email}>
-                        <Box as={MdEmail} display="inline-block" mr="0.5rem" />
-                        {email.replace("mailto:", "")}
-                      </Link>
-                      <PortableText
-                        blocks={_rawBio}
-                        serializers={Serializers}
-                      />
+                      {email && (
+                        <Link href={email}>
+                          <Box
+                            as={MdEmail}
+                            display="inline-block"
+                            mr="0.5rem"
+                          />
+                          {email?.replace("mailto:", "")}
+                        </Link>
+                      )}
+                      {_rawBio && (
+                        <PortableText
+                          blocks={_rawBio}
+                          serializers={Serializers}
+                        />
+                      )}
                     </VStack>
                   </EmployeeCard>
                 )
