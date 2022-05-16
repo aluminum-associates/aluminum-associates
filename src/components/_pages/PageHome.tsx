@@ -4,6 +4,7 @@ import { FC } from 'react'
 
 const PageHome: FC<HomeProps> = ({ data }) => {
   const { navItems, homeData } = data
+  const {} = homeData || {}
 
   return (
     <Layout navItems={navItems}>
