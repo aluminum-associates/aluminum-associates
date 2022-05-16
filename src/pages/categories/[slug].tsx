@@ -6,21 +6,18 @@ import {
   navigationQuery
 } from 'util/sanity/queries'
 import { CategoryData, NavItems } from 'types/SanityExtended'
-import Layout from 'components/Layout'
+import PageCategory from 'components/_pages/PageCategory'
 
-interface CategoryProps {
+export interface CategoryProps {
   data: {
     navItems?: NavItems
     category?: CategoryData
   }
 }
 
-const Category: NextPage<CategoryProps> = ({ data }) => {
-  const { navItems, category } = data
-  const { title } = category || {}
-
-  return <Layout navItems={navItems}>{title}</Layout>
-}
+const Category: NextPage<CategoryProps> = ({ data }) => (
+  <PageCategory data={data} />
+)
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getClient().fetch(categoriesQuery)

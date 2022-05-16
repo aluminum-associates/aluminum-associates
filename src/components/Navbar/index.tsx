@@ -3,6 +3,7 @@ import React, { FC, useRef } from 'react'
 import { NavItems } from 'types/SanityExtended'
 import Drawer from './Drawer'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import Link from 'components/Link'
 
 interface NavbarProps {
   navItems?: NavItems
@@ -17,7 +18,9 @@ const Navbar: FC<NavbarProps> = ({ navItems }) => {
       <Box>
         <Container maxW='container.lg'>
           <HStack justify='space-between'>
-            <Box as='p'>Logo</Box>
+            <Link href='/'>
+              <Box as='p'>Logo</Box>
+            </Link>
             <Button
               variant='unstyled'
               leftIcon={<GiHamburgerMenu />}

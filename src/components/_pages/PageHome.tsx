@@ -1,12 +1,10 @@
 import Layout from 'components/Layout'
+import { HomeProps } from 'pages/index'
 import { FC } from 'react'
-import { NavItems } from 'types/SanityExtended'
 
-interface PageHomeProps {
-  navItems?: NavItems
-}
+const PageHome: FC<HomeProps> = ({ data }) => {
+  const { navItems } = data
 
-const PageHome: FC<PageHomeProps> = ({ navItems }) => {
   return <Layout navItems={navItems}>PageHome</Layout>
 }
 
