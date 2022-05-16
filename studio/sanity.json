@@ -12,18 +12,13 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/dashboard",
     "@sanity/desk-tool",
-    "dashboard-widget-netlify",
     "media",
-    "related-products",
     "datatable"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
@@ -32,20 +27,8 @@
       "path": "./schemas/schema"
     },
     {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./styles/variables.css"
-    },
-    {
-      "implements": "part:@sanity/base/brand-logo",
-      "path": "./logo/logo.js"
-    },
-    {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "src/dashboardConfig.js"
-    },
-    {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./src/deskConfig.js"
+      "path": "./deskConfig.js"
     }
   ]
 }
