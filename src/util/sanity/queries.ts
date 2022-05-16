@@ -11,6 +11,12 @@ export const navigationQuery = groq`
   }
 `
 
+export const categoriesQuery = groq`
+*[_type == 'category']{
+  'slug': slug.current
+}
+`
+
 export const homePageQuery = groq`
 *[_type == 'index']{
   title,
