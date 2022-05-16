@@ -17,6 +17,17 @@ export const categoriesQuery = groq`
 }
 `
 
+export const categoryQuery = groq`
+*[_type == 'category' && slug.current == $slug]{
+  ...,
+  'slug': slug.current,
+  'heroImage': heroImage.asset->{
+    url,
+    metadata
+  },
+}[0]
+`
+
 export const homePageQuery = groq`
 *[_type == 'index']{
   title,

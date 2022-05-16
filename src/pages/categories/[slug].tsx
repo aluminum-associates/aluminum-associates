@@ -1,27 +1,32 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { getClient } from 'lib/sanity.server'
-import { categoriesQuery, navigationQuery } from 'util/sanity/queries'
-import { NavItems } from 'types/SanityExtended'
+import {
+  categoriesQuery,
+  categoryQuery,
+  navigationQuery
+} from 'util/sanity/queries'
+import { CategoryData, NavItems } from 'types/SanityExtended'
 import Layout from 'components/Layout'
 
 interface CategoryProps {
   data: {
     navItems?: NavItems
-    id?: string
+    category?: CategoryData
   }
 }
 
 const Category: NextPage<CategoryProps> = ({ data }) => {
-  const { navItems, id } = data
+  const { navItems, category } = data
+  const { title } = category || {}
 
-  return <Layout navItems={navItems}>{id}</Layout>
+  return <Layout navItems={navItems}>{title}</Layout>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getClient().fetch(categoriesQuery)
   const paths = categories.map((category: any) => {
     const { slug } = category
-    return { params: { id: slug } }
+    return { params: { slug } }
   })
 
   return {
@@ -30,12 +35,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async context => {
-  const { params } = context
-  const { id } = params || {}
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params || {}
   const navItems = await getClient().fetch(navigationQuery)
+  const category = await getClient().fetch(categoryQuery, { slug })
 
-  return { props: { data: { navItems, id } } }
+  return { props: { data: { navItems, category } } }
 }
 
 export default Category

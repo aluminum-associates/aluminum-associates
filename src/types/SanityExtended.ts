@@ -1,4 +1,9 @@
-import { Category } from './Sanity'
+import { Category, SanityImageMetadata } from './Sanity'
+
+export interface Image {
+  url?: string
+  metadata?: SanityImageMetadata
+}
 
 export interface CustomCategory
   extends Omit<Pick<Category, 'title' | 'slug'>, 'slug'> {
@@ -11,3 +16,8 @@ export interface CustomCategory
 }
 
 export type NavItems = CustomCategory[]
+
+export interface CategoryData extends Omit<Category, 'slug' | 'heroImage'> {
+  slug?: string
+  heroImage?: Image
+}
