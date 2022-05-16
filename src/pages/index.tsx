@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import PageHome from 'components/_pages/PageHome'
 import { getClient } from 'lib/sanity.server'
-import { getNavProps } from 'util/sanity/queries'
+import { navigationQuery } from 'util/sanity/queries'
 import { NavItems } from 'types/SanityExtended'
 
 interface HomeProps {
@@ -17,7 +17,7 @@ const Home: NextPage<HomeProps> = ({ data }) => {
 }
 
 export const getStaticProps = async () => {
-  const navItems = await getClient().fetch(getNavProps)
+  const navItems = await getClient().fetch(navigationQuery)
 
   return { props: { data: { navItems } } }
 }
