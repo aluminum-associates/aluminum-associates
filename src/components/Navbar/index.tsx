@@ -1,4 +1,11 @@
-import { Box, Button, Container, HStack, useDisclosure } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Container,
+  HStack,
+  Icon,
+  useDisclosure
+} from '@chakra-ui/react'
 import React, { FC, useRef } from 'react'
 import { NavItems } from 'types/SanityExtended'
 import Drawer from './Drawer'
@@ -21,11 +28,9 @@ const Navbar: FC<NavbarProps> = ({ navItems }) => {
             <Link href='/'>
               <Box as='p'>Logo</Box>
             </Link>
-            <Button
-              variant='unstyled'
-              leftIcon={<GiHamburgerMenu />}
-              onClick={onOpen}
-            />
+            <Button variant='unstyled' onClick={onOpen}>
+              <Icon as={GiHamburgerMenu} />
+            </Button>
           </HStack>
         </Container>
       </Box>
