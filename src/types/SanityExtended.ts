@@ -2,7 +2,19 @@ import {
   SanityImageCrop,
   SanityImageHotspot
 } from '@sanity/image-url/lib/types/types'
-import { Card, Category, Index, SanityImageMetadata, Vendor } from './Sanity'
+import {
+  About,
+  Card,
+  Category,
+  Faq,
+  FaqTabs,
+  Gallery,
+  GallerySection,
+  Index,
+  SanityImageMetadata,
+  Services,
+  Vendor
+} from './Sanity'
 
 export interface Image {
   url?: string
@@ -43,4 +55,29 @@ export interface HomeData extends Omit<Index, 'heroImages' | 'cards'> {
     crop?: SanityImageCrop
   }
   vendors?: CustomVendor[]
+}
+
+export interface AboutData extends Omit<About, 'heroImage'> {
+  heroImage?: Image
+}
+
+export interface ServicesData extends Omit<Services, 'heroImage'> {
+  heroImage?: Image
+}
+
+export interface CustomGallerySection
+  extends Omit<GallerySection, 'heroImage'> {
+  heroImage?: Image
+}
+
+export interface GalleryData extends Omit<Gallery, 'sections'> {
+  sections?: CustomGallerySection[]
+}
+
+export interface CustomFaqTabs extends Omit<FaqTabs, 'slug'> {
+  slug?: string
+}
+
+export interface FaqData extends Omit<Faq, 'tabs'> {
+  tabs?: CustomFaqTabs[]
 }

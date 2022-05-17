@@ -63,3 +63,50 @@ export const homePageQuery = groq`
   }
 }[0]
 `
+
+export const aboutQuery = groq`
+*[_type == 'about']{
+  ...,
+  'heroImage': heroImage.asset->{
+    url,
+    metadata
+  }
+}[0]
+`
+
+export const servicesQuery = groq`
+*[_type == 'services']{
+  ...,
+  'heroImage': heroImage.asset->{
+    url,
+    metadata
+  },
+
+}[0]
+`
+
+export const galleryQuery = groq`
+*[_type == 'gallery']{
+  sections[]{
+    ...,
+    images[]{
+      ...,
+      'image': image.asset->{
+        url,
+        metadata
+      }
+    }
+  }
+}[0]
+`
+
+export const faqQuery = groq`
+*[_type == 'faq']{
+  ...,
+  'slug': slug.current,
+  tabs[]->{
+    ...,
+    'slug': slug.current
+  }
+}[0]
+`
