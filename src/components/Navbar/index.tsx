@@ -11,6 +11,7 @@ import { NavItems } from 'types/SanityExtended'
 import Drawer from './Drawer'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import Link from 'components/Link'
+import { navLinks } from 'data/navLinks'
 
 interface NavbarProps {
   navItems?: NavItems
@@ -28,9 +29,20 @@ const Navbar: FC<NavbarProps> = ({ navItems }) => {
             <Link href='/'>
               <Box as='p'>Logo</Box>
             </Link>
-            <Button variant='unstyled' onClick={onOpen}>
-              <Icon as={GiHamburgerMenu} />
-            </Button>
+            <HStack>
+              {navLinks.map(link => {
+                const { title, href } = link
+
+                return (
+                  <Link key={href} href={href}>
+                    {title}
+                  </Link>
+                )
+              })}
+              <Button variant='unstyled' onClick={onOpen}>
+                <Icon as={GiHamburgerMenu} />
+              </Button>
+            </HStack>
           </HStack>
         </Container>
       </Box>
