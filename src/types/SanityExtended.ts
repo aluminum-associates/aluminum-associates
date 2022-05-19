@@ -13,6 +13,7 @@ import {
   Index,
   SanityImageMetadata,
   Services,
+  Testimonial,
   Vendor
 } from './Sanity'
 
@@ -55,10 +56,11 @@ export interface CustomVendor extends Omit<Vendor, 'slug' | 'logo'> {
 }
 
 export interface HomeData
-  extends Omit<Index, 'heroImages' | 'cards' | 'vendors'> {
+  extends Omit<Index, 'heroImages' | 'cards' | 'vendors' | 'testimonials'> {
   cards?: CustomCard[]
   heroImages?: HeroImage[]
   vendors?: CustomVendor[]
+  testimonials?: Testimonial[]
 }
 
 export interface AboutData extends Omit<About, 'heroImage'> {

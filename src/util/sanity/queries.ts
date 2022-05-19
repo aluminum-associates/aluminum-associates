@@ -33,8 +33,10 @@ export const homePageQuery = groq`
   title,
   cards[]{
     alt,
+    title,
     body,
     'image': image.asset->{
+      _id,
       url,
       metadata
     }
@@ -58,6 +60,7 @@ export const homePageQuery = groq`
     'slug': slug.current,
     url,
     'logo': logo.asset->{
+      _id,
       url,
       metadata
     }
