@@ -17,8 +17,15 @@ import {
 } from './Sanity'
 
 export interface Image {
+  _id?: string
   url?: string
   metadata?: SanityImageMetadata
+}
+
+export interface HeroImage {
+  image?: Image
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
 }
 
 export interface CustomCategory
@@ -47,13 +54,10 @@ export interface CustomVendor extends Omit<Vendor, 'slug' | 'logo'> {
   logo?: Image
 }
 
-export interface HomeData extends Omit<Index, 'heroImages' | 'cards'> {
+export interface HomeData
+  extends Omit<Index, 'heroImages' | 'cards' | 'vendors'> {
   cards?: CustomCard[]
-  heroImages?: {
-    image?: Image
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-  }
+  heroImages?: HeroImage[]
   vendors?: CustomVendor[]
 }
 

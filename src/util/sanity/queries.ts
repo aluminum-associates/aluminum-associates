@@ -42,6 +42,7 @@ export const homePageQuery = groq`
   heroHeading,
   heroImages[]{
     'image': asset->{
+      _id,
       url,
       metadata
     },
