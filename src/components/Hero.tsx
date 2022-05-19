@@ -9,7 +9,12 @@ export interface HeroProps extends FlexProps {
   heroSize?: HeroSize
 }
 
-const Hero: FC<HeroProps> = ({ children, heroImage, heroSize, ...rest }) => {
+const Hero: FC<HeroProps> = ({
+  children,
+  heroImage,
+  heroSize = 'large',
+  ...rest
+}) => {
   const bgImage = heroImage && urlFor(heroImage?.image?._id!).url()
   const minH = {
     small: '360px',
@@ -32,7 +37,7 @@ const Hero: FC<HeroProps> = ({ children, heroImage, heroSize, ...rest }) => {
         bgImage={bgImage}
         bgSize='inherit'
         bgRepeat='inherit'
-        minH={heroSize ? minH[heroSize] : minH['large']}
+        minH={minH[heroSize]}
         {...rest}
       >
         <Container maxW='container.lg'>{children}</Container>
