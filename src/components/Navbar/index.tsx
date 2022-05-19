@@ -1,7 +1,9 @@
 import {
   Box,
+  BoxProps,
   Button,
   Container,
+  forwardRef,
   HStack,
   Icon,
   useDisclosure
@@ -13,17 +15,26 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import Link from 'components/Link'
 import { navLinks } from 'data/navLinks'
 
-interface NavbarProps {
+interface NavbarProps extends BoxProps {
   navItems?: NavItems
 }
 
-const Navbar: FC<NavbarProps> = ({ navItems }) => {
+const Navbar: FC<NavbarProps> = forwardRef(({ navItems, ...rest }, ref) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = useRef<any>()
+  const btnRef = useRef(null)
 
   return (
     <>
-      <Box w='100%' bg='blue.900' color='white' boxShadow='md' position='fixed'>
+      <Box
+        ref={ref}
+        w='100%'
+        bg='blue.900'
+        color='white'
+        boxShadow='md'
+        position='fixed'
+        zIndex='docked'
+        {...rest}
+      >
         <Container maxW='container.lg' py={4}>
           <HStack justify='space-between'>
             <Link href='/'>
@@ -54,6 +65,6 @@ const Navbar: FC<NavbarProps> = ({ navItems }) => {
       />
     </>
   )
-}
+})
 
 export default Navbar
