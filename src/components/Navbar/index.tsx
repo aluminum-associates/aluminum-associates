@@ -23,13 +23,13 @@ const Navbar: FC<NavbarProps> = ({ navItems }) => {
 
   return (
     <>
-      <Box>
-        <Container maxW='container.lg'>
+      <Box w='100%' bg='blue.900' color='white' boxShadow='md' position='fixed'>
+        <Container maxW='container.lg' py={4}>
           <HStack justify='space-between'>
             <Link href='/'>
               <Box as='p'>Logo</Box>
             </Link>
-            <HStack>
+            <HStack align='center'>
               {navLinks.map(link => {
                 const { title, href } = link
 
