@@ -12,8 +12,8 @@ export interface HeroProps extends FlexProps {
 const Hero: FC<HeroProps> = ({ children, heroImage, heroSize, ...rest }) => {
   const bgImage = heroImage && urlFor(heroImage?.image?._id!).url()
   const minH = {
-    small: '200px',
-    medium: '360px',
+    small: '360px',
+    medium: '520px',
     large: '720px',
     fullscreen: 'calc(100vh - 72px)'
   }
