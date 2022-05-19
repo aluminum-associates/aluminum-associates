@@ -23,5 +23,13 @@ export const navLinks: NavLink[] = [
   {
     title: 'faq',
     href: '/faq'
+  },
+  {
+    title: 'contact',
+    href: '/contact'
+  },
+  {
+    title: '519-453-6400',
+    href: 'tel:519-453-6400'
   }
 ]
