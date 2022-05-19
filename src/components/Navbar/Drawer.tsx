@@ -24,7 +24,7 @@ const Drawer: FC<DrawerProps> = ({ navItems, ...rest }) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Categories</DrawerHeader>
+        <DrawerHeader>Products</DrawerHeader>
         <DrawerBody>
           <UnorderedList>
             {navItems?.map(category => {
