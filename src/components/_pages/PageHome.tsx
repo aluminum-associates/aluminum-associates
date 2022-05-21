@@ -31,7 +31,7 @@ const PageHome: FC<HomeProps> = ({ data }) => {
         </Heading>
         <Vendors vendors={vendors} />
       </Section>
-      <Section>
+      <Section maxW='container.md'>
         <Testimonials testimonials={testimonials} />
       </Section>
     </Layout>

@@ -1,6 +1,6 @@
-import { Box, Grid, Text } from '@chakra-ui/react'
+import { Box, Grid, Text, keyframes, useDimensions } from '@chakra-ui/react'
 import { PortableText } from '@portabletext/react'
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import { Testimonial } from 'types/Sanity'
 
 export interface TestimonialsProps {
@@ -8,13 +8,37 @@ export interface TestimonialsProps {
 }
 
 const Testimonials: FC<TestimonialsProps> = ({ testimonials }) => {
+  const numberOfTestimonials = testimonials?.length
+  const keyframe = keyframes`
+  0% { transform: translateX(0); }
+    ${testimonials?.map((_, i) => {
+      const percentage = 100 / i
+
+      if (i > 0) {
+        return `${percentage} { transform: translateX(-100%); }`
+      }
+    })}
+  100% { transform: translateX(0); }
+  `
+  const animation = `${keyframe} 2s ease-in-out`
+
   return (
-    <Grid>
-      {testimonials?.map(testimonial => {
-        const { _id, client, quote } = testimonial
+    <Grid
+      autoRows='1fr'
+      templateColumns={`repeat(${numberOfTestimonials}, 100%)`}
+      overflow='hidden'
+    >
+      {testimonials?.map((testimonial, i) => {
+        const { client, quote } = testimonial
 
         return (
-          <Box key={_id}>
+          <Box
+            key={i}
+            w='100%'
+            // transition='transform 1s'
+            transform={`translateX(0)`}
+            animation={animation}
+          >
             <PortableText value={quote} />
             <Text fontWeight='semibold'>{client}</Text>
           </Box>
