@@ -12,6 +12,7 @@ import {
   Gallery,
   GallerySection,
   Index,
+  Page,
   SanityImageMetadata,
   Services,
   Testimonial,
@@ -81,6 +82,10 @@ export interface ServicesData extends Omit<Services, 'heroImage' | 'pages'> {
     image?: Image
   }
   pages?: ServicePage[]
+}
+
+export interface ServiceData extends Omit<Page, 'slug'> {
+  slug?: string
 }
 
 export interface CustomGallerySection

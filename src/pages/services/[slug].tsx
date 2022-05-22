@@ -1,12 +1,17 @@
 import PageService from 'components/_pages/PageService'
 import { getClient } from 'lib/sanity.server'
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
-import { NavItems } from 'types/SanityExtended'
-import { navigationQuery, servicesQuery } from 'util/sanity/queries'
+import { NavItems, ServiceData } from 'types/SanityExtended'
+import {
+  navigationQuery,
+  serviceQuery,
+  servicesQuery
+} from 'util/sanity/queries'
 
 export interface ServiceProps {
   data?: {
     navItems?: NavItems
+    serviceData?: ServiceData[]
   }
 }
 
@@ -28,10 +33,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug } = params || {}
   const navItems = await getClient().fetch(navigationQuery)
+  const serviceData = await getClient().fetch(serviceQuery, { slug })
 
-  return { props: { data: { navItems } } }
+  return { props: { data: { navItems, serviceData } } }
 }
 
 export default Service

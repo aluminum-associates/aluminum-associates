@@ -95,6 +95,13 @@ export const servicesQuery = groq`
 }[0]
 `
 
+export const serviceQuery = groq`
+*[_type == 'services'].pages[slug.current == $slug]{
+  ...,
+  'slug': slug.current
+}
+`
+
 export const galleryQuery = groq`
 *[_type == 'gallery']{
   sections[]{
