@@ -71,9 +71,12 @@ export const homePageQuery = groq`
 export const aboutQuery = groq`
 *[_type == 'about']{
   ...,
-  'heroImage': heroImage.asset->{
-    url,
-    metadata
+  heroImage{
+    'image': asset->{
+      _id,
+      url,
+      metadata
+    }
   }
 }[0]
 `

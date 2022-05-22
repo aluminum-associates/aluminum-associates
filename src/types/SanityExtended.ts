@@ -64,11 +64,15 @@ export interface HomeData
 }
 
 export interface AboutData extends Omit<About, 'heroImage'> {
-  heroImage?: Image
+  heroImage?: {
+    image?: Image
+  }
 }
 
 export interface ServicesData extends Omit<Services, 'heroImage'> {
-  heroImage?: Image
+  heroImage?: {
+    image?: Image
+  }
 }
 
 export interface CustomGallerySection
