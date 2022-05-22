@@ -4,6 +4,7 @@ import {
 } from '@sanity/image-url/lib/types/types'
 import {
   About,
+  BlockContent,
   Card,
   Category,
   Faq,
@@ -69,10 +70,17 @@ export interface AboutData extends Omit<About, 'heroImage'> {
   }
 }
 
-export interface ServicesData extends Omit<Services, 'heroImage'> {
+export interface ServicePage {
+  title?: string
+  slug?: string
+  body?: BlockContent
+}
+
+export interface ServicesData extends Omit<Services, 'heroImage' | 'pages'> {
   heroImage?: {
     image?: Image
   }
+  pages?: ServicePage[]
 }
 
 export interface CustomGallerySection

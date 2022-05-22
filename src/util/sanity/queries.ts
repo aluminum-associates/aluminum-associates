@@ -88,7 +88,10 @@ export const servicesQuery = groq`
     url,
     metadata
   },
-
+  'pages': pages[]{
+    ...,
+    'slug': slug.current
+  }
 }[0]
 `
 
