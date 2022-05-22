@@ -9,7 +9,7 @@ const Section: FC<BoxProps> = ({
 }) => {
   return (
     <Box py={10} {...rest}>
-      <Container maxW={maxW || maxWidth}>{children}</Container>
+      <Container maxW={maxWidth ?? maxW}>{children}</Container>
     </Box>
   )
 }
